@@ -2,16 +2,15 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ShieldCheck, Award, Lock, Sparkles } from "lucide-react";
 
 export function PartnersSection() {
   const partners = [
-    { name: "APPLE CORPORATE", category: "Hardware Dispatch" },
-    { name: "CARTIER", category: "High Horology" },
-    { name: "LLOYD'S OF LONDON", category: "Global Underwriter" },
-    { name: "STRIPE INFRASTRUCTURE", category: "Vault Payments" },
-    { name: "SONY ENTERPRISE", category: "Cine Gear Logistics" },
-    { name: "TESLA FLEET", category: "Zero-Emission Mobility" },
+    { name: "APPLE CORPORATE", category: "Диспетчеризация устройств" },
+    { name: "CARTIER", category: "Ювелирные изделия" },
+    { name: "LLOYD'S OF LONDON", category: "Международный андеррайтер" },
+    { name: "STRIPE INFRASTRUCTURE", category: "Защищенный сейф платежей" },
+    { name: "SONY ENTERPRISE", category: "Кинотехника и оптика" },
+    { name: "TESLA FLEET", category: "Экологичный флот" },
   ];
 
   return (
@@ -25,7 +24,7 @@ export function PartnersSection() {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <p className="text-xs font-mono uppercase tracking-widest text-zinc-500">
-            Backed By Global Industry Infrastructure & Security Underwriters
+            Инфраструктурные партнеры и международные страховщики безопасности
           </p>
         </motion.div>
 

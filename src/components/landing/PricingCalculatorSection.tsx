@@ -1,13 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useOrderStore } from "@/store/use-order-store";
 import { SPEED_TIERS } from "@/lib/constants";
 import { SpeedTier } from "@/types";
 import { motion } from "framer-motion";
-import { Zap, Clock, Shield, Check, ArrowRight, Sparkles, Sliders } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
 
 export function PricingCalculatorSection() {
   const router = useRouter();
@@ -48,14 +47,14 @@ export function PricingCalculatorSection() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
           <span className="text-xs font-mono uppercase tracking-widest text-indigo-400">
-            Transparent Quantum Pricing
+            Прозрачные алгоритмические тарифы
           </span>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-            Predictable, Algorithmic <br />
-            <span className="gradient-accent-text">Zero Surge Surprises</span>
+            Предсказуемые цены <br />
+            <span className="gradient-accent-text">без скрытых надбавок</span>
           </h2>
           <p className="text-sm sm:text-base text-zinc-400">
-            No mystery surge charges. Instant real-time calculation based strictly on distance, weight, and chosen transit velocity.
+            Никаких внезапных коэффициентов. Мгновенный расчет строго на основе расстояния, веса и выбранной скорости.
           </p>
         </motion.div>
 
@@ -71,7 +70,7 @@ export function PricingCalculatorSection() {
             {/* Speed Tier Selector */}
             <div>
               <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider block mb-3">
-                Transit Velocity Tier
+                Тариф скорости перемещения
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                 {SPEED_TIERS.map((tier) => (
@@ -88,7 +87,7 @@ export function PricingCalculatorSection() {
                     <span className="font-bold block truncate">{tier.title.split(" ")[0]}</span>
                     <span className="text-[10px] text-zinc-500 block">{tier.eta}</span>
                     <span className="text-[10px] text-indigo-400 font-mono mt-1 block">
-                      {tier.priceMultiplier}x Multiplier
+                      Коэффициент {tier.priceMultiplier}x
                     </span>
                   </button>
                 ))}
@@ -99,8 +98,8 @@ export function PricingCalculatorSection() {
             <div className="space-y-5 pt-2 border-t border-white/5">
               <div>
                 <div className="flex items-center justify-between text-xs mb-2">
-                  <span className="font-semibold text-zinc-300">Corridor Transit Distance</span>
-                  <span className="font-mono font-bold text-white text-sm">{distanceKm} km</span>
+                  <span className="font-semibold text-zinc-300">Расстояние доставки</span>
+                  <span className="font-mono font-bold text-white text-sm">{distanceKm} км</span>
                 </div>
                 <input
                   type="range"
@@ -112,16 +111,16 @@ export function PricingCalculatorSection() {
                   className="w-full accent-purple-500 bg-white/10 rounded-lg cursor-pointer h-2"
                 />
                 <div className="flex justify-between text-[10px] text-zinc-500 font-mono mt-1">
-                  <span>1 km (Local Block)</span>
-                  <span>18 km</span>
-                  <span>35 km (Outer Metro)</span>
+                  <span>1 км (Локально)</span>
+                  <span>18 км</span>
+                  <span>35 км (Пригород)</span>
                 </div>
               </div>
 
               <div>
                 <div className="flex items-center justify-between text-xs mb-2">
-                  <span className="font-semibold text-zinc-300">Package Net Weight</span>
-                  <span className="font-mono font-bold text-white text-sm">{weightKg} kg</span>
+                  <span className="font-semibold text-zinc-300">Вес отправления</span>
+                  <span className="font-mono font-bold text-white text-sm">{weightKg} кг</span>
                 </div>
                 <input
                   type="range"
@@ -133,9 +132,9 @@ export function PricingCalculatorSection() {
                   className="w-full accent-indigo-500 bg-white/10 rounded-lg cursor-pointer h-2"
                 />
                 <div className="flex justify-between text-[10px] text-zinc-500 font-mono mt-1">
-                  <span>0.5 kg (Docs)</span>
-                  <span>20 kg (Cargo)</span>
-                  <span>40 kg (Heavy)</span>
+                  <span>0.5 кг (Документы)</span>
+                  <span>20 кг (Груз)</span>
+                  <span>40 кг (Тяжелый)</span>
                 </div>
               </div>
             </div>
@@ -152,8 +151,8 @@ export function PricingCalculatorSection() {
                 }`}
               >
                 <div>
-                  <div className="text-xs font-semibold">Lloyd&apos;s $100k Cargo Cover</div>
-                  <div className="text-[10px] text-zinc-500">Full loss guarantee</div>
+                  <div className="text-xs font-semibold">Страхование Lloyd&apos;s на $100k</div>
+                  <div className="text-[10px] text-zinc-500">100% возмещение стоимости</div>
                 </div>
                 <div
                   className={`w-5 h-5 rounded-lg flex items-center justify-center ${
@@ -174,8 +173,8 @@ export function PricingCalculatorSection() {
                 }`}
               >
                 <div>
-                  <div className="text-xs font-semibold">White-Glove Unboxing</div>
-                  <div className="text-[10px] text-zinc-500">Room placement & seal check</div>
+                  <div className="text-xs font-semibold">Распаковка в белых перчатках</div>
+                  <div className="text-[10px] text-zinc-500">Занос в помещение и проверка пломб</div>
                 </div>
                 <div
                   className={`w-5 h-5 rounded-lg flex items-center justify-center ${
@@ -198,43 +197,43 @@ export function PricingCalculatorSection() {
           >
             <div className="flex items-center justify-between pb-4 border-b border-white/10">
               <span className="text-xs font-bold text-white uppercase tracking-wider">
-                Instant Telemetry Estimate
+                Расчет телеметрии
               </span>
               <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
-                Guaranteed Locked
+                Тариф зафиксирован
               </span>
             </div>
 
             <div className="space-y-3 text-xs">
               <div className="flex justify-between text-zinc-400">
-                <span>Selected Tier</span>
+                <span>Выбранный тариф</span>
                 <span className="text-white font-semibold">{speedObj.title}</span>
               </div>
               <div className="flex justify-between text-zinc-400">
-                <span>Estimated Direct ETA</span>
+                <span>Ориентировочное время</span>
                 <span className="text-emerald-400 font-mono font-semibold">
-                  ~{calculatedEtaMin} Minutes
+                  ~{calculatedEtaMin} минут
                 </span>
               </div>
               <div className="flex justify-between text-zinc-400">
-                <span>Base Corridors + Distance</span>
+                <span>Базовый коридор + расстояние</span>
                 <span className="text-white font-mono">
                   ${(baseRate + distanceCost).toFixed(2)}
                 </span>
               </div>
               <div className="flex justify-between text-zinc-400">
-                <span>Weight Differential</span>
+                <span>Весовой коэффициент</span>
                 <span className="text-white font-mono">${weightCost.toFixed(2)}</span>
               </div>
               {includeInsurance && (
                 <div className="flex justify-between text-zinc-400">
-                  <span>Full Risk Insurance</span>
+                  <span>Полная страховка</span>
                   <span className="text-indigo-400 font-mono">+$12.00</span>
                 </div>
               )}
               {whiteGlove && (
                 <div className="flex justify-between text-zinc-400">
-                  <span>White-Glove Protocol</span>
+                  <span>Белые перчатки</span>
                   <span className="text-purple-400 font-mono">+$18.00</span>
                 </div>
               )}
@@ -243,14 +242,14 @@ export function PricingCalculatorSection() {
             {/* Total box */}
             <div className="p-4 rounded-2xl bg-black/40 border border-white/5 flex items-center justify-between">
               <div>
-                <span className="text-[10px] text-zinc-500 font-mono uppercase block">Total Net Rate</span>
+                <span className="text-[10px] text-zinc-500 font-mono uppercase block">Итого к оплате</span>
                 <span className="text-2xl sm:text-3xl font-black text-white font-mono">
                   ${grandTotal.toFixed(2)}
                 </span>
               </div>
               <div className="text-right">
-                <span className="text-[10px] text-zinc-400 block font-mono">Tax & Tolls Included</span>
-                <span className="text-xs text-emerald-400 font-semibold">No Surge Hidden</span>
+                <span className="text-[10px] text-zinc-400 block font-mono">Сборы включены</span>
+                <span className="text-xs text-emerald-400 font-semibold">Без скрытых доплат</span>
               </div>
             </div>
 
@@ -259,12 +258,12 @@ export function PricingCalculatorSection() {
               onClick={handleBookConfig}
               className="w-full gradient-btn py-4 rounded-2xl text-sm font-bold text-white flex items-center justify-center gap-2 shadow-xl hover:scale-[1.01] transition-transform"
             >
-              <span>Lock Rate & Dispatch Now</span>
+              <span>Зафиксировать цену и вызвать</span>
               <ArrowRight className="w-4 h-4" />
             </button>
 
             <div className="text-center text-[11px] text-zinc-500">
-              Dispatched within 90 seconds of order confirmation.
+              Подача курьера в течение 90 секунд после подтверждения.
             </div>
           </motion.div>
         </div>

@@ -8,22 +8,13 @@ import { formatCurrency, formatDate } from "@/lib/utils";
 import { Coordinates } from "@/types";
 import {
   Zap,
-  MapPin,
-  Clock,
-  Shield,
   Phone,
   MessageSquare,
   Star,
-  Share2,
   FileDown,
   RotateCcw,
-  XCircle,
-  CheckCircle2,
   AlertTriangle,
   Send,
-  Sparkles,
-  ArrowRight,
-  ShieldAlert,
 } from "lucide-react";
 
 function TrackOrderContent() {
@@ -48,7 +39,7 @@ function TrackOrderContent() {
   const [ratingVal, setRatingVal] = useState(5);
   const [tipVal, setTipVal] = useState(10);
   const [chatMessages, setChatMessages] = useState([
-    { sender: "courier", text: "Hello! I have secured your cargo in the thermal pod and am en route via the green corridor.", time: "4m ago" },
+    { sender: "courier", text: "Здравствуйте! Забрал ваш груз, поместил в защитный термобокс и двигаюсь по зеленому коридору.", time: "4м назад" },
   ]);
   const [newMsg, setNewMsg] = useState("");
 
@@ -76,13 +67,13 @@ function TrackOrderContent() {
   if (!currentOrder) {
     return (
       <div className="py-20 text-center min-h-[60vh] flex flex-col items-center justify-center">
-        <h2 className="text-2xl font-bold text-white mb-2">No Active Telemetry Found</h2>
-        <p className="text-sm text-zinc-400 mb-6">Dispatch a new order to view live satellite telemetry.</p>
+        <h2 className="text-2xl font-bold text-white mb-2">Активная телеметрия не найдена</h2>
+        <p className="text-sm text-zinc-400 mb-6">Оформите заказ, чтобы отслеживать движение со спутника.</p>
         <button
           onClick={() => router.push("/book")}
           className="gradient-btn px-6 py-3 rounded-2xl text-xs font-bold text-white"
         >
-          Book Delivery
+          Оформить доставку
         </button>
       </div>
     );
@@ -93,14 +84,14 @@ function TrackOrderContent() {
     if (!newMsg.trim()) return;
     setChatMessages((msgs) => [
       ...msgs,
-      { sender: "user", text: newMsg, time: "Just now" },
+      { sender: "user", text: newMsg, time: "Только что" },
     ]);
     setNewMsg("");
 
     setTimeout(() => {
       setChatMessages((msgs) => [
         ...msgs,
-        { sender: "courier", text: "Understood! Arriving at the lobby entrance now.", time: "Just now" },
+        { sender: "courier", text: "Вас понял! Подъезжаю ко входу.", time: "Только что" },
       ]);
     }, 1500);
   };
@@ -111,11 +102,11 @@ function TrackOrderContent() {
   };
 
   const statusSteps = [
-    { label: "Confirmed", status: "ACCEPTED" },
-    { label: "Dispatched", status: "COURIER_ASSIGNED" },
-    { label: "Cargo Secured", status: "PICKING_UP" },
-    { label: "In Transit", status: "IN_TRANSIT" },
-    { label: "Arrived", status: "ARRIVED" },
+    { label: "Принят", status: "ACCEPTED" },
+    { label: "Назначен", status: "COURIER_ASSIGNED" },
+    { label: "Груз получен", status: "PICKING_UP" },
+    { label: "В пути", status: "IN_TRANSIT" },
+    { label: "Доставлен", status: "ARRIVED" },
   ];
 
   return (
@@ -135,7 +126,7 @@ function TrackOrderContent() {
                 </span>
               </div>
               <p className="text-xs text-zinc-400">
-                {currentOrder.category} • Placed {formatDate(currentOrder.createdAt)}
+                {currentOrder.category} • Оформлен {formatDate(currentOrder.createdAt)}
               </p>
             </div>
           </div>
@@ -150,7 +141,7 @@ function TrackOrderContent() {
                   : "bg-white/[0.04] text-zinc-400 hover:text-white"
               }`}
             >
-              Telemetry Map
+              Радар телеметрии
             </button>
             <button
               onClick={() => setActiveTab("CHAT")}
@@ -160,7 +151,7 @@ function TrackOrderContent() {
                   : "bg-white/[0.04] text-zinc-400 hover:text-white"
               }`}
             >
-              <MessageSquare className="w-3.5 h-3.5" /> Courier Chat
+              <MessageSquare className="w-3.5 h-3.5" /> Чат с курьером
             </button>
             <button
               onClick={() => setActiveTab("INVOICE")}
@@ -170,7 +161,7 @@ function TrackOrderContent() {
                   : "bg-white/[0.04] text-zinc-400 hover:text-white"
               }`}
             >
-              <FileDown className="w-3.5 h-3.5" /> Invoice
+              <FileDown className="w-3.5 h-3.5" /> Накладная
             </button>
           </div>
         </div>
@@ -206,7 +197,7 @@ function TrackOrderContent() {
                   pickup={currentOrder.pickupCoords}
                   dropoff={currentOrder.dropoffCoords}
                   courierPos={courierPos}
-                  courierName={currentOrder.courier?.name || "Marcus Sterling"}
+                  courierName={currentOrder.courier?.name || "Маркус Стерлинг"}
                   vehiclePlate={currentOrder.courier?.vehiclePlate || "NY-AE901"}
                   eta={currentOrder.eta}
                   distanceKm={currentOrder.distanceKm}
@@ -216,16 +207,16 @@ function TrackOrderContent() {
                 {/* Corridor Status Strip */}
                 <div className="grid grid-cols-3 gap-3">
                   <div className="p-4 rounded-2xl bg-[#111217] border border-white/5 text-center">
-                    <span className="text-[10px] font-mono text-zinc-500 uppercase block">Transit Velocity</span>
-                    <span className="text-base font-bold text-white font-mono">38.4 km/h</span>
+                    <span className="text-[10px] font-mono text-zinc-500 uppercase block">Скорость движения</span>
+                    <span className="text-base font-bold text-white font-mono">38.4 км/ч</span>
                   </div>
                   <div className="p-4 rounded-2xl bg-[#111217] border border-white/5 text-center">
-                    <span className="text-[10px] font-mono text-zinc-500 uppercase block">Green Corridor</span>
-                    <span className="text-base font-bold text-emerald-400 font-mono">Unobstructed</span>
+                    <span className="text-[10px] font-mono text-zinc-500 uppercase block">Зеленый коридор</span>
+                    <span className="text-base font-bold text-emerald-400 font-mono">Свободен</span>
                   </div>
                   <div className="p-4 rounded-2xl bg-[#111217] border border-white/5 text-center">
-                    <span className="text-[10px] font-mono text-zinc-500 uppercase block">Pod Integrity</span>
-                    <span className="text-base font-bold text-indigo-400 font-mono">Sealed 100%</span>
+                    <span className="text-[10px] font-mono text-zinc-500 uppercase block">Пломба бокса</span>
+                    <span className="text-base font-bold text-indigo-400 font-mono">Опломбирован 100%</span>
                   </div>
                 </div>
               </div>
@@ -236,16 +227,16 @@ function TrackOrderContent() {
                 <div className="flex items-center justify-between pb-4 border-b border-white/10">
                   <div className="flex items-center gap-3">
                     <div className="w-9 h-9 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold text-xs">
-                      {currentOrder.courier?.name.charAt(0) || "M"}
+                      {currentOrder.courier?.name.charAt(0) || "М"}
                     </div>
                     <div>
                       <h3 className="text-xs font-bold text-white">
-                        {currentOrder.courier?.name || "Marcus Sterling"}
+                        {currentOrder.courier?.name || "Маркус Стерлинг"}
                       </h3>
-                      <p className="text-[10px] text-emerald-400 font-mono">Active on route • Handsfree</p>
+                      <p className="text-[10px] text-emerald-400 font-mono">На маршруте • Свободные руки</p>
                     </div>
                   </div>
-                  <span className="text-xs text-zinc-500 font-mono">End-to-End Encrypted</span>
+                  <span className="text-xs text-zinc-500 font-mono">Сквозное шифрование</span>
                 </div>
 
                 <div className="flex-1 overflow-y-auto py-4 space-y-3">
@@ -275,11 +266,12 @@ function TrackOrderContent() {
                     type="text"
                     value={newMsg}
                     onChange={(e) => setNewMsg(e.target.value)}
-                    placeholder="Type message to courier..."
+                    placeholder="Написать курьеру..."
                     className="flex-1 glass-input rounded-2xl px-4 py-2.5 text-xs text-white"
                   />
                   <button
                     type="submit"
+                    aria-label="Отправить"
                     className="gradient-btn px-4 py-2.5 rounded-2xl text-white text-xs font-bold flex items-center gap-1.5"
                   >
                     <Send className="w-3.5 h-3.5" />
@@ -292,28 +284,28 @@ function TrackOrderContent() {
               <div className="p-8 rounded-3xl bg-[#111217] border border-white/10 space-y-6">
                 <div className="flex items-center justify-between pb-6 border-b border-white/10">
                   <div>
-                    <h2 className="text-xl font-bold text-white">Cryptographic Logistics Manifest</h2>
-                    <p className="text-xs text-zinc-400 font-mono">Document #{currentOrder.orderNumber}</p>
+                    <h2 className="text-xl font-bold text-white">Криптографическая накладная</h2>
+                    <p className="text-xs text-zinc-400 font-mono">Манифест #{currentOrder.orderNumber}</p>
                   </div>
                   <button
-                    onClick={() => alert("Downloading PDF Consignment Note...")}
+                    onClick={() => alert("Загрузка PDF-накладной...")}
                     className="gradient-btn px-4 py-2 rounded-xl text-xs font-bold text-white flex items-center gap-1.5"
                   >
-                    <FileDown className="w-3.5 h-3.5" /> Download PDF
+                    <FileDown className="w-3.5 h-3.5" /> Скачать PDF
                   </button>
                 </div>
 
                 <div className="grid grid-cols-2 gap-6 text-xs">
                   <div>
                     <span className="text-zinc-500 uppercase tracking-wider block font-mono text-[10px]">
-                      Origin Shipper
+                      Отправитель
                     </span>
                     <p className="font-semibold text-white mt-1">{currentOrder.pickupContactName}</p>
                     <p className="text-zinc-400">{currentOrder.pickupAddress}</p>
                   </div>
                   <div>
                     <span className="text-zinc-500 uppercase tracking-wider block font-mono text-[10px]">
-                      Consignee
+                      Получатель
                     </span>
                     <p className="font-semibold text-white mt-1">{currentOrder.dropoffContactName}</p>
                     <p className="text-zinc-400">{currentOrder.dropoffAddress}</p>
@@ -322,15 +314,15 @@ function TrackOrderContent() {
 
                 <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 space-y-2 text-xs font-mono">
                   <div className="flex justify-between text-zinc-400">
-                    <span>Base Freight</span>
+                    <span>Базовый тариф</span>
                     <span className="text-white">${currentOrder.priceSubtotal.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between text-zinc-400">
-                    <span>Underwritten Cover ({currentOrder.insuranceTier})</span>
+                    <span>Страховое покрытие ({currentOrder.insuranceTier})</span>
                     <span className="text-indigo-400">${currentOrder.priceInsurance.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between text-white font-bold pt-2 border-t border-white/10">
-                    <span>Total Amount Charged</span>
+                    <span>Итого списано</span>
                     <span className="text-emerald-400">${currentOrder.priceTotal.toFixed(2)} USD</span>
                   </div>
                 </div>
@@ -344,14 +336,14 @@ function TrackOrderContent() {
             <div className="p-6 rounded-3xl bg-gradient-to-tr from-purple-900/30 via-[#111217] to-indigo-900/20 border border-purple-500/30 shadow-2xl space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-purple-300">
-                  Biometric Handover PIN
+                  Биометрический PIN передачи
                 </span>
                 <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
-                  Active
+                  Активен
                 </span>
               </div>
               <p className="text-xs text-zinc-400 leading-relaxed">
-                Provide this 4-digit code to the courier to release the sealed electronic cargo lockbox.
+                Назовите этот 4-значный код курьеру для открытия электронного замка термобокса.
               </p>
               <div className="py-3 text-center rounded-2xl bg-black/60 border border-white/10 font-mono text-3xl font-extrabold text-white tracking-widest">
                 8 4 9 2
@@ -362,31 +354,31 @@ function TrackOrderContent() {
             <div className="p-6 rounded-3xl bg-[#111217] border border-white/10 space-y-5">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center text-white font-bold text-sm">
-                  {currentOrder.courier?.name.charAt(0) || "M"}
+                  {currentOrder.courier?.name.charAt(0) || "М"}
                 </div>
                 <div>
                   <h3 className="text-sm font-bold text-white">
-                    {currentOrder.courier?.name || "Marcus Sterling"}
+                    {currentOrder.courier?.name || "Маркус Стерлинг"}
                   </h3>
                   <div className="flex items-center gap-2 text-xs text-zinc-400 mt-0.5">
                     <span className="flex items-center text-amber-400">
                       ★ {currentOrder.courier?.rating || 4.99}
                     </span>
                     <span>•</span>
-                    <span className="font-mono">{currentOrder.courier?.completedJobs || 1840} trips</span>
+                    <span className="font-mono">{currentOrder.courier?.completedJobs || 1840} поездок</span>
                   </div>
                 </div>
               </div>
 
               <div className="space-y-2 text-xs">
                 <div className="flex justify-between text-zinc-400">
-                  <span>Assigned Vehicle</span>
+                  <span>Транспорт</span>
                   <span className="text-white font-medium">
                     {currentOrder.courier?.vehicleName || "Aether Cyber-Rider X"}
                   </span>
                 </div>
                 <div className="flex justify-between text-zinc-400">
-                  <span>License Plate</span>
+                  <span>Номерной знак</span>
                   <span className="text-indigo-400 font-mono">
                     {currentOrder.courier?.vehiclePlate || "NY-AE901"}
                   </span>
@@ -399,13 +391,13 @@ function TrackOrderContent() {
                   href="tel:+19175558831"
                   className="px-3 py-2.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-xs font-semibold text-white flex items-center justify-center gap-1.5 transition-colors"
                 >
-                  <Phone className="w-3.5 h-3.5 text-emerald-400" /> Direct Call
+                  <Phone className="w-3.5 h-3.5 text-emerald-400" /> Звонок
                 </a>
                 <button
                   onClick={() => setIsRatingOpen(true)}
                   className="px-3 py-2.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-xs font-semibold text-white flex items-center justify-center gap-1.5 transition-colors"
                 >
-                  <Star className="w-3.5 h-3.5 text-amber-400" /> Rate Courier
+                  <Star className="w-3.5 h-3.5 text-amber-400" /> Оценить
                 </button>
               </div>
             </div>
@@ -416,7 +408,7 @@ function TrackOrderContent() {
                 onClick={() => router.push("/book")}
                 className="w-full gradient-btn py-3 rounded-2xl text-xs font-bold text-white flex items-center justify-center gap-2 shadow-lg"
               >
-                <RotateCcw className="w-3.5 h-3.5" /> Repeat This Delivery
+                <RotateCcw className="w-3.5 h-3.5" /> Повторить эту доставку
               </button>
 
               {currentOrder.status !== "CANCELLED" && currentOrder.status !== "DELIVERED" && (
@@ -424,7 +416,7 @@ function TrackOrderContent() {
                   onClick={() => setIsCancelOpen(true)}
                   className="w-full py-2.5 rounded-2xl bg-red-500/10 hover:bg-red-500/20 text-xs font-semibold text-red-400 border border-red-500/20 transition-colors"
                 >
-                  Cancel Corridor Dispatch
+                  Отменить вызов курьера
                 </button>
               )}
             </div>
@@ -438,23 +430,23 @@ function TrackOrderContent() {
           <div className="w-full max-w-md p-6 rounded-3xl bg-[#111217] border border-white/10 text-white space-y-4">
             <div className="flex items-center gap-3 text-red-400">
               <AlertTriangle className="w-6 h-6" />
-              <h3 className="text-base font-bold text-white">Abort Live Dispatch?</h3>
+              <h3 className="text-base font-bold text-white">Отменить доставку?</h3>
             </div>
             <p className="text-xs text-zinc-400 leading-relaxed">
-              The assigned courier is already en route. Cancelling now will release the transit corridor back to the autonomous pool.
+              Курьер уже находится в пути по зеленому коридору. Отмена вернет зарезервированный слот в общий пул.
             </p>
             <div className="flex justify-end gap-3 pt-2">
               <button
                 onClick={() => setIsCancelOpen(false)}
                 className="px-4 py-2 rounded-xl text-xs bg-white/5 text-zinc-300 hover:text-white"
               >
-                Keep Active
+                Оставить активным
               </button>
               <button
                 onClick={handleConfirmCancel}
                 className="px-4 py-2 rounded-xl text-xs bg-red-600 hover:bg-red-500 font-bold text-white"
               >
-                Confirm Cancellation
+                Подтвердить отмену
               </button>
             </div>
           </div>
@@ -465,9 +457,9 @@ function TrackOrderContent() {
       {isRatingOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/80 backdrop-blur-md">
           <div className="w-full max-w-md p-6 rounded-3xl bg-[#111217] border border-white/10 text-white space-y-5">
-            <h3 className="text-base font-bold">Rate Courier Service</h3>
+            <h3 className="text-base font-bold">Оценить работу курьера</h3>
             <p className="text-xs text-zinc-400">
-              Your feedback directly impacts courier fleet bonuses and premium corridor assignments.
+              Ваш отзыв напрямую влияет на рейтинг курьера и назначение на скоростные линии.
             </p>
 
             <div className="flex justify-center gap-2 py-2">
@@ -491,7 +483,7 @@ function TrackOrderContent() {
             {/* Tip Selection */}
             <div>
               <span className="text-xs text-zinc-400 block mb-2 font-semibold">
-                Add Instant Gratuity (100% to Courier)
+                Добавить чаевые (100% курьеру)
               </span>
               <div className="grid grid-cols-4 gap-2">
                 {[5, 10, 20, 50].map((amt) => (
@@ -515,16 +507,16 @@ function TrackOrderContent() {
                 onClick={() => setIsRatingOpen(false)}
                 className="px-4 py-2 rounded-xl text-xs bg-white/5 text-zinc-300 hover:text-white"
               >
-                Close
+                Закрыть
               </button>
               <button
                 onClick={() => {
-                  alert(`Thank you! Rated ${ratingVal} stars with $${tipVal} tip sent.`);
+                  alert(`Спасибо! Оценка ${ratingVal} звезд и чаевые $${tipVal} отправлены.`);
                   setIsRatingOpen(false);
                 }}
                 className="gradient-btn px-5 py-2 rounded-xl text-xs font-bold text-white"
               >
-                Submit Review
+                Отправить отзыв
               </button>
             </div>
           </div>
@@ -539,7 +531,7 @@ export default function TrackOrderPage() {
     <React.Suspense
       fallback={
         <div className="min-h-screen bg-[#09090B] flex items-center justify-center text-zinc-400">
-          Loading Satellite Telemetry...
+          Загрузка спутниковой телеметрии...
         </div>
       }
     >

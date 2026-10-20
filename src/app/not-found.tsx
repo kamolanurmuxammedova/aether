@@ -13,13 +13,13 @@ export default function NotFound() {
 
         <div className="space-y-2">
           <span className="text-xs font-mono uppercase tracking-widest text-indigo-400">
-            Error 404 • Coordinate Drift
+            Ошибка 404 • Отклонение координат
           </span>
           <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-            Corridor Not Found
+            Маршрут не найден
           </h1>
           <p className="text-sm text-zinc-400 max-w-sm mx-auto leading-relaxed">
-            The requested waypoint does not exist in our metropolitan routing mesh or has been re-routed.
+            Запрошенная путевая точка отсутствует в городской координатной сетке или маршрут был перенаправлен.
           </p>
         </div>
 
@@ -28,13 +28,13 @@ export default function NotFound() {
             href="/"
             className="gradient-btn px-6 py-3 rounded-2xl text-xs font-bold text-white flex items-center gap-2 shadow-lg"
           >
-            <Home className="w-4 h-4" /> Return to Command Center
+            <Home className="w-4 h-4" /> На главную страницу
           </Link>
           <Link
             href="/track"
             className="px-5 py-3 rounded-2xl text-xs font-semibold text-zinc-300 hover:text-white bg-white/[0.04] border border-white/10 transition-colors"
           >
-            Check Satellite Radar
+            Открыть радар доставки
           </Link>
         </div>
       </div>

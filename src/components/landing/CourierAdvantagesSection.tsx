@@ -3,33 +3,33 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Bike, DollarSign, Zap, Shield, Sparkles, ArrowRight, Award } from "lucide-react";
+import { Bike, DollarSign, Zap, Shield, ArrowRight, Award } from "lucide-react";
 
 export function CourierAdvantagesSection() {
   const benefits = [
     {
       icon: DollarSign,
-      title: "$48.50 / Hour Avg Earnings",
-      desc: "Top urban couriers earn industry-leading rates with 100% customer gratuity kept.",
-      badge: "Industry High",
+      title: "$48.50 / час средний доход",
+      desc: "Ведущие городские курьеры зарабатывают по максимальным ставкам со 100% сохранением чаевых.",
+      badge: "Лидер рынка",
     },
     {
       icon: Zap,
-      title: "Instant 60-Sec Payouts",
-      desc: "Withdraw your earnings immediately to your bank account or Apple Wallet at any hour.",
-      badge: "Zero Waiting",
+      title: "Мгновенные выплаты за 60 сек",
+      desc: "Выводите заработанные средства в любое время прямо на банковскую карту или Apple Wallet.",
+      badge: "Без задержек",
     },
     {
       icon: Bike,
-      title: "EV Subsidies & Hardware",
-      desc: "Receive zero-deposit leases on custom Aether Cyber Scooters and high-torque cargo e-bikes.",
-      badge: "100% Electric",
+      title: "Субсидии на электротранспорт",
+      desc: "Беспроцентная аренда фирменных электроскутеров Cyber Scooter и мощных электробайков.",
+      badge: "100% Эко",
     },
     {
       icon: Shield,
-      title: "Executive White-Glove Safety",
-      desc: "Zero physical cash handling. Pre-cleared building concierge access and full health coverage.",
-      badge: "VIP Protocol",
+      title: "Безопасность премиум-класса",
+      desc: "Никаких наличных. Свободный пропуск в лобби премиум-зданий и полное страховое покрытие.",
+      badge: "VIP Протокол",
     },
   ];
 
@@ -51,16 +51,16 @@ export function CourierAdvantagesSection() {
             >
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-semibold">
                 <Award className="w-3.5 h-3.5" />
-                <span>Join The Quantum Courier Fleet</span>
+                <span>Присоединяйтесь к квантовому флоту</span>
               </div>
 
               <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-                Drive The Future of <br />
-                <span className="gradient-accent-text">Autonomous Logistics</span>
+                Управляйте будущим <br />
+                <span className="gradient-accent-text">автономной логистики</span>
               </h2>
 
               <p className="text-sm text-zinc-400 leading-relaxed">
-                We don&apos;t just deliver food. Aether couriers are certified urban logistics professionals transporting high-value assets with pride, dignity, and unprecedented compensation.
+                Мы доставляем не просто еду. Курьеры AETHER — сертифицированные специалисты городской логистики, перевозящие ценные грузы с достоинством и беспрецедентной оплатой.
               </p>
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
@@ -68,14 +68,14 @@ export function CourierAdvantagesSection() {
                   href="/courier"
                   className="gradient-btn px-6 py-3.5 rounded-2xl text-xs font-bold text-white text-center flex items-center justify-center gap-2 shadow-lg"
                 >
-                  <span>Apply For Courier Fleet</span>
+                  <span>Подать заявку в курьеры</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   href="/courier"
                   className="px-5 py-3.5 rounded-2xl text-xs font-semibold text-zinc-300 hover:text-white bg-white/[0.04] border border-white/10 text-center transition-colors"
                 >
-                  Explore Courier Console
+                  Панель курьера
                 </Link>
               </div>
             </motion.div>

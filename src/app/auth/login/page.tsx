@@ -39,9 +39,9 @@ export default function LoginPage() {
               </div>
               <span className="font-extrabold text-xl tracking-tight text-white">AETHER</span>
             </Link>
-            <h1 className="text-2xl font-bold text-white tracking-tight mt-2">Welcome Back</h1>
+            <h1 className="text-2xl font-bold text-white tracking-tight mt-2">С возвращением</h1>
             <p className="text-xs text-zinc-400">
-              Enter your credentials to access the Autonomous Logistics Vault.
+              Введите данные для доступа в автономную платформу логистики.
             </p>
           </div>
 
@@ -68,7 +68,7 @@ export default function LoginPage() {
 
           <div className="flex items-center gap-3">
             <div className="h-[1px] flex-1 bg-white/10" />
-            <span className="text-[10px] uppercase font-mono text-zinc-500">Or Continue With</span>
+            <span className="text-[10px] uppercase font-mono text-zinc-500">Или продолжить через email</span>
             <div className="h-[1px] flex-1 bg-white/10" />
           </div>
 
@@ -76,7 +76,7 @@ export default function LoginPage() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="text-xs font-semibold text-zinc-300 block mb-1.5">
-                Corporate or Personal Email
+                Корпоративный или личный Email
               </label>
               <div className="relative">
                 <Mail className="w-4 h-4 text-zinc-400 absolute left-3.5 top-3" />
@@ -93,12 +93,12 @@ export default function LoginPage() {
 
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <label className="text-xs font-semibold text-zinc-300">Password</label>
+                <label className="text-xs font-semibold text-zinc-300">Пароль</label>
                 <Link
                   href="/auth/forgot-password"
                   className="text-[11px] text-indigo-400 hover:text-indigo-300"
                 >
-                  Forgot password?
+                  Забыли пароль?
                 </Link>
               </div>
               <div className="relative">
@@ -121,7 +121,7 @@ export default function LoginPage() {
                   onChange={(e) => setRememberMe(e.target.checked)}
                   className="rounded accent-purple-600 bg-white/10 border-white/20"
                 />
-                <span>Remember this terminal</span>
+                <span>Запомнить этот терминал</span>
               </label>
             </div>
 
@@ -131,10 +131,10 @@ export default function LoginPage() {
               className="w-full gradient-btn py-3 rounded-xl text-xs font-bold text-white flex items-center justify-center gap-2 shadow-lg"
             >
               {isLoading ? (
-                <span>Authenticating Security Key...</span>
+                <span>Аутентификация ключа...</span>
               ) : (
                 <>
-                  <span>Sign In to Vault</span>
+                  <span>Войти в систему</span>
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}
@@ -143,9 +143,9 @@ export default function LoginPage() {
 
           {/* Footer Link */}
           <div className="text-center pt-2 text-xs text-zinc-400">
-            Don&apos;t have an account?{" "}
+            Нет аккаунта?{" "}
             <Link href="/auth/register" className="text-purple-400 hover:text-purple-300 font-semibold">
-              Create Enterprise Account
+              Создать корпоративный аккаунт
             </Link>
           </div>
         </div>

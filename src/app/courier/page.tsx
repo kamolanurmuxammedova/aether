@@ -60,13 +60,13 @@ export default function CourierPanelPage() {
 
           <div className="space-y-2">
             <span className="text-[10px] font-mono uppercase tracking-widest text-purple-400">
-              Fleet Operator Terminal
+              Терминал оператора флота
             </span>
             <h1 className="text-2xl font-bold text-white tracking-tight">
-              Courier License Required
+              Требуется допуск курьера
             </h1>
             <p className="text-xs text-zinc-400 leading-relaxed">
-              Your account is registered as a <span className="text-white font-bold">{user.role}</span>. Accessing live dispatch corridors, turn-by-turn navigation, and vehicle battery telemetry requires an active Courier Fleet ID.
+              Ваш аккаунт зарегистрирован с ролью <span className="text-white font-bold">{user.role}</span>. Доступ к активным коридорам доставки, пошаговой навигации и телеметрии транспорта требует активного ID курьера флота.
             </p>
           </div>
 
@@ -79,12 +79,12 @@ export default function CourierPanelPage() {
                   setCourierKey(e.target.value);
                   setKeyError(false);
                 }}
-                placeholder="Enter Fleet Access Token (e.g. courier)"
+                placeholder="Введите токен флота (напр. courier)"
                 className="w-full glass-input rounded-xl px-4 py-2.5 text-xs text-white text-center font-mono focus:border-purple-500"
               />
               {keyError && (
                 <p className="text-[11px] text-red-400 mt-1.5 font-mono">
-                  Unrecognized fleet badge token.
+                  Нераспознанный токен пропуска флота.
                 </p>
               )}
             </div>
@@ -93,7 +93,7 @@ export default function CourierPanelPage() {
               type="submit"
               className="w-full gradient-btn py-2.5 rounded-xl text-xs font-bold text-white flex items-center justify-center gap-1.5 shadow-lg"
             >
-              <ShieldCheck className="w-4 h-4" /> Connect To Fleet Console
+              <ShieldCheck className="w-4 h-4" /> Подключиться к консоли флота
             </button>
           </form>
 
@@ -102,7 +102,7 @@ export default function CourierPanelPage() {
               href="/dashboard"
               className="text-xs text-zinc-400 hover:text-white inline-flex items-center gap-1"
             >
-              Return to Client Portal <ArrowRight className="w-3.5 h-3.5" />
+              Вернуться в личный кабинет <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
         </div>
@@ -114,29 +114,29 @@ export default function CourierPanelPage() {
     {
       id: "job_991",
       orderNum: "AETH-412KK",
-      cargo: "High-Value Electronics",
-      pickup: "Apple 5th Ave",
-      dropoff: "15 Central Park West",
-      distance: "2.4 km",
+      cargo: "Ценная электроника и гаджеты",
+      pickup: "Apple Store 5-я Авеню",
+      dropoff: "Парк Авеню, 740",
+      distance: "2.4 км",
       payout: 34.5,
-      surge: "+$8.00 Peak",
+      surge: "+$8.00 Час пик",
       expiresIn: 18,
     },
     {
       id: "job_992",
       orderNum: "AETH-551XQ",
-      cargo: "Legal Deeds Sealed",
-      pickup: "Wall Street Chambers",
-      dropoff: "Midtown Legal Towers",
-      distance: "6.8 km",
+      cargo: "Нотариальные соглашения (пломба)",
+      pickup: "Уолл-Стрит, 48",
+      dropoff: "Башня Хадсон Ярдс, 30",
+      distance: "6.8 км",
       payout: 48.0,
-      surge: "+$12.00 Express",
+      surge: "+$12.00 Экспресс",
       expiresIn: 27,
     },
   ]);
 
   const handleAcceptJob = (jobId: string) => {
-    alert("Corridor locked! Telemetry navigation engaged.");
+    alert("Коридор зафиксирован! Навигационная телеметрия активирована.");
     setAvailableJobs((jobs) => jobs.filter((j) => j.id !== jobId));
   };
 
@@ -146,7 +146,7 @@ export default function CourierPanelPage() {
     if (amt > 0 && amt <= walletBalance) {
       setWalletBalance((b) => b - amt);
       setIsWithdrawOpen(false);
-      alert(`Instant withdrawal of $${amt.toFixed(2)} dispatched to your linked Apple Cash debit card.`);
+      alert(`Мгновенный вывод $${amt.toFixed(2)} отправлен на привязанную карту.`);
     }
   };
 
@@ -161,13 +161,13 @@ export default function CourierPanelPage() {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-xl sm:text-2xl font-bold text-white">Marcus Sterling</h1>
+                <h1 className="text-xl sm:text-2xl font-bold text-white">Маркус Стерлинг</h1>
                 <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                  VIP Fleet Courier #09
+                  VIP Курьер флота #09
                 </span>
               </div>
               <p className="text-xs text-zinc-400 mt-1 font-mono">
-                Rating 4.99 ★ • 1,840 completed corridor trips
+                Рейтинг 4.99 ★ • 1 840 успешных рейсов в коридорах
               </p>
             </div>
           </div>
@@ -175,13 +175,13 @@ export default function CourierPanelPage() {
           {/* Availability Toggle Switch */}
           <div className="flex items-center gap-4">
             <div className="text-right hidden sm:block">
-              <span className="text-[10px] text-zinc-400 font-mono uppercase block">Fleet Status</span>
+              <span className="text-[10px] text-zinc-400 font-mono uppercase block">Статус флота</span>
               <span
                 className={`text-xs font-bold font-mono ${
                   isOnline ? "text-emerald-400" : "text-zinc-500"
                 }`}
               >
-                {isOnline ? "ONLINE • RECEIVING JOBS" : "OFFLINE"}
+                {isOnline ? "В СЕТИ • ПРИЁМ ЗАКАЗОВ" : "ОФЛАЙН"}
               </span>
             </div>
 
@@ -194,7 +194,7 @@ export default function CourierPanelPage() {
               }`}
             >
               <Power className={`w-4 h-4 ${isOnline ? "text-emerald-400" : "text-zinc-500"}`} />
-              <span>{isOnline ? "Go Offline" : "Go Online"}</span>
+              <span>{isOnline ? "Уйти в офлайн" : "Выйти на линию"}</span>
             </button>
           </div>
         </div>
@@ -203,17 +203,17 @@ export default function CourierPanelPage() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="p-6 rounded-3xl bg-[#111217] border border-white/5 space-y-2">
             <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block">
-              Today&apos;s Revenue
+              Выручка за сегодня
             </span>
             <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono">
               $348.50
             </div>
-            <span className="text-[11px] text-emerald-400 font-mono block">9 trips completed (avg $38.7/hr)</span>
+            <span className="text-[11px] text-emerald-400 font-mono block">9 рейсов (ср. $38.7/ч)</span>
           </div>
 
           <div className="p-6 rounded-3xl bg-[#111217] border border-white/5 space-y-2">
             <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block">
-              Withdrawable Balance
+              Доступно к выводу
             </span>
             <div className="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-mono">
               {formatCurrency(walletBalance)}
@@ -222,38 +222,38 @@ export default function CourierPanelPage() {
               onClick={() => setIsWithdrawOpen(true)}
               className="text-[11px] text-indigo-400 hover:text-white font-mono underline block"
             >
-              Instant 60-Sec Payout
+              Мгновенный вывод за 60 сек
             </button>
           </div>
 
           <div className="p-6 rounded-3xl bg-[#111217] border border-white/5 space-y-2">
             <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block">
-              Vehicle Battery
+              Заряд батареи ТС
             </span>
             <div className="text-2xl sm:text-3xl font-extrabold text-indigo-400 font-mono flex items-center gap-2">
               88% <BatteryCharging className="w-5 h-5 text-indigo-400" />
             </div>
-            <span className="text-[11px] text-zinc-500 block">Est Range: 46 km</span>
+            <span className="text-[11px] text-zinc-500 block">Запас хода: ~46 км</span>
           </div>
 
           <div className="p-6 rounded-3xl bg-[#111217] border border-white/5 space-y-2">
             <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block">
-              Pod Climate Guard
+              Климат-контроль капсулы
             </span>
             <div className="text-2xl sm:text-3xl font-extrabold text-cyan-400 font-mono flex items-center gap-2">
               4.2°C <Thermometer className="w-5 h-5 text-cyan-400" />
             </div>
-            <span className="text-[11px] text-zinc-500 block">Pharma & Thermal Sealed</span>
+            <span className="text-[11px] text-zinc-500 block">Фармацевтический контур</span>
           </div>
         </div>
 
         {/* Tab Controls */}
-        <div className="flex items-center gap-2 border-b border-white/10 pb-2">
+        <div className="flex items-center gap-2 border-b border-white/10 pb-2 overflow-x-auto">
           {[
-            { id: "RADAR", label: "Active Dispatch Radar", icon: Zap },
-            { id: "EARNINGS", label: "Income & Analytics", icon: TrendingUp },
-            { id: "VEHICLE", label: "Vehicle Telemetry", icon: Bike },
-            { id: "DOCS", label: "KYC & Credentials", icon: FileCheck },
+            { id: "RADAR", label: "Радар диспетчеризации", icon: Zap },
+            { id: "EARNINGS", label: "Доходы и аналитика", icon: TrendingUp },
+            { id: "VEHICLE", label: "Телеметрия транспорта", icon: Bike },
+            { id: "DOCS", label: "Верификация и допуски", icon: FileCheck },
           ].map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -261,7 +261,7 @@ export default function CourierPanelPage() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as typeof activeTab)}
-                className={`px-4 py-2.5 rounded-2xl text-xs font-semibold flex items-center gap-2 transition-all ${
+                className={`px-4 py-2.5 rounded-2xl text-xs font-semibold flex items-center gap-2 whitespace-nowrap transition-all ${
                   isActive
                     ? "bg-purple-600/30 border border-purple-500/40 text-white shadow-md shadow-purple-600/20"
                     : "text-zinc-400 hover:text-white hover:bg-white/[0.04]"
@@ -280,15 +280,15 @@ export default function CourierPanelPage() {
             {/* Live Navigation Map */}
             <div className="lg:col-span-7 space-y-4">
               <h2 className="text-base font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                <Navigation className="w-4 h-4 text-emerald-400" /> Urban Navigation Telemetry
+                <Navigation className="w-4 h-4 text-emerald-400" /> Городская навигационная телеметрия
               </h2>
               <DeliveryMap
                 pickup={{ lat: 40.7638, lng: -73.973 }}
                 dropoff={{ lat: 40.7711, lng: -73.9634 }}
                 courierPos={{ lat: 40.7674, lng: -73.9682 }}
-                courierName="Marcus Sterling"
+                courierName="Маркус Стерлинг"
                 vehiclePlate="NY-AE901"
-                eta="5 mins"
+                eta="5 мин"
                 distanceKm={2.1}
                 className="h-[480px] w-full"
               />
@@ -298,9 +298,9 @@ export default function CourierPanelPage() {
             <div className="lg:col-span-5 space-y-4">
               <div className="flex items-center justify-between">
                 <h2 className="text-base font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                  <Zap className="w-4 h-4 text-amber-400" /> Incoming Dispatches ({availableJobs.length})
+                  <Zap className="w-4 h-4 text-amber-400" /> Входящие заказы ({availableJobs.length})
                 </h2>
-                <span className="text-[10px] font-mono text-zinc-500">Auto-refresh: 5s</span>
+                <span className="text-[10px] font-mono text-zinc-500">Автообновление: 5 сек</span>
               </div>
 
               {availableJobs.length > 0 ? (
@@ -313,7 +313,7 @@ export default function CourierPanelPage() {
                       <div className="flex items-center justify-between">
                         <span className="text-xs font-mono font-bold text-white">{job.orderNum}</span>
                         <span className="text-[10px] font-mono text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20">
-                          Expires in {job.expiresIn}s
+                          Истекает через {job.expiresIn}с
                         </span>
                       </div>
 
@@ -323,7 +323,7 @@ export default function CourierPanelPage() {
                           {job.pickup} ➔ {job.dropoff}
                         </div>
                         <div className="text-zinc-500 font-mono text-[11px]">
-                          Corridor Distance: {job.distance}
+                          Дистанция коридора: {job.distance}
                         </div>
                       </div>
 
@@ -339,7 +339,7 @@ export default function CourierPanelPage() {
                           onClick={() => handleAcceptJob(job.id)}
                           className="gradient-btn px-5 py-2.5 rounded-xl text-xs font-bold text-white shadow-lg"
                         >
-                          Accept Corridor
+                          Принять заказ
                         </button>
                       </div>
                     </div>
@@ -348,7 +348,7 @@ export default function CourierPanelPage() {
               ) : (
                 <div className="p-8 rounded-3xl bg-[#111217] border border-white/5 text-center text-xs text-zinc-400 space-y-2">
                   <CheckCircle2 className="w-6 h-6 text-emerald-400 mx-auto" />
-                  <p>All high-priority corridors in your sector are covered.</p>
+                  <p>Все приоритетные коридоры в вашем секторе укомплектованы.</p>
                 </div>
               )}
             </div>
@@ -358,35 +358,35 @@ export default function CourierPanelPage() {
         {/* TAB 2: EARNINGS */}
         {activeTab === "EARNINGS" && (
           <div className="space-y-6 animate-in fade-in duration-300">
-            <h2 className="text-xl font-bold text-white">Earnings Analytics & Payout History</h2>
+            <h2 className="text-xl font-bold text-white">Аналитика доходов и история выплат</h2>
             <div className="p-8 rounded-3xl bg-[#111217] border border-white/5 space-y-6">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                  <span className="text-xs font-mono text-zinc-500 uppercase">This Week&apos;s Total</span>
+                  <span className="text-xs font-mono text-zinc-500 uppercase">Итого за эту неделю</span>
                   <div className="text-4xl font-extrabold text-white font-mono mt-1">$2,180.00</div>
                 </div>
                 <button
                   onClick={() => setIsWithdrawOpen(true)}
                   className="gradient-btn px-6 py-3 rounded-2xl text-xs font-bold text-white shadow-lg"
                 >
-                  Withdraw to Apple Cash
+                  Вывести на карту
                 </button>
               </div>
 
               {/* Weekly bar simulation */}
               <div className="space-y-2 pt-4 border-t border-white/5">
                 <span className="text-xs font-semibold text-zinc-400 uppercase tracking-wider block">
-                  Daily Trip Volume & Payout
+                  Ежедневный объем поездок и выплат
                 </span>
                 <div className="grid grid-cols-7 gap-2 h-44 items-end pt-4">
                   {[
-                    { day: "Mon", amt: 290, pct: "60%" },
-                    { day: "Tue", amt: 340, pct: "72%" },
-                    { day: "Wed", amt: 310, pct: "66%" },
-                    { day: "Thu", amt: 410, pct: "88%" },
-                    { day: "Fri", amt: 480, pct: "100%" },
-                    { day: "Sat", amt: 350, pct: "75%" },
-                    { day: "Sun (Today)", amt: 348, pct: "74%" },
+                    { day: "Пн", amt: 290, pct: "60%" },
+                    { day: "Вт", amt: 340, pct: "72%" },
+                    { day: "Ср", amt: 310, pct: "66%" },
+                    { day: "Чт", amt: 410, pct: "88%" },
+                    { day: "Пт", amt: 480, pct: "100%" },
+                    { day: "Сб", amt: 350, pct: "75%" },
+                    { day: "Вс (Сегодня)", amt: 348, pct: "74%" },
                   ].map((d) => (
                     <div key={d.day} className="flex flex-col items-center gap-2 h-full justify-end">
                       <span className="text-[10px] font-mono text-zinc-400">${d.amt}</span>
@@ -406,49 +406,49 @@ export default function CourierPanelPage() {
         {/* TAB 3: VEHICLE */}
         {activeTab === "VEHICLE" && (
           <div className="space-y-6 animate-in fade-in duration-300">
-            <h2 className="text-xl font-bold text-white">Assigned Fleet Hardware Telemetry</h2>
+            <h2 className="text-xl font-bold text-white">Телеметрия закрепленного транспорта</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="p-6 rounded-3xl bg-[#111217] border border-white/5 space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-bold text-white">Aether Cyber-Rider X</span>
                   <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
-                    Active & Calibrated
+                    Активен и откалиброван
                   </span>
                 </div>
                 <div className="space-y-2 text-xs text-zinc-300">
                   <div className="flex justify-between">
-                    <span className="text-zinc-500">License Plate</span>
+                    <span className="text-zinc-500">Госномер</span>
                     <span className="font-mono text-white">NY-AE901</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-zinc-500">Firmware</span>
+                    <span className="text-zinc-500">Прошивка</span>
                     <span className="font-mono text-white">v4.8.2 Quantum-OS</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-zinc-500">Battery Health</span>
-                    <span className="font-mono text-emerald-400">99.4% (Tier 1)</span>
+                    <span className="text-zinc-500">Состояние батареи</span>
+                    <span className="font-mono text-emerald-400">99.4% (Уровень 1)</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-zinc-500">Odometer</span>
-                    <span className="font-mono text-white">8,412 km</span>
+                    <span className="text-zinc-500">Пробег</span>
+                    <span className="font-mono text-white">8 412 км</span>
                   </div>
                 </div>
               </div>
 
               <div className="p-6 rounded-3xl bg-[#111217] border border-white/5 space-y-4">
-                <span className="text-sm font-bold text-white">Smart Cargo Pod</span>
+                <span className="text-sm font-bold text-white">Умная грузовая капсула</span>
                 <div className="space-y-2 text-xs text-zinc-300">
                   <div className="flex justify-between">
-                    <span className="text-zinc-500">Internal Climate</span>
-                    <span className="font-mono text-cyan-400">4.2°C (Cold-Chain)</span>
+                    <span className="text-zinc-500">Внутренний климат</span>
+                    <span className="font-mono text-cyan-400">4.2°C (Холодовая цепь)</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-zinc-500">Electronic Tamper Lock</span>
-                    <span className="font-mono text-emerald-400">Engaged (PIN-Gated)</span>
+                    <span className="text-zinc-500">Электронный смарт-замок</span>
+                    <span className="font-mono text-emerald-400">Заблокирован (по PIN-коду)</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-zinc-500">Gyroscope Vibration Sensor</span>
-                    <span className="font-mono text-white">0.02 G (Ultra Stable)</span>
+                    <span className="text-zinc-500">Датчик вибрации гироскопа</span>
+                    <span className="font-mono text-white">0.02 G (Ультра-стабильно)</span>
                   </div>
                 </div>
               </div>
@@ -459,13 +459,13 @@ export default function CourierPanelPage() {
         {/* TAB 4: DOCS */}
         {activeTab === "DOCS" && (
           <div className="space-y-6 animate-in fade-in duration-300">
-            <h2 className="text-xl font-bold text-white">Courier Certifications & Background Check</h2>
+            <h2 className="text-xl font-bold text-white">Сертификаты курьера и проверка безопасности</h2>
             <div className="space-y-3">
               {[
-                { title: "Biometric Identity & Facial Match", status: "VERIFIED", date: "Jan 2026" },
-                { title: "Federal Criminal Background Screening", status: "CLEARED", date: "Jan 2026" },
-                { title: "High-Value Cargo Security Certification", status: "PASSED", date: "Feb 2026" },
-                { title: "Electric Fleet Vehicle Commercial Insurance", status: "ACTIVE", date: "Dec 2026" },
+                { title: "Биометрическая идентификация и верификация лица", status: "ВЕРИФИЦИРОВАНО", date: "Янв 2027" },
+                { title: "Комплексная проверка службой безопасности", status: "ОДОБРЕНО", date: "Янв 2027" },
+                { title: "Сертификация по перевозке ценных грузов", status: "ПРОЙДЕНО", date: "Фев 2027" },
+                { title: "Коммерческая страховка электрофлота", status: "АКТИВНА", date: "Дек 2026" },
               ].map((doc, idx) => (
                 <div
                   key={idx}
@@ -475,7 +475,7 @@ export default function CourierPanelPage() {
                     <ShieldCheck className="w-5 h-5 text-emerald-400" />
                     <div>
                       <div className="font-bold text-white">{doc.title}</div>
-                      <div className="text-[10px] text-zinc-500 font-mono">Valid until {doc.date}</div>
+                      <div className="text-[10px] text-zinc-500 font-mono">Действительно до {doc.date}</div>
                     </div>
                   </div>
                   <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
@@ -495,14 +495,14 @@ export default function CourierPanelPage() {
             onSubmit={handleWithdraw}
             className="w-full max-w-md p-6 rounded-3xl bg-[#111217] border border-white/10 text-white space-y-4"
           >
-            <h3 className="text-base font-bold">Instant Payout Withdrawal</h3>
+            <h3 className="text-base font-bold">Мгновенный вывод средств</h3>
             <p className="text-xs text-zinc-400">
-              Funds will be deposited to your linked debit card or bank account via Stripe Instant Payouts in under 60 seconds.
+              Средства будут перечислены на привязанную карту через защищенный шлюз мгновенных выплат менее чем за 60 секунд.
             </p>
 
             <div>
               <label className="text-[11px] text-zinc-400 block mb-1">
-                Amount to Withdraw (Available: {formatCurrency(walletBalance)})
+                Сумма к выводу (Доступно: {formatCurrency(walletBalance)})
               </label>
               <div className="relative">
                 <span className="absolute left-4 top-2.5 text-xs text-zinc-500 font-mono">$</span>
@@ -524,13 +524,13 @@ export default function CourierPanelPage() {
                 onClick={() => setIsWithdrawOpen(false)}
                 className="px-4 py-2 rounded-xl text-xs bg-white/5 text-zinc-300 hover:text-white"
               >
-                Cancel
+                Отмена
               </button>
               <button
                 type="submit"
                 className="gradient-btn px-5 py-2.5 rounded-xl text-xs font-bold text-white"
               >
-                Execute Payout
+                Выполнить выплату
               </button>
             </div>
           </form>

@@ -5,31 +5,22 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useOrderStore } from "@/store/use-order-store";
 import { useUserStore } from "@/store/use-user-store";
 import { CATEGORIES, SPEED_TIERS, VEHICLE_OPTIONS, PRESET_ADDRESSES } from "@/lib/constants";
-import { PackageCategory, SpeedTier, CourierVehicle, Coordinates } from "@/types";
+import { PackageCategory } from "@/types";
 import { DeliveryMap } from "@/components/map/DeliveryMap";
 import { formatCurrency } from "@/lib/utils";
 import confetti from "canvas-confetti";
 import {
-  Package,
   MapPin,
   Zap,
   Shield,
   CreditCard,
   ArrowRight,
   ArrowLeft,
-  Upload,
   FileText,
   CheckCircle2,
-  AlertCircle,
   Sparkles,
   Calendar,
-  Clock,
   Camera,
-  Car,
-  Bike,
-  Truck,
-  Compass,
-  User,
   Wallet,
   Lock,
 } from "lucide-react";
@@ -55,7 +46,6 @@ function BookDeliveryContent() {
     weightKg,
     declaredValue,
     insuranceTier,
-    packagePhotoUrl,
     setCategory,
     setSpeedTier,
     setVehicle,
@@ -75,7 +65,7 @@ function BookDeliveryContent() {
   const [currentStep, setCurrentStep] = useState(1);
   const [photoPreview, setPhotoPreview] = useState<string | null>(null);
   const [docName, setDocName] = useState<string | null>(null);
-  const [scheduledDate, setScheduledDate] = useState("Today, 18:30");
+  const [scheduledDate, setScheduledDate] = useState("Сегодня, 18:30");
   const [paymentMethod, setPaymentMethod] = useState<"STRIPE" | "VAULT" | "APPLE_PAY">("STRIPE");
   const [cardNumber, setCardNumber] = useState("•••• •••• •••• 4242");
   const [cardExpiry, setCardExpiry] = useState("12/28");
@@ -142,10 +132,9 @@ function BookDeliveryContent() {
     setIsSubmitting(true);
 
     if (paymentMethod === "VAULT") {
-      deductWallet(pricing.total, `Hyperspeed Dispatch Order`);
+      deductWallet(pricing.total, `Оплата заказа доставки`);
     }
 
-    // Trigger luxury celebratory confetti
     try {
       confetti({
         particleCount: 120,
@@ -165,11 +154,11 @@ function BookDeliveryContent() {
   };
 
   const stepsList = [
-    { num: 1, label: "Cargo Details" },
-    { num: 2, label: "Waypoints & Map" },
-    { num: 3, label: "Speed & Fleet" },
-    { num: 4, label: "Security & Notes" },
-    { num: 5, label: "Payment & Launch" },
+    { num: 1, label: "Параметры груза" },
+    { num: 2, label: "Маршрут и карта" },
+    { num: 3, label: "Скорость и флот" },
+    { num: 4, label: "Безопасность" },
+    { num: 5, label: "Оплата и вызов" },
   ];
 
   return (
@@ -225,20 +214,20 @@ function BookDeliveryContent() {
               <div className="space-y-8 animate-in fade-in duration-300">
                 <div>
                   <span className="text-xs font-mono uppercase tracking-widest text-indigo-400">
-                    Step 1 of 5
+                    Шаг 1 из 5
                   </span>
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-1">
-                    Select Cargo Class & Characteristics
+                    Параметры и классификация груза
                   </h2>
                   <p className="text-xs text-zinc-400 mt-1">
-                    Choose what you are dispatching to ensure the optimal certified courier and vehicle container.
+                    Выберите категорию отправления для подбора сертифицированного курьера и защитного контейнера.
                   </p>
                 </div>
 
                 {/* Categories Grid */}
                 <div>
                   <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider block mb-3">
-                    Cargo Classification (12 Options)
+                    Классификация груза (12 вариантов)
                   </label>
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2.5">
                     {CATEGORIES.map((cat) => (
@@ -252,9 +241,9 @@ function BookDeliveryContent() {
                             : "bg-white/[0.02] border-white/5 text-zinc-400 hover:text-white hover:bg-white/[0.05]"
                         }`}
                       >
-                        <span className="font-bold text-sm block leading-tight">{cat.name.split(" ")[0]}</span>
+                        <span className="font-bold text-xs sm:text-sm block leading-tight">{cat.name.split(" ")[0]}</span>
                         <div className="flex items-center justify-between text-[10px] text-zinc-500 pt-1">
-                          <span>${cat.basePrice.toFixed(2)} base</span>
+                          <span>от ${cat.basePrice.toFixed(2)}</span>
                           {cat.popular && <Sparkles className="w-3 h-3 text-amber-400" />}
                         </div>
                       </button>
@@ -266,7 +255,7 @@ function BookDeliveryContent() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-4 border-t border-white/5">
                   <div>
                     <label className="text-xs font-semibold text-zinc-300 block mb-1.5">
-                      Approximate Weight (kg)
+                      Примерный вес (кг)
                     </label>
                     <div className="relative">
                       <input
@@ -278,13 +267,13 @@ function BookDeliveryContent() {
                         onChange={(e) => setWeight(Number(e.target.value))}
                         className="w-full glass-input rounded-2xl px-4 py-3 text-sm font-mono text-white"
                       />
-                      <span className="absolute right-4 top-3 text-xs text-zinc-500 font-mono">KG</span>
+                      <span className="absolute right-4 top-3 text-xs text-zinc-500 font-mono">КГ</span>
                     </div>
                   </div>
 
                   <div>
                     <label className="text-xs font-semibold text-zinc-300 block mb-1.5">
-                      Declared Asset Valuation (USD)
+                      Оценочная стоимость актива (USD)
                     </label>
                     <div className="relative">
                       <span className="absolute left-4 top-3 text-xs text-zinc-500 font-mono">$</span>
@@ -317,16 +306,16 @@ function BookDeliveryContent() {
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
                             src={photoPreview}
-                            alt="Package"
+                            alt="Груз"
                             className="w-20 h-20 object-cover mx-auto rounded-xl border border-white/20"
                           />
-                          <span className="text-[11px] text-emerald-400 font-semibold block">Photo Uploaded</span>
+                          <span className="text-[11px] text-emerald-400 font-semibold block">Фото прикреплено</span>
                         </div>
                       ) : (
                         <>
                           <Camera className="w-6 h-6 text-indigo-400 mx-auto" />
-                          <div className="text-xs font-semibold text-white">Upload Package Photo</div>
-                          <div className="text-[10px] text-zinc-500">Seal check & proof</div>
+                          <div className="text-xs font-semibold text-white">Загрузить фото груза</div>
+                          <div className="text-[10px] text-zinc-500">Проверка пломб и целостности</div>
                         </>
                       )}
                     </label>
@@ -346,13 +335,13 @@ function BookDeliveryContent() {
                           <div className="text-xs font-semibold text-white truncate max-w-[200px] mx-auto">
                             {docName}
                           </div>
-                          <span className="text-[10px] text-emerald-400">Attached to Order</span>
+                          <span className="text-[10px] text-emerald-400">Прикреплено к заказу</span>
                         </div>
                       ) : (
                         <>
                           <FileText className="w-6 h-6 text-purple-400 mx-auto" />
-                          <div className="text-xs font-semibold text-white">Upload Document / Waybill</div>
-                          <div className="text-[10px] text-zinc-500">PDF, scanned deed, invoice</div>
+                          <div className="text-xs font-semibold text-white">Загрузить документ / накладную</div>
+                          <div className="text-[10px] text-zinc-500">PDF, скан договора, чек</div>
                         </>
                       )}
                     </label>
@@ -366,13 +355,13 @@ function BookDeliveryContent() {
               <div className="space-y-8 animate-in fade-in duration-300">
                 <div>
                   <span className="text-xs font-mono uppercase tracking-widest text-indigo-400">
-                    Step 2 of 5
+                    Шаг 2 из 5
                   </span>
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-1">
-                    Route Waypoints & Geospatial Pinning
+                    Маршрут и точки на карте
                   </h2>
                   <p className="text-xs text-zinc-400 mt-1">
-                    Pin accurate building entrances, lobby access codes, and recipient contact details.
+                    Укажите адреса, подъезды, коды интеркома и контактные данные получателя.
                   </p>
                 </div>
 
@@ -380,7 +369,7 @@ function BookDeliveryContent() {
                 <DeliveryMap
                   pickup={pickupCoords}
                   dropoff={dropoffCoords}
-                  eta="14 mins"
+                  eta="14 мин"
                   distanceKm={4.8}
                   className="h-64 w-full"
                 />
@@ -389,7 +378,7 @@ function BookDeliveryContent() {
                 <div className="space-y-3 p-5 rounded-2xl bg-white/[0.02] border border-white/5">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2 text-emerald-400 text-xs font-bold uppercase tracking-wider">
-                      <MapPin className="w-4 h-4" /> 1. Origin (Pickup Address)
+                      <MapPin className="w-4 h-4" /> 1. Пункт отправления (Откуда забрать)
                     </div>
                     {/* Presets */}
                     <div className="flex gap-1.5">
@@ -410,7 +399,7 @@ function BookDeliveryContent() {
                     type="text"
                     value={pAddr}
                     onChange={(e) => setPAddr(e.target.value)}
-                    placeholder="Enter pickup street address..."
+                    placeholder="Введите адрес забора..."
                     className="w-full glass-input rounded-xl px-4 py-2.5 text-xs text-white"
                   />
 
@@ -419,14 +408,14 @@ function BookDeliveryContent() {
                       type="text"
                       value={pName}
                       onChange={(e) => setPName(e.target.value)}
-                      placeholder="Contact Name at Pickup"
+                      placeholder="Имя контакта при заборе"
                       className="glass-input rounded-xl px-4 py-2 text-xs text-white"
                     />
                     <input
                       type="text"
                       value={pPhone}
                       onChange={(e) => setPPhone(e.target.value)}
-                      placeholder="Contact Phone (+1 ...)"
+                      placeholder="Телефон (+1 ...)"
                       className="glass-input rounded-xl px-4 py-2 text-xs text-white"
                     />
                   </div>
@@ -436,7 +425,7 @@ function BookDeliveryContent() {
                 <div className="space-y-3 p-5 rounded-2xl bg-white/[0.02] border border-white/5">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2 text-indigo-400 text-xs font-bold uppercase tracking-wider">
-                      <MapPin className="w-4 h-4" /> 2. Destination (Dropoff Address)
+                      <MapPin className="w-4 h-4" /> 2. Пункт назначения (Куда доставить)
                     </div>
                     <div className="flex gap-1.5">
                       {PRESET_ADDRESSES.slice(2, 4).map((addr) => (
@@ -456,7 +445,7 @@ function BookDeliveryContent() {
                     type="text"
                     value={dAddr}
                     onChange={(e) => setDAddr(e.target.value)}
-                    placeholder="Enter dropoff street address..."
+                    placeholder="Введите адрес доставки..."
                     className="w-full glass-input rounded-xl px-4 py-2.5 text-xs text-white"
                   />
 
@@ -465,14 +454,14 @@ function BookDeliveryContent() {
                       type="text"
                       value={dName}
                       onChange={(e) => setDName(e.target.value)}
-                      placeholder="Recipient Full Name"
+                      placeholder="Имя получателя"
                       className="glass-input rounded-xl px-4 py-2 text-xs text-white"
                     />
                     <input
                       type="text"
                       value={dPhone}
                       onChange={(e) => setDPhone(e.target.value)}
-                      placeholder="Recipient Phone (+1 ...)"
+                      placeholder="Телефон получателя (+1 ...)"
                       className="glass-input rounded-xl px-4 py-2 text-xs text-white"
                     />
                   </div>
@@ -485,20 +474,20 @@ function BookDeliveryContent() {
               <div className="space-y-8 animate-in fade-in duration-300">
                 <div>
                   <span className="text-xs font-mono uppercase tracking-widest text-indigo-400">
-                    Step 3 of 5
+                    Шаг 3 из 5
                   </span>
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-1">
-                    Velocity Tier & Courier Fleet Class
+                    Скорость доставки и класс транспорта
                   </h2>
                   <p className="text-xs text-zinc-400 mt-1">
-                    Select how urgently your package must arrive and the vehicle configuration.
+                    Выберите срочность прибытия и конфигурацию курьерского транспорта.
                   </p>
                 </div>
 
                 {/* Speed Tiers */}
                 <div className="space-y-3">
                   <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider block">
-                    Choose Delivery Speed
+                    Тариф скорости доставки
                   </label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {SPEED_TIERS.map((tier) => (
@@ -519,7 +508,7 @@ function BookDeliveryContent() {
                           {tier.description}
                         </p>
                         <div className="flex items-center justify-between text-[11px] text-zinc-500 pt-2 border-t border-white/5 font-mono">
-                          <span>{tier.priceMultiplier}x Base Rate</span>
+                          <span>Коэффициент {tier.priceMultiplier}x</span>
                           {tier.badge && (
                             <span className="text-purple-400 font-semibold">{tier.badge}</span>
                           )}
@@ -533,14 +522,14 @@ function BookDeliveryContent() {
                 {speedTier === "SCHEDULED" && (
                   <div className="p-4 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 space-y-2">
                     <label className="text-xs font-semibold text-white flex items-center gap-2">
-                      <Calendar className="w-4 h-4 text-indigo-400" /> Specify Exact 15-Minute Window
+                      <Calendar className="w-4 h-4 text-indigo-400" /> Укажите точное 15-минутное окно
                     </label>
                     <input
                       type="text"
                       value={scheduledDate}
                       onChange={(e) => setScheduledDate(e.target.value)}
                       className="w-full glass-input rounded-xl px-4 py-2.5 text-xs text-white"
-                      placeholder="e.g. Today at 19:45 EST"
+                      placeholder="Например: Сегодня в 19:45"
                     />
                   </div>
                 )}
@@ -548,7 +537,7 @@ function BookDeliveryContent() {
                 {/* Vehicle Selection */}
                 <div className="space-y-3 pt-4 border-t border-white/5">
                   <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider block">
-                    Assigned Fleet Vehicle Model
+                    Модель курьерского транспорта
                   </label>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                     {VEHICLE_OPTIONS.map((v) => (
@@ -577,40 +566,40 @@ function BookDeliveryContent() {
               <div className="space-y-8 animate-in fade-in duration-300">
                 <div>
                   <span className="text-xs font-mono uppercase tracking-widest text-indigo-400">
-                    Step 4 of 5
+                    Шаг 4 из 5
                   </span>
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-1">
-                    Security Protocols & Insurance Tier
+                    Протоколы безопасности и страхование
                   </h2>
                   <p className="text-xs text-zinc-400 mt-1">
-                    Specify security clearance, tamper-evident seals, and courier dropoff instructions.
+                    Укажите инструкции по допуску, опломбированию и передаче груза.
                   </p>
                 </div>
 
                 {/* Insurance Tier */}
                 <div className="space-y-3">
                   <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider block">
-                    Cargo Protection Underwriting
+                    Страховое покрытие груза
                   </label>
                   <div className="space-y-2.5">
                     {[
                       {
                         id: "NONE",
-                        title: "Standard Baseline Protection",
-                        price: "Included ($0)",
-                        desc: "Basic carrier liability up to $500 with digital photo confirmation.",
+                        title: "Базовая включенная защита",
+                        price: "Включено ($0)",
+                        desc: "Стандартная ответственность перевозчика до $500 с фотофиксацией.",
                       },
                       {
                         id: "STANDARD",
-                        title: "Lloyd's Shield Cover",
+                        title: "Защита Lloyd's Shield",
                         price: "+$6.00",
-                        desc: "Underwritten asset protection up to $25,000 USD with vibration telemetry logs.",
+                        desc: "Страхование груза до $25 000 USD с телеметрией вибраций и температур.",
                       },
                       {
                         id: "CONCIERGE_TOTAL",
-                        title: "Concierge Total Replacement Guarantee",
+                        title: "Полная гарантия Concierge Total",
                         price: "+$18.00",
-                        desc: "Complete zero-deductible replacement up to $250,000 USD with tamper seal biometric locks.",
+                        desc: "100% возмещение без франшизы до $250 000 USD с электронным биометрическим замком.",
                       },
                     ].map((ins) => (
                       <div
@@ -639,13 +628,13 @@ function BookDeliveryContent() {
                 {/* Notes for Courier */}
                 <div className="space-y-2 pt-4 border-t border-white/5">
                   <label className="text-xs font-semibold text-zinc-300 block">
-                    Courier Access Notes & Special Instructions
+                    Комментарий курьеру и инструкции доступа
                   </label>
                   <textarea
                     rows={3}
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
-                    placeholder="e.g. Ring concierge desk, request elevator keycard for 14th floor, do not leave unattended."
+                    placeholder="Например: позвонить консьержу, запросить ключ-карту от лифта на 14 этаж, не оставлять у двери."
                     className="w-full glass-input rounded-2xl p-4 text-xs text-white placeholder-zinc-500"
                   />
                 </div>
@@ -657,13 +646,13 @@ function BookDeliveryContent() {
               <div className="space-y-8 animate-in fade-in duration-300">
                 <div>
                   <span className="text-xs font-mono uppercase tracking-widest text-indigo-400">
-                    Step 5 of 5
+                    Шаг 5 из 5
                   </span>
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-1">
-                    Confirm Dispatch & Settlement
+                    Подтверждение и расчет
                   </h2>
                   <p className="text-xs text-zinc-400 mt-1">
-                    Select payment method. All transactions are cryptographically signed and secured via Stripe Vault.
+                    Выберите способ оплаты. Все транзакции защищены 256-битным шифрованием Stripe Vault.
                   </p>
                 </div>
 
@@ -679,7 +668,7 @@ function BookDeliveryContent() {
                     }`}
                   >
                     <CreditCard className="w-5 h-5 mx-auto mb-1 text-indigo-400" />
-                    <span className="text-xs font-bold block">Credit Card</span>
+                    <span className="text-xs font-bold block">Банковская карта</span>
                     <span className="text-[10px] text-zinc-500">Stripe Vault</span>
                   </button>
 
@@ -693,7 +682,7 @@ function BookDeliveryContent() {
                     }`}
                   >
                     <Wallet className="w-5 h-5 mx-auto mb-1 text-emerald-400" />
-                    <span className="text-xs font-bold block">Aether Vault</span>
+                    <span className="text-xs font-bold block">Сейф Aether</span>
                     <span className="text-[10px] text-emerald-400 font-mono">
                       {formatCurrency(walletBalance)}
                     </span>
@@ -710,7 +699,7 @@ function BookDeliveryContent() {
                   >
                     <Zap className="w-5 h-5 mx-auto mb-1 text-amber-400" />
                     <span className="text-xs font-bold block">Apple Pay</span>
-                    <span className="text-[10px] text-zinc-500">Instant Touch</span>
+                    <span className="text-[10px] text-zinc-500">В 1 касание</span>
                   </button>
                 </div>
 
@@ -718,7 +707,7 @@ function BookDeliveryContent() {
                 {paymentMethod === "STRIPE" && (
                   <div className="space-y-3 p-5 rounded-2xl bg-white/[0.02] border border-white/5">
                     <div>
-                      <label className="text-[11px] text-zinc-400 block mb-1">Card Number</label>
+                      <label className="text-[11px] text-zinc-400 block mb-1">Номер карты</label>
                       <input
                         type="text"
                         value={cardNumber}
@@ -728,7 +717,7 @@ function BookDeliveryContent() {
                     </div>
                     <div className="grid grid-cols-2 gap-3">
                       <div>
-                        <label className="text-[11px] text-zinc-400 block mb-1">Expiry Date</label>
+                        <label className="text-[11px] text-zinc-400 block mb-1">Срок действия</label>
                         <input
                           type="text"
                           value={cardExpiry}
@@ -737,7 +726,7 @@ function BookDeliveryContent() {
                         />
                       </div>
                       <div>
-                        <label className="text-[11px] text-zinc-400 block mb-1">CVC Code</label>
+                        <label className="text-[11px] text-zinc-400 block mb-1">CVC код</label>
                         <input
                           type="text"
                           value={cardCvc}
@@ -753,9 +742,9 @@ function BookDeliveryContent() {
                 <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-400 flex items-start gap-3">
                   <Shield className="w-5 h-5 shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-bold block">Immediate Corridor Clearance</span>
+                    <span className="font-bold block">Мгновенное бронирование зеленого коридора</span>
                     <span className="text-zinc-400 text-[11px]">
-                      Upon clicking &apos;Execute Dispatch&apos;, your priority green corridor will be locked with nearest vehicle arrival in ~90 seconds.
+                      При нажатии на кнопку вызова будет зафиксирован прямой скоростной коридор со временем прибытия ближайшего курьера ~90 секунд.
                     </span>
                   </div>
                 </div>
@@ -770,7 +759,7 @@ function BookDeliveryContent() {
                   onClick={handlePrevStep}
                   className="px-5 py-3 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] text-xs font-semibold text-zinc-300 flex items-center gap-2 transition-colors"
                 >
-                  <ArrowLeft className="w-4 h-4" /> Back
+                  <ArrowLeft className="w-4 h-4" /> Назад
                 </button>
               ) : (
                 <div />
@@ -782,7 +771,7 @@ function BookDeliveryContent() {
                   onClick={handleNextStep}
                   className="gradient-btn px-7 py-3 rounded-2xl text-xs font-bold text-white flex items-center gap-2 shadow-lg"
                 >
-                  Continue <ArrowRight className="w-4 h-4" />
+                  Продолжить <ArrowRight className="w-4 h-4" />
                 </button>
               ) : (
                 <button
@@ -794,12 +783,12 @@ function BookDeliveryContent() {
                   {isSubmitting ? (
                     <span className="flex items-center gap-2">
                       <Zap className="w-4 h-4 animate-spin text-amber-400" />
-                      Locking Green Corridor...
+                      Бронирование коридора...
                     </span>
                   ) : (
                     <span className="flex items-center gap-2">
                       <Zap className="w-4 h-4" />
-                      Execute Quantum Dispatch ({formatCurrency(pricing.total)})
+                      Вызвать квантового курьера ({formatCurrency(pricing.total)})
                     </span>
                   )}
                 </button>
@@ -811,75 +800,75 @@ function BookDeliveryContent() {
           <div className="lg:col-span-4 glass-card rounded-3xl p-6 sm:p-7 border border-white/10 shadow-2xl space-y-6 sticky top-28">
             <div className="flex items-center justify-between pb-4 border-b border-white/10">
               <span className="text-xs font-bold text-white uppercase tracking-wider">
-                Corridor Manifest
+                Манифест заказа
               </span>
               <span className="text-[10px] font-mono text-indigo-400 bg-indigo-500/10 px-2.5 py-0.5 rounded-full border border-indigo-500/20">
-                Live Dynamic
+                Живой расчет
               </span>
             </div>
 
             {/* Quick Manifest Items */}
             <div className="space-y-3 text-xs">
               <div className="flex justify-between">
-                <span className="text-zinc-400">Class</span>
+                <span className="text-zinc-400">Класс груза</span>
                 <span className="text-white font-semibold">{category}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-zinc-400">Velocity</span>
+                <span className="text-zinc-400">Скорость</span>
                 <span className="text-emerald-400 font-mono font-semibold">{speedTier}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-zinc-400">Vehicle</span>
+                <span className="text-zinc-400">Транспорт</span>
                 <span className="text-white">{vehicle}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-zinc-400">Estimated Distance</span>
-                <span className="text-white font-mono">{pricing.distanceKm} km</span>
+                <span className="text-zinc-400">Дистанция</span>
+                <span className="text-white font-mono">{pricing.distanceKm} км</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-zinc-400">ETA</span>
+                <span className="text-zinc-400">Время в пути</span>
                 <span className="text-emerald-400 font-mono font-semibold">
-                  ~{pricing.estimatedMin} mins
+                  ~{pricing.estimatedMin} мин
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-zinc-400">Weight</span>
-                <span className="text-white font-mono">{weightKg} kg</span>
+                <span className="text-zinc-400">Вес</span>
+                <span className="text-white font-mono">{weightKg} кг</span>
               </div>
             </div>
 
             {/* Pricing Breakdown */}
             <div className="pt-4 border-t border-white/5 space-y-2 text-xs">
               <div className="flex justify-between text-zinc-400">
-                <span>Base Corridors</span>
+                <span>Базовый коридор</span>
                 <span className="font-mono text-white">${pricing.subtotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-zinc-400">
-                <span>Underwriting Protection</span>
+                <span>Страховая защита</span>
                 <span className="font-mono text-indigo-400">+${pricing.insurance.toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-zinc-400">
-                <span>Surge Factor</span>
-                <span className="font-mono text-zinc-500">$0.00 (Locked)</span>
+                <span>Коэффициент спроса</span>
+                <span className="font-mono text-zinc-500">$0.00 (Зафиксирован)</span>
               </div>
             </div>
 
             {/* Grand Total */}
             <div className="p-4 rounded-2xl bg-black/40 border border-white/5 flex items-center justify-between">
               <div>
-                <span className="text-[10px] text-zinc-500 font-mono uppercase block">Total Net Rate</span>
+                <span className="text-[10px] text-zinc-500 font-mono uppercase block">Итого к оплате</span>
                 <span className="text-2xl font-black text-white font-mono">
                   {formatCurrency(pricing.total)}
                 </span>
               </div>
               <div className="text-right">
-                <span className="text-[10px] text-emerald-400 font-mono block">Zero Hidden Fees</span>
-                <span className="text-[11px] text-zinc-400">VAT & Taxes Incl.</span>
+                <span className="text-[10px] text-emerald-400 font-mono block">Без скрытых комиссий</span>
+                <span className="text-[11px] text-zinc-400">Все сборы включены</span>
               </div>
             </div>
 
             <div className="flex items-center gap-2 text-[11px] text-zinc-500 justify-center">
-              <Lock className="w-3.5 h-3.5 text-indigo-400" /> End-to-end 256-bit encrypted telemetry
+              <Lock className="w-3.5 h-3.5 text-indigo-400" /> Сквозное 256-битное шифрование телеметрии
             </div>
           </div>
         </div>
@@ -893,7 +882,7 @@ export default function BookDeliveryPage() {
     <React.Suspense
       fallback={
         <div className="min-h-screen bg-[#09090B] flex items-center justify-center text-zinc-400">
-          Loading Dispatch Wizard...
+          Загрузка мастера вызова...
         </div>
       }
     >

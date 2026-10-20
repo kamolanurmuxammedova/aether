@@ -5,11 +5,11 @@ import Link from "next/link";
 import { DeliveryMap } from "@/components/map/DeliveryMap";
 import { Coordinates } from "@/types";
 import { motion } from "framer-motion";
-import { Zap, Shield, ArrowRight, Radio, Eye, Sparkles } from "lucide-react";
+import { ArrowRight, Radio, Eye } from "lucide-react";
 
 export function LivePreviewSection() {
-  const pickup: Coordinates = { lat: 40.7638, lng: -73.973 }; // Apple Fifth Ave
-  const dropoff: Coordinates = { lat: 40.7711, lng: -73.9634 }; // 740 Park Ave
+  const pickup: Coordinates = { lat: 40.7638, lng: -73.973 };
+  const dropoff: Coordinates = { lat: 40.7711, lng: -73.9634 };
 
   // Courier coordinates animated between pickup and dropoff
   const [courierPos, setCourierPos] = useState<Coordinates>({
@@ -44,14 +44,14 @@ export function LivePreviewSection() {
           <div className="space-y-3 max-w-xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold">
               <Radio className="w-3.5 h-3.5 animate-pulse" />
-              <span>Real-Time Satellite Telemetry Stream</span>
+              <span>Спутниковая телеметрия в реальном времени</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-              Watch The Fleet <br />
-              <span className="gradient-accent-text">Move Live</span>
+              Движение флота <br />
+              <span className="gradient-accent-text">в прямом эфире</span>
             </h2>
             <p className="text-sm text-zinc-400">
-              Zero ambiguity. Continuous sub-second GNSS coordinate streaming with dynamic corridor recalculations and live urban green-wave routing.
+              Полная прозрачность. Непрерывная передача субметровых координат с динамическим пересчетом коридора и зеленой волной светофоров.
             </p>
           </div>
 
@@ -60,7 +60,7 @@ export function LivePreviewSection() {
             className="gradient-btn px-6 py-3.5 rounded-2xl text-xs font-bold text-white flex items-center gap-2 self-start md:self-auto shadow-lg"
           >
             <Eye className="w-4 h-4" />
-            <span>Launch Full-Screen Telemetry</span>
+            <span>Открыть радар телеметрии</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </motion.div>
@@ -77,9 +77,9 @@ export function LivePreviewSection() {
             pickup={pickup}
             dropoff={dropoff}
             courierPos={courierPos}
-            courierName="Marcus Sterling"
+            courierName="Маркус Стерлинг"
             vehiclePlate="NY-AE901"
-            eta="6 mins"
+            eta="6 мин"
             distanceKm={2.1}
             className="h-[520px] w-full"
           />

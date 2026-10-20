@@ -30,7 +30,7 @@ interface UserState {
     email: string;
     phone: string;
     avatar: string;
-    tier: "Obsidian Member" | "Platinum Executive" | "Diamond Founder";
+    tier: "Обсидиановый резидент" | "Платиновый директор" | "Алмазный основатель";
     role: "USER" | "COURIER" | "ADMIN";
   };
   
@@ -71,24 +71,24 @@ const INITIAL_TRANSACTIONS: WalletTransaction[] = [
     id: "tx_1",
     type: "TOPUP",
     amount: 500.0,
-    description: "Instant Apple Pay Top-up",
-    timestamp: "2 hours ago",
+    description: "Мгновенное пополнение Apple Pay",
+    timestamp: "2 часа назад",
     status: "COMPLETED",
   },
   {
     id: "tx_2",
     type: "ORDER_PAYMENT",
     amount: -43.5,
-    description: "Hyperspeed Delivery AETH-982XF",
-    timestamp: "12 mins ago",
+    description: "Гиперскоростная доставка AETH-982XF",
+    timestamp: "12 мин назад",
     status: "COMPLETED",
   },
   {
     id: "tx_3",
     type: "CASHBACK",
     amount: 8.7,
-    description: "Obsidian Elite 20% Logistics Cashback",
-    timestamp: "Yesterday",
+    description: "Кэшбэк 20% по программе Obsidian Elite",
+    timestamp: "Вчера",
     status: "COMPLETED",
   },
 ];
@@ -96,25 +96,25 @@ const INITIAL_TRANSACTIONS: WalletTransaction[] = [
 const INITIAL_NOTIFICATIONS: AppNotification[] = [
   {
     id: "notif_1",
-    title: "Hyperspeed Courier Dispatched",
-    message: "Marcus Sterling is 4 mins away with your sealed tech package.",
-    timestamp: "4m ago",
+    title: "Скоростной курьер выехал",
+    message: "Маркус Стерлинг прибудет через 4 мин с вашей опечатанной техникой.",
+    timestamp: "4м назад",
     read: false,
     type: "ORDER",
   },
   {
     id: "notif_2",
-    title: "Quantum Fleet Priority Activated",
-    message: "Your account now has zero-wait direct corridor dispatching enabled.",
-    timestamp: "1h ago",
+    title: "Приоритетный зеленый коридор",
+    message: "Для вашего аккаунта активирована беспосадочная скоростная магистраль.",
+    timestamp: "1ч назад",
     read: false,
     type: "SECURITY",
   },
   {
     id: "notif_3",
-    title: "Wallet Credit Received",
-    message: "USD $500.00 added to your AETHER Digital Obsidian Vault.",
-    timestamp: "2h ago",
+    title: "Пополнение баланса получено",
+    message: "$500.00 USD зачислены в ваш цифровой сейф AETHER Obsidian Vault.",
+    timestamp: "2ч назад",
     read: true,
     type: "WALLET",
   },
@@ -126,11 +126,11 @@ export const useUserStore = create<UserState>()(
       isAuthenticated: true,
       user: {
         id: "usr_vance_01",
-        name: "Alexander Vance",
+        name: "Александр Вэнс",
         email: "alexander.vance@vance-holdings.com",
         phone: "+1 (917) 555-0142",
         avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80",
-        tier: "Diamond Founder",
+        tier: "Алмазный основатель",
         role: "USER",
       },
       walletBalance: 1465.2,
@@ -138,7 +138,7 @@ export const useUserStore = create<UserState>()(
       addresses: PRESET_ADDRESSES,
       notifications: INITIAL_NOTIFICATIONS,
       currency: "USD",
-      language: "EN",
+      language: "RU",
       isSearchOpen: false,
       activeTab: "overview",
 
@@ -168,8 +168,8 @@ export const useUserStore = create<UserState>()(
               id: `tx_${Date.now()}`,
               type: "TOPUP",
               amount,
-              description: "Instant Stripe Platinum Top-Up",
-              timestamp: "Just now",
+              description: "Пополнение баланса через Stripe Platinum",
+              timestamp: "Только что",
               status: "COMPLETED",
             },
             ...s.transactions,
@@ -187,7 +187,7 @@ export const useUserStore = create<UserState>()(
               type: "ORDER_PAYMENT",
               amount: -amount,
               description,
-              timestamp: "Just now",
+              timestamp: "Только что",
               status: "COMPLETED",
             },
             ...s.transactions,

@@ -8,24 +8,24 @@ import { AppProviders } from "@/components/providers/AppProviders";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
+  subsets: ["latin", "cyrillic"],
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets: ["latin"],
+  subsets: ["latin", "cyrillic"],
 });
 
 export const metadata: Metadata = {
-  title: "AETHER | Autonomous Hyper-Logistics & Quantum Delivery",
+  title: "AETHER | Автономная гипер-логистика и экспресс-доставка",
   description:
-    "The next-generation urban logistics infrastructure. Dedicated high-velocity transit corridors, white-glove security, micro-precision telemetry, and zero-delay dispatching.",
+    "Городская логистическая инфраструктура нового поколения. Выделенные скоростные коридоры, премиальная безопасность, микро-точная телеметрия и мгновенная подача курьера.",
   keywords: [
-    "hyper delivery",
-    "luxury courier",
-    "autonomous logistics",
-    "on-demand dispatch",
-    "same-hour delivery",
+    "экспресс доставка",
+    "премиум курьер",
+    "автономная логистика",
+    "доставка за час",
+    "срочная доставка",
     "AETHER",
   ],
   authors: [{ name: "AETHER Technologies" }],
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: "#09090B",
-  colorScheme: "dark",
+  colorScheme: "dark light",
 };
 
 export default function RootLayout({
@@ -42,7 +42,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="ru" className="dark" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const storedTheme = localStorage.getItem('aether-theme');
+                if (storedTheme === 'light') {
+                  document.documentElement.classList.remove('dark');
+                  document.documentElement.classList.add('light');
+                } else {
+                  document.documentElement.classList.remove('light');
+                  document.documentElement.classList.add('dark');
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#09090B] text-zinc-100 min-h-screen flex flex-col`}
       >

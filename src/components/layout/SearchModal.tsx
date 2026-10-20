@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useUserStore } from "@/store/use-user-store";
 import { CATEGORIES } from "@/lib/constants";
-import { Search, X, ArrowRight, Sparkles, Clock, History, PackageCheck } from "lucide-react";
+import { Search, X, ArrowRight, Sparkles, PackageCheck } from "lucide-react";
 import Link from "next/link";
 
 export function SearchModal() {
@@ -45,7 +45,7 @@ export function SearchModal() {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search deliveries, addresses, category, or enter tracking #..."
+            placeholder="Поиск доставок, адресов, категорий или номер трека..."
             className="w-full bg-transparent text-white placeholder-zinc-500 text-base focus:outline-none"
             autoFocus
           />
@@ -73,8 +73,10 @@ export function SearchModal() {
               <div className="flex items-center gap-3">
                 <PackageCheck className="w-6 h-6 text-indigo-400" />
                 <div>
-                  <h4 className="text-sm font-semibold text-white">Track Order #{query.toUpperCase()}</h4>
-                  <p className="text-xs text-zinc-400">Instant satellite telemetry lookup</p>
+                  <h4 className="text-sm font-semibold text-white">
+                    Отследить отправление #{query.toUpperCase()}
+                  </h4>
+                  <p className="text-xs text-zinc-400">Мгновенный спутниковый поиск телеметрии</p>
                 </div>
               </div>
               <Link
@@ -82,7 +84,7 @@ export function SearchModal() {
                 onClick={() => setIsSearchOpen(false)}
                 className="gradient-btn px-4 py-1.5 rounded-xl text-xs font-semibold text-white flex items-center gap-1.5"
               >
-                Track Now <ArrowRight className="w-3.5 h-3.5" />
+                Отследить <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
           ) : null}
@@ -90,7 +92,7 @@ export function SearchModal() {
           {/* Categories matches */}
           <div>
             <h3 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">
-              Matched Delivery Categories
+              Подходящие категории доставки
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {filteredCategories.slice(0, 6).map((cat) => (
@@ -104,7 +106,7 @@ export function SearchModal() {
                     <div className="text-sm font-medium text-white group-hover:text-indigo-300 transition-colors">
                       {cat.name}
                     </div>
-                    <div className="text-xs text-zinc-400">From ${cat.basePrice.toFixed(2)}</div>
+                    <div className="text-xs text-zinc-400">От ${cat.basePrice.toFixed(2)}</div>
                   </div>
                   <ArrowRight className="w-4 h-4 text-zinc-500 group-hover:text-indigo-400 transition-transform group-hover:translate-x-1" />
                 </Link>
@@ -115,16 +117,16 @@ export function SearchModal() {
           {/* Popular searches */}
           <div>
             <h3 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3 flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-purple-400" /> Popular Searches
+              <Sparkles className="w-3.5 h-3.5 text-purple-400" /> Популярные запросы
             </h3>
             <div className="flex flex-wrap gap-2">
               {[
-                "MacBook Pro Instant",
-                "Penthouse 740 Park Ave",
-                "Legal Contract Biometric",
-                "Cold Chain Insulin",
-                "Tesla Executive Courier",
-                "Flowers Same-Hour",
+                "Срочный MacBook",
+                "Парк Авеню, 740",
+                "Договор с биометрией",
+                "Инсулин с термобоксом",
+                "VIP-курьер Tesla",
+                "Цветы за 1 час",
               ].map((term) => (
                 <button
                   key={term}

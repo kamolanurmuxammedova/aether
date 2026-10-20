@@ -18,8 +18,6 @@ import {
   Truck,
   HelpCircle,
   ArrowRight,
-  Shield,
-  Layers,
 } from "lucide-react";
 
 const ICON_MAP: Record<string, React.ElementType> = {
@@ -52,14 +50,14 @@ export function CategoriesSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="space-y-3 max-w-xl">
             <span className="text-xs font-mono uppercase tracking-widest text-indigo-400">
-              Specialized Fleet Handling
+              Специализированная перевозка
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-              Tailored For Every <br />
-              <span className="gradient-accent-text">Cargo Class</span>
+              Адаптировано под любой <br />
+              <span className="gradient-accent-text">класс груза</span>
             </h2>
             <p className="text-sm text-zinc-400">
-              From microscopic legal microchips to 1,500kg executive cargo, our specialized pods and trained couriers preserve integrity.
+              От конфиденциальных документов до 1 500 кг бизнес-грузов — наши контейнеры и курьеры обеспечивают идеальную сохранность.
             </p>
           </div>
 
@@ -75,7 +73,7 @@ export function CategoriesSection() {
                     : "text-zinc-400 hover:text-white"
                 }`}
               >
-                {mode === "ALL" ? "All 12 Classes" : mode === "POPULAR" ? "Most Requested" : "High Value & Fragile"}
+                {mode === "ALL" ? "Все 12 классов" : mode === "POPULAR" ? "Популярные" : "Особо ценные"}
               </button>
             ))}
           </div>
@@ -119,11 +117,11 @@ export function CategoriesSection() {
 
                   <div className="pt-6 mt-6 border-t border-white/5 flex items-center justify-between text-xs">
                     <div className="text-zinc-400">
-                      <span className="text-[10px] text-zinc-500 block">Base Rate</span>
+                      <span className="text-[10px] text-zinc-500 block">Базовый тариф</span>
                       <span className="font-extrabold text-white font-mono text-sm">${cat.basePrice.toFixed(2)}</span>
                     </div>
                     <span className="gradient-btn px-3 py-1.5 rounded-xl text-[11px] font-semibold text-white flex items-center gap-1 opacity-90 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all">
-                      Book <ArrowRight className="w-3 h-3" />
+                      Вызвать <ArrowRight className="w-3 h-3" />
                     </span>
                   </div>
                 </Link>

@@ -2,32 +2,32 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Zap, ShieldCheck, Leaf, Globe2, Clock } from "lucide-react";
+import { Zap, ShieldCheck, Leaf, Clock } from "lucide-react";
 
 export function StatsSection() {
   const stats = [
     {
       value: "1.84M+",
-      label: "Dispatches Completed",
-      subtext: "Across 14 Global Metros",
+      label: "Выполненных доставок",
+      subtext: "В 14 мировых мегаполисах",
       icon: Zap,
     },
     {
-      value: "14.2m",
-      label: "Avg Urban Transit Time",
-      subtext: "Zero corridor congestion",
+      value: "14.2м",
+      label: "Ср. время по городу",
+      subtext: "Зеленый коридор без задержек",
       icon: Clock,
     },
     {
       value: "99.98%",
-      label: "Zero-Damage Delivery SLA",
-      subtext: "Lloyd's of London backed",
+      label: "SLA сохранности груза",
+      subtext: "Поддержка Lloyd's of London",
       icon: ShieldCheck,
     },
     {
-      value: "4,120t",
-      label: "CO2 Emissions Saved",
-      subtext: "100% Electric & E-Fleet",
+      value: "4 120т",
+      label: "Сэкономлено CO2",
+      subtext: "100% электротранспорт",
       icon: Leaf,
     },
   ];

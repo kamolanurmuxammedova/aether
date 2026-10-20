@@ -2,45 +2,45 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Star, Quote, Sparkles, CheckCircle2 } from "lucide-react";
+import { Star, Sparkles } from "lucide-react";
 
 export function TestimonialsSection() {
   const reviews = [
     {
-      name: "Evelyn Vance",
-      role: "Managing Partner, Vance Capital",
+      name: "Эвелин Вэнс",
+      role: "Управляющий партнер, Vance Capital",
       avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
       content:
-        "We replaced our entire corporate messenger network with AETHER. Classified legal deeds and bank instruments that routinely took 2 hours across Manhattan now arrive in under 18 minutes with complete cryptographic proof.",
+        "Мы перевели всю корпоративную курьерскую службу на AETHER. Договоры и банковские обязательства, которые раньше шли 2 часа через весь Манхэттен, теперь доставляются быстрее 18 минут с абсолютной гарантией.",
       rating: 5,
-      cargoClass: "Classified Legal Documents",
+      cargoClass: "Конфиденциальные документы",
     },
     {
-      name: "David Sterling",
-      role: "VP of Hardware, Quantum Lab",
+      name: "Дэвид Стерлинг",
+      role: "Вице-президент по разработке, Quantum Lab",
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
       content:
-        "The gyro-stabilized, air-suspended cases and continuous vibration telemetry give us 100% confidence when moving unreleased Silicon prototypes worth hundreds of thousands of dollars.",
+        "Гиростабилизированные кейсы с пневмоподвеской и непрерывная телеметрия вибраций дают нам 100% уверенность при перемещении опытных образцов микроэлектроники стоимостью в сотни тысяч долларов.",
       rating: 5,
-      cargoClass: "High-Value Hardware Prototypes",
+      cargoClass: "Ценные прототипы и чипы",
     },
     {
-      name: "Chef Antoine Laurent",
-      role: "Executive Chef, L'Horizon NY",
+      name: "Шеф-повар Антуан Лоран",
+      role: "Шеф-повар, L'Horizon NY",
       avatar: "https://images.unsplash.com/photo-1583394293214-28ded15ee548?w=150&auto=format&fit=crop&q=80",
       content:
-        "Before AETHER, gourmet dinner transport was impossible without compromising plating architecture. Their climate-controlled thermal pods deliver 3-star culinary creations exactly as they left the pass.",
+        "До AETHER доставка ресторанных сетов была невозможна без нарушения композиции блюда. Их термобоксы доставляют гастрономические шедевры в точности такими, какими они вышли из-под ножа.",
       rating: 5,
-      cargoClass: "Fine Dining & Gourmet",
+      cargoClass: "Ресторанная гастрономия",
     },
     {
-      name: "Sofia Chen",
-      role: "Global Logistics VP, Lumina Tech",
+      name: "София Чен",
+      role: "Директор по логистике, Lumina Tech",
       avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
       content:
-        "The REST & GraphQL API is the cleanest implementation we have integrated. We dispatch 4,000+ monthly shipments programmatically without human intervention. Zero loss in 14 months.",
+        "REST и GraphQL API платформы — эталон простоты и надежности. Мы программно отправляем более 4 000 заказов ежемесячно. За 14 месяцев работы — ни единого инцидента.",
       rating: 5,
-      cargoClass: "Enterprise REST API",
+      cargoClass: "Корпоративный API",
     },
   ];
 
@@ -57,14 +57,14 @@ export function TestimonialsSection() {
         >
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-semibold">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Reputation & Trust</span>
+            <span>Репутация и доверие</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-            Endorsed by <br />
-            <span className="gradient-accent-text">Industry Leaders</span>
+            Выбор <br />
+            <span className="gradient-accent-text">лидеров индустрии</span>
           </h2>
           <p className="text-sm sm:text-base text-zinc-400">
-            Trusted by the world&apos;s most demanding family offices, law firms, Michelin kitchens, and venture-backed tech pioneers.
+            Нам доверяют требовательные семейные офисы, юридические компании, мишленовские рестораны и технологические лидеры.
           </p>
         </motion.div>
 

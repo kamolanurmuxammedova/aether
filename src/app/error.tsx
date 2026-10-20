@@ -24,13 +24,13 @@ export default function ErrorBoundary({
 
         <div className="space-y-2">
           <span className="text-xs font-mono uppercase tracking-widest text-red-400">
-            Error 500 • Telemetry Exception
+            Ошибка 500 • Исключение телеметрии
           </span>
           <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Routing Interrupted
+            Маршрутизация прервана
           </h1>
           <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-            An unexpected signal variance occurred in the neural dispatch engine. Our autonomous fault-tolerance systems have logged the incident.
+            В работе диспетчерской сети произошел непредвиденный сбой. Автономные системы отказоустойчивости уже зафиксировали событие.
           </p>
         </div>
 
@@ -39,13 +39,13 @@ export default function ErrorBoundary({
             onClick={() => reset()}
             className="gradient-btn px-6 py-3 rounded-2xl text-xs font-bold text-white flex items-center gap-2"
           >
-            <RotateCcw className="w-4 h-4" /> Recalibrate & Retry
+            <RotateCcw className="w-4 h-4" /> Повторить попытку
           </button>
           <Link
             href="/"
             className="px-5 py-3 rounded-2xl text-xs font-semibold text-zinc-300 hover:text-white bg-white/5 border border-white/10"
           >
-            Return Home
+            На главную
           </Link>
         </div>
       </div>

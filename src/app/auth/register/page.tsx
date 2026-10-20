@@ -28,7 +28,7 @@ export default function RegisterPage() {
   };
 
   const strength = calculateStrength(password);
-  const strengthLabels = ["Weak", "Fair", "Strong", "Quantum Secure"];
+  const strengthLabels = ["Слабый", "Средний", "Надёжный", "Квантовая защита"];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,9 +49,9 @@ export default function RegisterPage() {
               </div>
               <span className="font-extrabold text-xl tracking-tight text-white">AETHER</span>
             </Link>
-            <h1 className="text-2xl font-bold text-white tracking-tight mt-2">Initialize Account</h1>
+            <h1 className="text-2xl font-bold text-white tracking-tight mt-2">Регистрация аккаунта</h1>
             <p className="text-xs text-zinc-400">
-              Join the private autonomous logistics network.
+              Присоединяйтесь к приватной сети автономной логистики.
             </p>
           </div>
 
@@ -66,7 +66,7 @@ export default function RegisterPage() {
                   : "text-zinc-400 hover:text-white"
               }`}
             >
-              Enterprise / Client
+              Клиент / Бизнес
             </button>
             <button
               type="button"
@@ -77,13 +77,13 @@ export default function RegisterPage() {
                   : "text-zinc-400 hover:text-white"
               }`}
             >
-              Fleet Courier
+              Курьер флота
             </button>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="text-xs font-semibold text-zinc-300 block mb-1">Full Legal Name</label>
+              <label className="text-xs font-semibold text-zinc-300 block mb-1">ФИО / Полное имя</label>
               <div className="relative">
                 <User className="w-4 h-4 text-zinc-400 absolute left-3.5 top-3" />
                 <input
@@ -92,13 +92,13 @@ export default function RegisterPage() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="w-full glass-input rounded-xl pl-10 pr-4 py-2 text-xs text-white"
-                  placeholder="Alexander Vance"
+                  placeholder="Александр Вэнс"
                 />
               </div>
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-zinc-300 block mb-1">Email Address</label>
+              <label className="text-xs font-semibold text-zinc-300 block mb-1">Email адрес</label>
               <div className="relative">
                 <Mail className="w-4 h-4 text-zinc-400 absolute left-3.5 top-3" />
                 <input
@@ -113,7 +113,7 @@ export default function RegisterPage() {
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-zinc-300 block mb-1">Phone Number</label>
+              <label className="text-xs font-semibold text-zinc-300 block mb-1">Номер телефона</label>
               <div className="relative">
                 <Phone className="w-4 h-4 text-zinc-400 absolute left-3.5 top-3" />
                 <input
@@ -122,13 +122,13 @@ export default function RegisterPage() {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   className="w-full glass-input rounded-xl pl-10 pr-4 py-2 text-xs text-white font-mono"
-                  placeholder="+1 (917) 555-0142"
+                  placeholder="+7 (999) 000-00-00"
                 />
               </div>
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-zinc-300 block mb-1">Password</label>
+              <label className="text-xs font-semibold text-zinc-300 block mb-1">Пароль</label>
               <div className="relative">
                 <Lock className="w-4 h-4 text-zinc-400 absolute left-3.5 top-3" />
                 <input
@@ -137,7 +137,7 @@ export default function RegisterPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full glass-input rounded-xl pl-10 pr-4 py-2 text-xs text-white font-mono"
-                  placeholder="Min 8 characters"
+                  placeholder="Минимум 8 символов"
                 />
               </div>
 
@@ -145,8 +145,8 @@ export default function RegisterPage() {
               {password.length > 0 && (
                 <div className="pt-2 space-y-1">
                   <div className="flex justify-between text-[10px] font-mono">
-                    <span className="text-zinc-500">Security Entropy</span>
-                    <span className="text-indigo-400">{strengthLabels[strength - 1] || "Weak"}</span>
+                    <span className="text-zinc-500">Стойкость пароля</span>
+                    <span className="text-indigo-400">{strengthLabels[strength - 1] || "Слабый"}</span>
                   </div>
                   <div className="grid grid-cols-4 gap-1.5 h-1">
                     {[1, 2, 3, 4].map((step) => (
@@ -172,7 +172,7 @@ export default function RegisterPage() {
                   className="rounded accent-purple-600 bg-white/10 border-white/20 mt-0.5"
                 />
                 <span>
-                  I agree to the AETHER Terms of Carriage, Cryptographic Privacy Protocol, and Lloyd&apos;s Insurance Underwriting agreement.
+                  Я принимаю Условия перевозок AETHER, Криптографический протокол конфиденциальности и соглашение о страховании Lloyd&apos;s.
                 </span>
               </label>
             </div>
@@ -181,15 +181,15 @@ export default function RegisterPage() {
               type="submit"
               className="w-full gradient-btn py-3 rounded-xl text-xs font-bold text-white flex items-center justify-center gap-2 shadow-lg"
             >
-              <span>Verify & Complete Registration</span>
+              <span>Завершить регистрацию</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </form>
 
           <div className="text-center pt-2 text-xs text-zinc-400">
-            Already registered?{" "}
+            Уже зарегистрированы?{" "}
             <Link href="/auth/login" className="text-purple-400 hover:text-purple-300 font-semibold">
-              Sign In
+              Войти
             </Link>
           </div>
         </div>

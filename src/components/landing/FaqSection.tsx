@@ -2,35 +2,35 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, HelpCircle, Sparkles } from "lucide-react";
+import { ChevronDown, HelpCircle } from "lucide-react";
 
 export function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const faqs = [
     {
-      q: "How does AETHER achieve a 14-minute average urban delivery?",
-      a: "AETHER utilizes a proprietary neural matching engine paired with dedicated municipal green corridor telemetry. Couriers operate high-torque electric cyber-scooters and e-bikes that bypass gridlocked vehicle traffic entirely. Orders are matched and dispatched under 400ms without middle-mile depot bottlenecks.",
+      q: "Как AETHER достигает среднего времени доставки по городу в 14 минут?",
+      a: "AETHER использует собственный нейронный алгоритм диспетчеризации в связке с телеметрией муниципальных зеленых коридоров. Курьеры передвигаются на быстрых электроскутерах и байках, полностью объезжая заторы. Назначение курьера происходит быстрее 400 мс без промежуточных сортировочных баз.",
     },
     {
-      q: "What insurance and security coverage applies to my cargo?",
-      a: "Every single delivery includes complimentary baseline protection up to $5,000 USD. For high-value assets, classified legal documents, and fine jewelry, our Concierge Total Cover is underwritten by Lloyd's of London for up to $250,000 USD with guaranteed zero-deductible replacement.",
+      q: "Какая страховка и защита распространяются на груз?",
+      a: "Каждое отправление включает базовую защиту до $5 000 USD. Для особо ценных активов, секретных документов и электроники действует пакет Concierge Total Cover от синдиката Lloyd's of London с покрытием до $250 000 USD без франшизы.",
     },
     {
-      q: "How does the cryptographic biometric handover work?",
-      a: "When your delivery arrives, the recipient is verified through a one-time dynamic encrypted PIN code generated in the app, or biometric facial verification. Once matched, the courier's electronic seal is unlocked, and an irrevocable cryptographic receipt with GPS timestamp is recorded in your Digital Vault.",
+      q: "Как работает биометрическая передача груза?",
+      a: "При прибытии курьера получатель подтверждает личность динамическим зашифрованным PIN-кодом из приложения или сканированием лица. После верификации электронный замок контейнера отпирается, а в ваш цифровой сейф записывается безотзывная цифровая накладная с точными геометками и временем.",
     },
     {
-      q: "Can enterprise clients integrate AETHER programmatically?",
-      a: "Yes. We offer fully typed REST and GraphQL APIs, comprehensive Webhooks, and direct plugins for Shopify Plus, SAP, Oracle NetSuite, and custom warehouse management systems. Your engineering team can implement automated dispatch in less than an hour.",
+      q: "Могут ли корпоративные клиенты подключиться через API?",
+      a: "Да. Мы предоставляем полностью типизированные REST и GraphQL API, вебхуки и готовые интеграции для 1C, SAP, Oracle NetSuite и кастомных систем WMS. Команда разработчиков может запустить автоматический вызов менее чем за час.",
     },
     {
-      q: "What types of vehicles make up the AETHER fleet?",
-      a: "Our fleet consists entirely of zero-emission vehicles: custom high-performance Cyber Scooters, gyro-stabilized Cargo E-Bikes, executive Tesla Model S sedans, Mercedes eVito electric cargo vans, and our licensed urban air drone corridor beta.",
+      q: "Какие виды транспорта входят во флот AETHER?",
+      a: "Весь флот состоит из электротранспорта с нулевыми выбросами: кастомные Cyber Scooter, гиростабилизированные грузовые электробайки, представительские седаны Tesla Model S, фургоны Mercedes eVito и аэро-дроны в тестовых коридорах.",
     },
     {
-      q: "How are couriers vetted and certified?",
-      a: "Only 4.8% of courier applicants are accepted into the AETHER fleet. Every candidate undergoes rigorous multi-jurisdictional criminal background screening, white-glove executive etiquette training, and hands-on certification in high-value asset handling.",
+      q: "Как отбираются и сертифицируются курьеры?",
+      a: "Лишь 4.8% кандидатов проходят отбор в флот AETHER. Каждый курьер проходит глубокую проверку безопасности, обучение премиальному этикету и сертификацию по обращению с особо ценными и конфиденциальными грузами.",
     },
   ];
 
@@ -47,13 +47,13 @@ export function FaqSection() {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold">
             <HelpCircle className="w-3.5 h-3.5" />
-            <span>Operational Architecture</span>
+            <span>Операционная архитектура</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-            Frequently Asked <span className="gradient-accent-text">Questions</span>
+            Часто задаваемые <span className="gradient-accent-text">вопросы</span>
           </h2>
           <p className="text-sm text-zinc-400">
-            Everything you need to know about security, insurance, dispatch algorithms, and enterprise integration.
+            Всё о безопасности, страховании, алгоритмах диспетчеризации и интеграциях.
           </p>
         </motion.div>
 

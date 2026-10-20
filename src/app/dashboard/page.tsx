@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useUserStore } from "@/store/use-user-store";
 import { useOrderStore } from "@/store/use-order-store";
 import { formatCurrency, formatDate } from "@/lib/utils";
@@ -14,31 +13,22 @@ import {
   Ticket,
   Shield,
   Headphones,
-  Settings,
   Plus,
   ArrowRight,
-  Clock,
-  CheckCircle2,
-  AlertCircle,
   Copy,
-  ExternalLink,
   Laptop,
   Smartphone,
   Sparkles,
   Zap,
   Trash2,
-  FileDown,
-  RotateCcw,
 } from "lucide-react";
 
 export default function UserDashboardPage() {
-  const router = useRouter();
   const {
     user,
     walletBalance,
     transactions,
     addresses,
-    notifications,
     topUpWallet,
     addAddress,
     removeAddress,
@@ -65,8 +55,8 @@ export default function UserDashboardPage() {
   const [supportMsgs, setSupportMsgs] = useState([
     {
       sender: "ai",
-      text: "Welcome to Aether Obsidian Concierge. How may I assist your active dispatches today?",
-      time: "Just now",
+      text: "Добро пожаловать в персональный консьерж-сервис AETHER Obsidian. Чем я могу помочь по вашим отправлениям сегодня?",
+      time: "Только что",
     },
   ]);
   const [supportInput, setSupportInput] = useState("");
@@ -75,7 +65,7 @@ export default function UserDashboardPage() {
     e.preventDefault();
     if (!supportInput.trim()) return;
     const txt = supportInput;
-    setSupportMsgs((m) => [...m, { sender: "user", text: txt, time: "Just now" }]);
+    setSupportMsgs((m) => [...m, { sender: "user", text: txt, time: "Только что" }]);
     setSupportInput("");
 
     setTimeout(() => {
@@ -83,8 +73,8 @@ export default function UserDashboardPage() {
         ...m,
         {
           sender: "ai",
-          text: `I have reviewed dispatch telemetry for your account. All green corridors in Manhattan and Brooklyn are clear with sub-15min ETA. Would you like me to reserve a dedicated vehicle?`,
-          time: "Just now",
+          text: `Я проверил дорожную обстановку для вашего сектора. Все зеленые коридоры свободны, ориентировочное время подачи курьера менее 12 минут. Подготовить транспорт?`,
+          time: "Только что",
         },
       ]);
     }, 1200);
@@ -108,9 +98,6 @@ export default function UserDashboardPage() {
 
   const activeOrders = orders.filter(
     (o) => o.status !== "DELIVERED" && o.status !== "CANCELLED"
-  );
-  const pastOrders = orders.filter(
-    (o) => o.status === "DELIVERED" || o.status === "CANCELLED"
   );
 
   return (
@@ -139,14 +126,14 @@ export default function UserDashboardPage() {
               className="gradient-btn px-5 py-2.5 rounded-2xl text-xs font-bold text-white flex items-center gap-2 shadow-lg"
             >
               <Wallet className="w-4 h-4" />
-              <span>Top Up Vault</span>
+              <span>Пополнить сейф</span>
             </button>
             <Link
               href="/book"
               className="px-5 py-2.5 rounded-2xl text-xs font-bold text-white bg-white/[0.06] hover:bg-white/[0.1] border border-white/10 transition-colors flex items-center gap-2"
             >
               <Zap className="w-4 h-4 text-indigo-400" />
-              <span>New Dispatch</span>
+              <span>Новый вызов</span>
             </Link>
           </div>
         </div>
@@ -154,13 +141,13 @@ export default function UserDashboardPage() {
         {/* Navigation Tabs Bar */}
         <div className="flex items-center gap-1.5 overflow-x-auto pb-2 border-b border-white/10 scrollbar-none">
           {[
-            { id: "overview", label: "Overview", icon: LayoutDashboard },
-            { id: "deliveries", label: "Deliveries", icon: Package, badge: activeOrders.length },
-            { id: "wallet", label: "Digital Vault", icon: Wallet },
-            { id: "addresses", label: "Saved Locations", icon: MapPin },
-            { id: "coupons", label: "Vouchers & Perks", icon: Ticket },
-            { id: "security", label: "Security & Devices", icon: Shield },
-            { id: "support", label: "Concierge Support", icon: Headphones },
+            { id: "overview", label: "Обзор", icon: LayoutDashboard },
+            { id: "deliveries", label: "Доставки", icon: Package, badge: activeOrders.length },
+            { id: "wallet", label: "Цифровой сейф", icon: Wallet },
+            { id: "addresses", label: "Адреса", icon: MapPin },
+            { id: "coupons", label: "Промокоды", icon: Ticket },
+            { id: "security", label: "Безопасность", icon: Shield },
+            { id: "support", label: "Консьерж 24/7", icon: Headphones },
           ].map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -193,42 +180,42 @@ export default function UserDashboardPage() {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="p-6 rounded-3xl bg-[#111217] border border-white/5 space-y-2">
                 <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block">
-                  Vault Balance
+                  Баланс сейфа
                 </span>
                 <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono">
                   {formatCurrency(walletBalance)}
                 </div>
-                <span className="text-[11px] text-emerald-400 font-mono block">Instant Auto-Refill Active</span>
+                <span className="text-[11px] text-emerald-400 font-mono block">Автопополнение активно</span>
               </div>
 
               <div className="p-6 rounded-3xl bg-[#111217] border border-white/5 space-y-2">
                 <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block">
-                  Total Dispatches
+                  Всего доставок
                 </span>
                 <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono">
                   {orders.length}
                 </div>
-                <span className="text-[11px] text-zinc-400 block">100% On-Time Record</span>
+                <span className="text-[11px] text-zinc-400 block">100% доставлено вовремя</span>
               </div>
 
               <div className="p-6 rounded-3xl bg-[#111217] border border-white/5 space-y-2">
                 <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block">
-                  Carbon Prevented
+                  Сэкономлено CO2
                 </span>
                 <div className="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-mono">
-                  84.2 kg
+                  84.2 кг
                 </div>
-                <span className="text-[11px] text-zinc-500 block">Via 100% Electric Fleet</span>
+                <span className="text-[11px] text-zinc-500 block">100% электротранспорт</span>
               </div>
 
               <div className="p-6 rounded-3xl bg-[#111217] border border-white/5 space-y-2">
                 <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block">
-                  Security Rating
+                  Рейтинг защиты
                 </span>
                 <div className="text-2xl sm:text-3xl font-extrabold text-purple-400 font-mono">
                   Tier-1 VIP
                 </div>
-                <span className="text-[11px] text-zinc-500 block">Biometric Lockbox Enabled</span>
+                <span className="text-[11px] text-zinc-500 block">Биометрический замок</span>
               </div>
             </div>
 
@@ -241,14 +228,14 @@ export default function UserDashboardPage() {
                     <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
                   </span>
                   <h2 className="text-base font-bold text-white uppercase tracking-wider">
-                    Active Telemetry Corridors ({activeOrders.length})
+                    Активные коридоры ({activeOrders.length})
                   </h2>
                 </div>
                 <Link
                   href="/book"
                   className="text-xs font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-1"
                 >
-                  Book Another <ArrowRight className="w-3.5 h-3.5" />
+                  Заказать еще <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
 
@@ -268,13 +255,13 @@ export default function UserDashboardPage() {
 
                       <div className="space-y-1.5 text-xs">
                         <div className="text-zinc-400 truncate">
-                          <span className="text-zinc-500 font-mono text-[10px]">TO: </span>
+                          <span className="text-zinc-500 font-mono text-[10px]">КУДА: </span>
                           {ord.dropoffAddress}
                         </div>
                         <div className="flex items-center gap-4 text-[11px] text-zinc-500 font-mono">
-                          <span>ETA: {ord.eta}</span>
+                          <span>Время: {ord.eta}</span>
                           <span>•</span>
-                          <span>Courier: {ord.courier?.name || "Assigned"}</span>
+                          <span>Курьер: {ord.courier?.name || "Назначен"}</span>
                         </div>
                       </div>
 
@@ -286,7 +273,7 @@ export default function UserDashboardPage() {
                           href={`/track?order=${ord.orderNumber}`}
                           className="gradient-btn px-4 py-1.5 rounded-xl text-xs font-bold text-white flex items-center gap-1.5"
                         >
-                          <span>Live Telemetry</span>
+                          <span>Телеметрия</span>
                           <ArrowRight className="w-3.5 h-3.5" />
                         </Link>
                       </div>
@@ -295,12 +282,12 @@ export default function UserDashboardPage() {
                 </div>
               ) : (
                 <div className="p-8 rounded-3xl bg-[#111217] border border-white/5 text-center space-y-3">
-                  <p className="text-xs text-zinc-400">No active corridors running right now.</p>
+                  <p className="text-xs text-zinc-400">В данный момент нет активных доставок.</p>
                   <Link
                     href="/book"
                     className="gradient-btn inline-flex px-5 py-2.5 rounded-xl text-xs font-bold text-white"
                   >
-                    Dispatch Now
+                    Оформить доставку
                   </Link>
                 </div>
               )}
@@ -309,18 +296,18 @@ export default function UserDashboardPage() {
             {/* Recent Past Deliveries */}
             <div className="space-y-4">
               <h2 className="text-base font-bold text-white uppercase tracking-wider">
-                Completed Consignments
+                Завершенные отправления
               </h2>
               <div className="rounded-3xl bg-[#111217] border border-white/5 overflow-hidden">
                 <table className="w-full text-left text-xs">
                   <thead className="bg-white/[0.02] border-b border-white/5 text-zinc-500 font-mono uppercase tracking-wider text-[10px]">
                     <tr>
-                      <th className="p-4">Order #</th>
-                      <th className="p-4">Cargo Class</th>
-                      <th className="p-4">Destination</th>
-                      <th className="p-4">Date</th>
-                      <th className="p-4">Rate</th>
-                      <th className="p-4 text-right">Actions</th>
+                      <th className="p-4">Заказ #</th>
+                      <th className="p-4">Категория</th>
+                      <th className="p-4">Назначение</th>
+                      <th className="p-4">Дата</th>
+                      <th className="p-4">Стоимость</th>
+                      <th className="p-4 text-right">Действия</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-white/5 text-zinc-300">
@@ -338,7 +325,7 @@ export default function UserDashboardPage() {
                             href={`/track?order=${ord.orderNumber}`}
                             className="text-xs text-indigo-400 hover:text-white font-medium mr-3"
                           >
-                            Details
+                            Подробнее
                           </Link>
                         </td>
                       </tr>
@@ -354,12 +341,12 @@ export default function UserDashboardPage() {
         {activeTab === "deliveries" && (
           <div className="space-y-6 animate-in fade-in duration-300">
             <div className="flex items-center justify-between">
-              <h2 className="text-xl font-bold text-white">All Cargo Consignments</h2>
+              <h2 className="text-xl font-bold text-white">Все грузовые отправления</h2>
               <Link
                 href="/book"
                 className="gradient-btn px-4 py-2 rounded-xl text-xs font-bold text-white flex items-center gap-1.5"
               >
-                <Plus className="w-3.5 h-3.5" /> Book Delivery
+                <Plus className="w-3.5 h-3.5" /> Оформить доставку
               </Link>
             </div>
 
@@ -383,7 +370,7 @@ export default function UserDashboardPage() {
                       {ord.pickupAddress} ➔ {ord.dropoffAddress}
                     </p>
                     <p className="text-[11px] text-zinc-500 font-mono">
-                      {formatDate(ord.createdAt)} • Speed: {ord.speedTier}
+                      {formatDate(ord.createdAt)} • Тариф: {ord.speedTier}
                     </p>
                   </div>
 
@@ -395,7 +382,7 @@ export default function UserDashboardPage() {
                       href={`/track?order=${ord.orderNumber}`}
                       className="gradient-btn px-4 py-2 rounded-xl text-xs font-bold text-white"
                     >
-                      Track Order
+                      Отследить
                     </Link>
                   </div>
                 </div>
@@ -410,13 +397,13 @@ export default function UserDashboardPage() {
             <div className="p-8 rounded-3xl bg-gradient-to-tr from-purple-900/40 via-[#111217] to-indigo-900/30 border border-purple-500/30 shadow-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-6">
               <div>
                 <span className="text-xs font-mono uppercase tracking-widest text-purple-300 block mb-1">
-                  Aether Digital Obsidian Vault
+                  Цифровой сейф Aether Obsidian Vault
                 </span>
                 <div className="text-3xl sm:text-5xl font-black text-white font-mono">
                   {formatCurrency(walletBalance)}
                 </div>
                 <p className="text-xs text-zinc-400 mt-2">
-                  Zero fee settlements, instant 1-click dispatch, and 20% logistics cashback.
+                  Без комиссий, мгновенная оплата в 1 касание и 20% кэшбэк на логистику.
                 </p>
               </div>
 
@@ -424,14 +411,14 @@ export default function UserDashboardPage() {
                 onClick={() => setIsTopUpOpen(true)}
                 className="gradient-btn px-6 py-3.5 rounded-2xl text-xs font-bold text-white flex items-center gap-2 shadow-lg self-start sm:self-auto"
               >
-                <Plus className="w-4 h-4" /> Top Up Balance
+                <Plus className="w-4 h-4" /> Пополнить баланс
               </button>
             </div>
 
             {/* Transaction Log */}
             <div className="space-y-4">
               <h3 className="text-base font-bold text-white uppercase tracking-wider">
-                Vault Transaction History
+                История операций сейфа
               </h3>
               <div className="rounded-3xl bg-[#111217] border border-white/5 overflow-hidden">
                 <div className="divide-y divide-white/5">
@@ -478,14 +465,14 @@ export default function UserDashboardPage() {
           <div className="space-y-6 animate-in fade-in duration-300">
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="text-xl font-bold text-white">Saved Hubs & Residences</h2>
-                <p className="text-xs text-zinc-400">Pre-cleared GPS locations with concierge access</p>
+                <h2 className="text-xl font-bold text-white">Сохраненные хабы и резиденции</h2>
+                <p className="text-xs text-zinc-400">Проверенные GPS-локации с допуском консьержа</p>
               </div>
               <button
                 onClick={() => setIsAddAddrOpen(true)}
                 className="gradient-btn px-4 py-2.5 rounded-2xl text-xs font-bold text-white flex items-center gap-2"
               >
-                <Plus className="w-4 h-4" /> Add Address
+                <Plus className="w-4 h-4" /> Добавить адрес
               </button>
             </div>
 
@@ -500,13 +487,13 @@ export default function UserDashboardPage() {
                       <span className="text-sm font-bold text-white">{addr.title}</span>
                       {addr.isDefault && (
                         <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
-                          Primary Default
+                          Основной
                         </span>
                       )}
                     </div>
                     <p className="text-xs text-zinc-400 leading-relaxed">{addr.fullAddress}</p>
                     {addr.apartment && (
-                      <p className="text-[11px] text-zinc-500 font-mono">Unit: {addr.apartment}</p>
+                      <p className="text-[11px] text-zinc-500 font-mono">Квартира/Офис: {addr.apartment}</p>
                     )}
                   </div>
 
@@ -516,14 +503,14 @@ export default function UserDashboardPage() {
                         onClick={() => setDefaultAddress(addr.id)}
                         className="text-zinc-400 hover:text-white text-[11px]"
                       >
-                        Set as Default
+                        Сделать основным
                       </button>
                     )}
                     <button
                       onClick={() => removeAddress(addr.id)}
                       className="text-red-400 hover:text-red-300 text-[11px] flex items-center gap-1 ml-auto"
                     >
-                      <Trash2 className="w-3.5 h-3.5" /> Remove
+                      <Trash2 className="w-3.5 h-3.5" /> Удалить
                     </button>
                   </div>
                 </div>
@@ -535,26 +522,26 @@ export default function UserDashboardPage() {
         {/* TAB 5: COUPONS */}
         {activeTab === "coupons" && (
           <div className="space-y-6 animate-in fade-in duration-300">
-            <h2 className="text-xl font-bold text-white">Privileged Founder Perks & Promo Codes</h2>
+            <h2 className="text-xl font-bold text-white">Привилегии резидента и промокоды</h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {[
                 {
                   code: "OBSIDIAN50",
-                  discount: "$50 Credit",
-                  desc: "Applied to next Hyperspeed direct corridor dispatch.",
-                  valid: "Valid till end of year",
+                  discount: "$50 Бонус",
+                  desc: "Применяется к следующей гиперскоростной доставке.",
+                  valid: "Действует до конца года",
                 },
                 {
                   code: "GREENWAVE",
-                  discount: "100% Free Carbon Offset",
-                  desc: "Complimentary zero-emission routing on all electric van loads.",
-                  valid: "Unlimited",
+                  discount: "100% Эко-компенсация",
+                  desc: "Бесплатная компенсация углеродного следа на всех рейсах.",
+                  valid: "Без ограничений",
                 },
                 {
                   code: "COVERFREE",
-                  discount: "$25k Underwriting Free",
-                  desc: "Zero-fee Lloyd's of London cargo protection voucher.",
-                  valid: "Active member perk",
+                  discount: "Страховка $25k в подарок",
+                  desc: "Бесплатное страховое покрытие Lloyd's of London.",
+                  valid: "Привилегия резидента",
                 },
               ].map((c) => (
                 <div
@@ -564,7 +551,7 @@ export default function UserDashboardPage() {
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-sm font-bold text-purple-400">{c.code}</span>
                     <button
-                      onClick={() => alert(`Copied code ${c.code}`)}
+                      onClick={() => alert(`Код ${c.code} скопирован`)}
                       className="p-1 rounded-lg hover:bg-white/10 text-zinc-400"
                     >
                       <Copy className="w-3.5 h-3.5" />
@@ -586,18 +573,18 @@ export default function UserDashboardPage() {
         {/* TAB 6: SECURITY & DEVICES */}
         {activeTab === "security" && (
           <div className="space-y-6 animate-in fade-in duration-300">
-            <h2 className="text-xl font-bold text-white">Security & Active Device Sessions</h2>
+            <h2 className="text-xl font-bold text-white">Безопасность и активные сессии</h2>
             <div className="space-y-4">
               <div className="p-6 rounded-3xl bg-[#111217] border border-white/5 flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <Laptop className="w-8 h-8 text-indigo-400" />
                   <div>
                     <div className="text-sm font-bold text-white">MacBook Pro 16&quot; (Apple Silicon)</div>
-                    <div className="text-xs text-zinc-400">New York, USA • Current Active Session</div>
+                    <div className="text-xs text-zinc-400">Нью-Йорк, США • Текущая активная сессия</div>
                   </div>
                 </div>
                 <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
-                  This Device
+                  Это устройство
                 </span>
               </div>
 
@@ -606,14 +593,14 @@ export default function UserDashboardPage() {
                   <Smartphone className="w-8 h-8 text-purple-400" />
                   <div>
                     <div className="text-sm font-bold text-white">iPhone 16 Pro Max</div>
-                    <div className="text-xs text-zinc-400">New York, USA • Last active 12m ago</div>
+                    <div className="text-xs text-zinc-400">Нью-Йорк, США • Активность 12м назад</div>
                   </div>
                 </div>
                 <button
-                  onClick={() => alert("Session revoked")}
+                  onClick={() => alert("Сессия завершена")}
                   className="text-xs text-red-400 hover:text-red-300"
                 >
-                  Revoke
+                  Отозвать
                 </button>
               </div>
             </div>
@@ -629,11 +616,11 @@ export default function UserDashboardPage() {
                   <Headphones className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-white">AETHER Obsidian Concierge</h3>
-                  <p className="text-[10px] text-emerald-400 font-mono">Dedicated 24/7 Operations Officer</p>
+                  <h3 className="text-sm font-bold text-white">AETHER Консьерж Obsidian</h3>
+                  <p className="text-[10px] text-emerald-400 font-mono">Выделенный дежурный офицер 24/7</p>
                 </div>
               </div>
-              <span className="text-xs font-mono text-zinc-500">Avg response: &lt; 15s</span>
+              <span className="text-xs font-mono text-zinc-500">Ср. ответ: &lt; 15 сек</span>
             </div>
 
             <div className="flex-1 overflow-y-auto py-4 space-y-3">
@@ -663,14 +650,14 @@ export default function UserDashboardPage() {
                 type="text"
                 value={supportInput}
                 onChange={(e) => setSupportInput(e.target.value)}
-                placeholder="Ask concierge about corridor clearance, VIP fleet, or billing..."
+                placeholder="Спросите консьержа о зеленом коридоре, VIP-флоте или счетах..."
                 className="flex-1 glass-input rounded-2xl px-4 py-3 text-xs text-white"
               />
               <button
                 type="submit"
                 className="gradient-btn px-6 py-3 rounded-2xl text-xs font-bold text-white flex items-center gap-1.5"
               >
-                Send
+                Отправить
               </button>
             </form>
           </div>
@@ -681,9 +668,9 @@ export default function UserDashboardPage() {
       {isTopUpOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/80 backdrop-blur-md">
           <div className="w-full max-w-md p-6 rounded-3xl bg-[#111217] border border-white/10 text-white space-y-5">
-            <h3 className="text-base font-bold">Top Up Aether Vault</h3>
+            <h3 className="text-base font-bold">Пополнить сейф Aether</h3>
             <p className="text-xs text-zinc-400">
-              Select funds to instantly deposit via Stripe Platinum or Apple Pay.
+              Выберите сумму для мгновенного зачисления через Stripe Platinum или Apple Pay.
             </p>
 
             <div className="grid grid-cols-4 gap-2">
@@ -707,7 +694,7 @@ export default function UserDashboardPage() {
                 onClick={() => setIsTopUpOpen(false)}
                 className="px-4 py-2 rounded-xl text-xs bg-white/5 text-zinc-300 hover:text-white"
               >
-                Cancel
+                Отмена
               </button>
               <button
                 onClick={() => {
@@ -716,7 +703,7 @@ export default function UserDashboardPage() {
                 }}
                 className="gradient-btn px-5 py-2.5 rounded-xl text-xs font-bold text-white"
               >
-                Deposit ${topUpAmount}.00
+                Внести ${topUpAmount}.00
               </button>
             </div>
           </div>
@@ -730,10 +717,10 @@ export default function UserDashboardPage() {
             onSubmit={handleAddAddressSubmit}
             className="w-full max-w-md p-6 rounded-3xl bg-[#111217] border border-white/10 text-white space-y-4"
           >
-            <h3 className="text-base font-bold">Add Pre-Cleared Hub / Address</h3>
+            <h3 className="text-base font-bold">Добавить проверенный адрес</h3>
 
             <div>
-              <label className="text-[11px] text-zinc-400 block mb-1">Title (e.g. Tribeca Studio)</label>
+              <label className="text-[11px] text-zinc-400 block mb-1">Название (напр. Студия Трайбека)</label>
               <input
                 type="text"
                 required
@@ -744,7 +731,7 @@ export default function UserDashboardPage() {
             </div>
 
             <div>
-              <label className="text-[11px] text-zinc-400 block mb-1">Street Address</label>
+              <label className="text-[11px] text-zinc-400 block mb-1">Адрес улицы</label>
               <input
                 type="text"
                 required
@@ -755,7 +742,7 @@ export default function UserDashboardPage() {
             </div>
 
             <div>
-              <label className="text-[11px] text-zinc-400 block mb-1">Unit / Floor / Access Note</label>
+              <label className="text-[11px] text-zinc-400 block mb-1">Квартира / Офис / Заметка консьержу</label>
               <input
                 type="text"
                 value={newApt}
@@ -770,13 +757,13 @@ export default function UserDashboardPage() {
                 onClick={() => setIsAddAddrOpen(false)}
                 className="px-4 py-2 rounded-xl text-xs bg-white/5 text-zinc-300 hover:text-white"
               >
-                Cancel
+                Отмена
               </button>
               <button
                 type="submit"
                 className="gradient-btn px-5 py-2.5 rounded-xl text-xs font-bold text-white"
               >
-                Save Location
+                Сохранить адрес
               </button>
             </div>
           </form>

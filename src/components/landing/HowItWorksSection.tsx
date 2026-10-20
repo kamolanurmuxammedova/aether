@@ -8,35 +8,35 @@ export function HowItWorksSection() {
   const steps = [
     {
       number: "01",
-      title: "Pin & Verify",
+      title: "Точка и проверка",
       description:
-        "Select your cargo category, upload photos, and pin precise geospatial coordinates down to the specific building entrance or helipad.",
+        "Выберите класс груза, прикрепите фото и укажите точные геокоординаты вплоть до конкретного входа в здание или консьерж-зоны.",
       icon: Navigation,
-      badge: "Sub-Meter GPS",
+      badge: "GPS высокой точности",
     },
     {
       number: "02",
-      title: "Quantum Fleet Match",
+      title: "Квантовый подбор флота",
       description:
-        "Our neural dispatch engine matches the optimal vehicle within 400 milliseconds, optimizing for traffic congestion and cargo sensitivity.",
+        "Нейросетевой алгоритм за 400 миллисекунд назначает оптимальный транспорт с учетом дорожной обстановки и параметров груза.",
       icon: Cpu,
-      badge: "Sub-Second Dispatch",
+      badge: "Подбор за 400 мс",
     },
     {
       number: "03",
-      title: "Dedicated Corridor Transit",
+      title: "Движение по коридору",
       description:
-        "Your courier navigates prioritized green corridors with gyro-stabilized, climate-controlled cargo pods under continuous telemetry.",
+        "Курьер движется по зеленой волне светофоров в гиростабилизированных термобоксах с непрерывной трансляцией координат.",
       icon: ShieldCheck,
-      badge: "Zero-Stop Route",
+      badge: "Беспосадочный путь",
     },
     {
       number: "04",
-      title: "Biometric Handover",
+      title: "Биометрическая передача",
       description:
-        "Recipient verification via dynamic encrypted OTP, physical signature, or photo proof. Instant digital receipt dispatched to your vault.",
+        "Вручение по динамическому одноразовому PIN-коду или биометрии. Безотзывная цифровая накладная поступает в ваш сейф.",
       icon: KeyRound,
-      badge: "Cryptographic Proof",
+      badge: "Крипто-защита",
     },
   ];
 
@@ -51,13 +51,13 @@ export function HowItWorksSection() {
           className="text-center max-w-3xl mx-auto mb-20 space-y-4"
         >
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-semibold">
-            <span>Seamless Execution</span>
+            <span>Безупречное исполнение</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-            Engineered for <span className="gradient-accent-text">Zero Delay</span>
+            Создано для доставки <span className="gradient-accent-text">без задержек</span>
           </h2>
           <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
-            From instant dispatch to cryptographic delivery confirmation, experience the most advanced urban logistics architecture ever deployed.
+            От моментального назначения до криптографического подтверждения вручения — испытайте самую совершенную платформу городской доставки.
           </p>
         </motion.div>
 
@@ -96,7 +96,7 @@ export function HowItWorksSection() {
                 </div>
 
                 <div className="pt-6 mt-6 border-t border-white/5 flex items-center justify-between text-xs text-zinc-500 group-hover:text-indigo-400 transition-colors">
-                  <span>Step {idx + 1} of 4</span>
+                  <span>Шаг {idx + 1} из 4</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </motion.div>

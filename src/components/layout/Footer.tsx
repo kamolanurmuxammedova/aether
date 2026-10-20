@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Zap, ShieldCheck, ArrowRight, CheckCircle2, Globe2, Sparkles, Send } from "lucide-react";
+import { Zap, CheckCircle2, Send } from "lucide-react";
 
 export function Footer() {
   const [subscribed, setSubscribed] = useState(false);
@@ -34,7 +34,7 @@ export function Footer() {
             </Link>
 
             <p className="text-sm text-zinc-400 leading-relaxed max-w-sm">
-              The next-generation autonomous hyper-logistics infrastructure. Zero-delay dedicated urban corridors, white-glove security protocol, and micro-precision telemetry.
+              Городская логистическая инфраструктура нового поколения. Скоростные зеленые коридоры, белый протокол безопасности и микро-точная спутниковая телеметрия.
             </p>
 
             {/* Operational Status Pill */}
@@ -43,58 +43,58 @@ export function Footer() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
-              <span>14 Global Hubs Online • 99.98% On-Time</span>
+              <span>14 мировых хабов онлайн • 99.98% точность</span>
             </div>
           </div>
 
           {/* Column 1: Services */}
           <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Logistics</h4>
+            <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Логистика</h4>
             <ul className="space-y-2.5 text-xs">
-              <li><Link href="/book" className="hover:text-white transition-colors">Hyperspeed Direct</Link></li>
-              <li><Link href="/book?category=ELECTRONICS" className="hover:text-white transition-colors">High-Value Tech</Link></li>
-              <li><Link href="/book?category=DOCUMENTS" className="hover:text-white transition-colors">Classified Documents</Link></li>
-              <li><Link href="/book?category=FRAGILE" className="hover:text-white transition-colors">Gyro-Stabilized Art</Link></li>
-              <li><Link href="/book?category=MEDICINE" className="hover:text-white transition-colors">Cold-Chain Pharma</Link></li>
-              <li><Link href="/book" className="hover:text-white transition-colors">Drone Corridor Beta</Link></li>
+              <li><Link href="/book" className="hover:text-white transition-colors">Гиперскорость Direct</Link></li>
+              <li><Link href="/book?category=ELECTRONICS" className="hover:text-white transition-colors">Ценная электроника</Link></li>
+              <li><Link href="/book?category=DOCUMENTS" className="hover:text-white transition-colors">Секретные документы</Link></li>
+              <li><Link href="/book?category=FRAGILE" className="hover:text-white transition-colors">Арт-объекты с гироскопом</Link></li>
+              <li><Link href="/book?category=MEDICINE" className="hover:text-white transition-colors">Холодовая цепь фармы</Link></li>
+              <li><Link href="/book" className="hover:text-white transition-colors">Дроны-курьеры (Бета)</Link></li>
             </ul>
           </div>
 
           {/* Column 2: Ecosystem */}
           <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Ecosystem</h4>
+            <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Экосистема</h4>
             <ul className="space-y-2.5 text-xs">
-              <li><Link href="/track" className="hover:text-white transition-colors">Live Satellite Radar</Link></li>
-              <li><Link href="/dashboard" className="hover:text-white transition-colors">Enterprise Portal</Link></li>
-              <li><Link href="/courier" className="hover:text-white transition-colors">Join Courier Fleet</Link></li>
-              <li><Link href="/admin" className="hover:text-white transition-colors">Fleet Telemetry API</Link></li>
-              <li><a href="#pricing" className="hover:text-white transition-colors">Dynamic Rates</a></li>
-              <li><a href="#faq" className="hover:text-white transition-colors">Security Whitepaper</a></li>
+              <li><Link href="/track" className="hover:text-white transition-colors">Спутниковый радар</Link></li>
+              <li><Link href="/dashboard" className="hover:text-white transition-colors">Кабинет клиента</Link></li>
+              <li><Link href="/courier" className="hover:text-white transition-colors">Стать курьером флота</Link></li>
+              <li><Link href="/admin" className="hover:text-white transition-colors">API телеметрии</Link></li>
+              <li><a href="#pricing" className="hover:text-white transition-colors">Тарифы в реальном времени</a></li>
+              <li><a href="#faq" className="hover:text-white transition-colors">Вопросы и протоколы</a></li>
             </ul>
           </div>
 
           {/* Column 3: Architecture & Legal */}
           <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Governance</h4>
+            <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Безопасность</h4>
             <ul className="space-y-2.5 text-xs">
-              <li><span className="text-zinc-500">Zero-Loss Guarantee</span></li>
-              <li><span className="text-zinc-500">Lloyd&apos;s Cargo Insurance</span></li>
-              <li><span className="text-zinc-500">SOC2 Type II Certified</span></li>
-              <li><span className="text-zinc-500">Privacy & Biometrics</span></li>
-              <li><span className="text-zinc-500">API Documentation</span></li>
-              <li><span className="text-zinc-500">Sustainability Index</span></li>
+              <li><span className="text-zinc-500">100% гарантия сохранности</span></li>
+              <li><span className="text-zinc-500">Страхование Lloyd&apos;s</span></li>
+              <li><span className="text-zinc-500">Сертификат SOC2 Type II</span></li>
+              <li><span className="text-zinc-500">Биометрическая защита</span></li>
+              <li><span className="text-zinc-500">Документация API</span></li>
+              <li><span className="text-zinc-500">Индекс экологичности</span></li>
             </ul>
           </div>
 
           {/* Column 4: Newsletter */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold text-white uppercase tracking-widest">Aether Dispatch</h4>
+            <h4 className="text-xs font-bold text-white uppercase tracking-widest">Aether Сводка</h4>
             <p className="text-xs text-zinc-400">
-              Receive real-time network expansion updates, enterprise rates, and API access keys.
+              Получайте обновления о расширении сети коридоров, закрытых тарифах и ключах доступа к API.
             </p>
             {subscribed ? (
               <div className="p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-400 flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4" /> Priority dispatch enabled.
+                <CheckCircle2 className="w-4 h-4" /> Приоритетный доступ подключен.
               </div>
             ) : (
               <form onSubmit={handleSubscribe} className="space-y-2">
@@ -109,6 +109,7 @@ export function Footer() {
                   />
                   <button
                     type="submit"
+                    aria-label="Подписаться"
                     className="absolute right-1.5 top-1.5 w-6 h-6 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white flex items-center justify-center transition-colors"
                   >
                     <Send className="w-3 h-3" />
@@ -122,15 +123,15 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
           <div className="flex items-center gap-4">
-            <p>© 2026 AETHER Logistics Technologies Inc. All rights reserved.</p>
+            <p>© 2026 AETHER Logistics Technologies Inc. Все права защищены.</p>
             <span className="hidden sm:inline">•</span>
-            <span className="hidden sm:inline">Encrypted Quantum Dispatch v3.8</span>
+            <span className="hidden sm:inline">Квантовое диспетчирование v3.8</span>
           </div>
 
           <div className="flex items-center gap-6">
-            <span className="hover:text-zinc-400 cursor-pointer">Security Protocol</span>
-            <span className="hover:text-zinc-400 cursor-pointer">Terms of Carriage</span>
-            <span className="hover:text-zinc-400 cursor-pointer">Global Telemetry Status</span>
+            <span className="hover:text-zinc-400 cursor-pointer">Протокол безопасности</span>
+            <span className="hover:text-zinc-400 cursor-pointer">Правила перевозки</span>
+            <span className="hover:text-zinc-400 cursor-pointer">Статус глобальной сети</span>
           </div>
         </div>
       </div>

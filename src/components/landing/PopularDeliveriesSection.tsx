@@ -3,66 +3,57 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Zap, Clock, MapPin, ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.65, delay: i * 0.13, ease: "easeOut" as const },
-  }),
-};
+import { Clock, ArrowRight, Sparkles } from "lucide-react";
 
 export function PopularDeliveriesSection() {
   const routes = [
     {
       id: "rt_1",
-      category: "High-Value Tech",
-      title: "Apple Fifth Ave ➔ Tribeca Loft",
+      category: "Электроника и техника",
+      title: "Apple Пятое Авеню ➔ Лофт в Трайбека",
       from: "767 5th Ave (Apple Cube)",
-      to: "Franklin & Greenwich St, Tribeca",
-      distance: "5.8 km",
-      time: "16 mins",
+      to: "Франклин и Гринвич, Трайбека",
+      distance: "5.8 км",
+      time: "16 мин",
       price: "$29.50",
-      security: "PIN Handover",
-      badge: "Fastest Corridor",
+      security: "PIN-вручение",
+      badge: "Скоростной коридор",
     },
     {
       id: "rt_2",
-      category: "Legal & M&A Documents",
-      title: "Wall Street ➔ Midtown Law Chambers",
-      from: "14 Wall Street (Fin District)",
-      to: "375 Park Ave (Seagram Building)",
-      distance: "7.1 km",
-      time: "19 mins",
+      category: "Юридические договоры и M&A",
+      title: "Уолл Стрит ➔ Мидтаун Юридический Центр",
+      from: "Уолл Стрит, 14 (Фин. район)",
+      to: "Парк Авеню, 375 (Сигрэм Билдинг)",
+      distance: "7.1 км",
+      time: "19 мин",
       price: "$26.00",
-      security: "Biometric Sign",
-      badge: "Encrypted Pouch",
+      security: "Биометрия",
+      badge: "Защищенный сейф",
     },
     {
       id: "rt_3",
-      category: "Designer & Couture",
-      title: "Madison Ave Boutique ➔ Central Park S",
-      from: "712 Madison Ave (Couture Row)",
-      to: "15 Central Park West",
-      distance: "2.4 km",
-      time: "9 mins",
+      category: "Дизайнерская одежда и кутюр",
+      title: "Бутик на Мэдисон ➔ Сентрал Парк Юг",
+      from: "Мэдисон Авеню, 712",
+      to: "Сентрал Парк Вест, 15",
+      distance: "2.4 км",
+      time: "9 мин",
       price: "$22.50",
-      security: "White-Glove",
-      badge: "Hanger Care",
+      security: "Белые перчатки",
+      badge: "Кофр с плечиками",
     },
     {
       id: "rt_4",
-      category: "Cold-Chain Medicine",
-      title: "BioLab Center ➔ Upper East Residence",
-      from: "First Ave Medical Corridor",
-      to: "740 Park Avenue",
-      distance: "3.2 km",
-      time: "11 mins",
+      category: "Фармацевтика с термобоксом",
+      title: "БиоЛаб Центр ➔ Верхний Ист-Сайд",
+      from: "Мед. коридор Первой Авеню",
+      to: "Парк Авеню, 740",
+      distance: "3.2 км",
+      time: "11 мин",
       price: "$24.00",
-      security: "Thermal Log",
-      badge: "Cold Sealed",
+      security: "Холодовая цепь",
+      badge: "Термопечать",
     },
   ];
 
@@ -79,13 +70,13 @@ export function PopularDeliveriesSection() {
         >
           <div className="space-y-3 max-w-xl">
             <span className="text-xs font-mono uppercase tracking-widest text-purple-400">
-              Verified High-Velocity Corridors
+              Проверенные скоростные коридоры
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-              Popular <span className="gradient-accent-text">City Routes</span>
+              Популярные <span className="gradient-accent-text">городские маршруты</span>
             </h2>
             <p className="text-sm text-zinc-400">
-              Frequently dispatched express lanes with pre-cleared building security protocols and zero staging delays.
+              Регулярные экспресс-линии с предварительно согласованным доступом в здания и нулевыми задержками.
             </p>
           </div>
 
@@ -93,7 +84,7 @@ export function PopularDeliveriesSection() {
             href="/book"
             className="inline-flex items-center gap-2 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition-colors"
           >
-            <span>Create Custom Multi-Stop Corridor</span>
+            <span>Настроить персональный мульти-маршрут</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </motion.div>
@@ -127,13 +118,13 @@ export function PopularDeliveriesSection() {
               <div className="space-y-2 mb-6">
                 <div className="flex items-center gap-2.5 text-xs text-zinc-300">
                   <div className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
-                  <span className="text-zinc-500 font-mono text-[10px]">PICKUP:</span>
+                  <span className="text-zinc-500 font-mono text-[10px]">ОТКУДА:</span>
                   <span className="truncate">{r.from}</span>
                 </div>
                 <div className="h-3 border-l border-dashed border-zinc-700 ml-1" />
                 <div className="flex items-center gap-2.5 text-xs text-zinc-300">
                   <div className="w-2 h-2 rounded-full bg-indigo-400 shrink-0" />
-                  <span className="text-zinc-500 font-mono text-[10px]">DROP:</span>
+                  <span className="text-zinc-500 font-mono text-[10px]">КУДА:</span>
                   <span className="truncate">{r.to}</span>
                 </div>
               </div>
@@ -154,7 +145,7 @@ export function PopularDeliveriesSection() {
                     href="/book"
                     className="gradient-btn px-4 py-2 rounded-xl text-xs font-bold text-white flex items-center gap-1 group-hover:shadow-lg transition-all"
                   >
-                    <span>Instant Book</span>
+                    <span>Вызвать</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>

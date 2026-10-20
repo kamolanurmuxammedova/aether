@@ -46,9 +46,9 @@ export default function VerifyOtpPage() {
           </div>
 
           <div className="space-y-1">
-            <h1 className="text-2xl font-bold text-white tracking-tight">Biometric Verification</h1>
+            <h1 className="text-2xl font-bold text-white tracking-tight">Верификация доступа</h1>
             <p className="text-xs text-zinc-400">
-              Enter the 6-digit cryptographic token sent to your authorized terminal.
+              Введите 6-значный криптографический код, отправленный на ваш терминал.
             </p>
           </div>
 
@@ -75,20 +75,20 @@ export default function VerifyOtpPage() {
               type="submit"
               className="w-full gradient-btn py-3 rounded-xl text-xs font-bold text-white flex items-center justify-center gap-2 shadow-lg"
             >
-              <span>Authenticate & Enter Vault</span>
+              <span>Подтвердить и войти</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </form>
 
           <div className="text-xs text-zinc-500 font-mono">
             {countdown > 0 ? (
-              <span>Resend security token in {countdown}s</span>
+              <span>Повторная отправка через {countdown}с</span>
             ) : (
               <button
                 onClick={() => setCountdown(60)}
                 className="text-indigo-400 hover:text-white flex items-center gap-1 mx-auto"
               >
-                <RotateCcw className="w-3 h-3" /> Resend Token
+                <RotateCcw className="w-3 h-3" /> Отправить код повторно
               </button>
             )}
           </div>

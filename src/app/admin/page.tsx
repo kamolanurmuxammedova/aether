@@ -62,13 +62,13 @@ export default function AdminHubPage() {
 
           <div className="space-y-2">
             <span className="text-[10px] font-mono uppercase tracking-widest text-red-400">
-              Access Restricted • Security Level 4
+              Ограниченный доступ • Уровень безопасности 4
             </span>
             <h1 className="text-2xl font-bold text-white tracking-tight">
-              Executive Telemetry Barrier
+              Административный барьер доступа
             </h1>
             <p className="text-xs text-zinc-400 leading-relaxed">
-              Your account <span className="text-white font-mono">{user.email}</span> is currently logged in with <span className="text-purple-400 font-bold">{user.role}</span> privileges. Administrative dashboards require verified security credentials.
+              Ваш аккаунт <span className="text-white font-mono">{user.email}</span> авторизован с привилегиями <span className="text-purple-400 font-bold">{user.role}</span>. Доступ к панели глобального управления требует подтвержденных прав администратора.
             </p>
           </div>
 
@@ -81,12 +81,12 @@ export default function AdminHubPage() {
                   setAdminKey(e.target.value);
                   setKeyError(false);
                 }}
-                placeholder="Enter Executive Master Key (e.g. admin)"
+                placeholder="Введите мастер-ключ (напр. admin)"
                 className="w-full glass-input rounded-xl px-4 py-2.5 text-xs text-white text-center font-mono focus:border-red-500"
               />
               {keyError && (
                 <p className="text-[11px] text-red-400 mt-1.5 font-mono">
-                  Invalid security clearance token.
+                  Неверный токен допуска безопасности.
                 </p>
               )}
             </div>
@@ -95,7 +95,7 @@ export default function AdminHubPage() {
               type="submit"
               className="w-full gradient-btn py-2.5 rounded-xl text-xs font-bold text-white flex items-center justify-center gap-1.5 shadow-lg"
             >
-              <ShieldCheck className="w-4 h-4" /> Authenticate As Admin
+              <ShieldCheck className="w-4 h-4" /> Авторизоваться как Администратор
             </button>
           </form>
 
@@ -104,7 +104,7 @@ export default function AdminHubPage() {
               href="/dashboard"
               className="text-xs text-zinc-400 hover:text-white inline-flex items-center gap-1"
             >
-              Return to Client Portal <ArrowRight className="w-3.5 h-3.5" />
+              Вернуться в личный кабинет <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
         </div>
@@ -115,92 +115,92 @@ export default function AdminHubPage() {
   const mockAdminOrders = [
     {
       id: "AETH-982XF",
-      client: "Alexander Vance",
+      client: "Александр Вэнс",
       category: "ELECTRONICS",
-      courier: "Marcus Sterling",
-      status: "IN_TRANSIT",
+      courier: "Маркус Стерлинг",
+      status: "В ПУТИ",
       amount: 43.5,
-      corridor: "Apple 5th Ave ➔ 740 Park Ave",
-      eta: "8 min",
+      corridor: "Apple 5-я Авеню ➔ Парк Авеню, 740",
+      eta: "8 мин",
     },
     {
       id: "AETH-714ML",
-      client: "Clara Croft",
+      client: "Клара Крофт",
       category: "DOCUMENTS",
-      courier: "Julian De Vries",
-      status: "DELIVERED",
+      courier: "Джулиан Де Врис",
+      status: "ДОСТАВЛЕНО",
       amount: 23.0,
-      corridor: "520 Broadway ➔ 30 Hudson Yards",
-      eta: "Delivered",
+      corridor: "Бродвей, 520 ➔ Хадсон Ярдс, 30",
+      eta: "Доставлено",
     },
     {
       id: "AETH-309BC",
       client: "Vance Capital",
       category: "DOCUMENTS",
-      courier: "Elena Rostova",
-      status: "PICKING_UP",
+      courier: "Елена Ростова",
+      status: "ЗАБОР ГРУЗА",
       amount: 38.0,
-      corridor: "Wall Street ➔ Midtown East",
-      eta: "14 min",
+      corridor: "Уолл-Стрит ➔ Мидтаун Ист",
+      eta: "14 мин",
     },
     {
       id: "AETH-882ZX",
       client: "Lumina Labs",
       category: "MEDICINE",
-      courier: "David Sterling",
-      status: "IN_TRANSIT",
+      courier: "Давид Стерлинг",
+      status: "В ПУТИ",
       amount: 54.0,
-      corridor: "BioLab Center ➔ Mount Sinai",
-      eta: "11 min",
+      corridor: "Лабораторный комплекс ➔ Гора Синай",
+      eta: "11 мин",
     },
     {
       id: "AETH-112QA",
-      client: "Antoine Laurent",
+      client: "Антуан Лоран",
       category: "FOOD",
-      courier: "Sarah Connor",
-      status: "DELIVERED",
+      courier: "Сара Коннор",
+      status: "ДОСТАВЛЕНО",
       amount: 28.5,
-      corridor: "L'Horizon ➔ Central Park S",
-      eta: "Delivered",
+      corridor: "Ресторан L'Horizon ➔ Сентрал Парк Юг",
+      eta: "Доставлено",
     },
   ];
 
   const mockCouriers = [
     {
       id: "CUR-01",
-      name: "Marcus Sterling",
+      name: "Маркус Стерлинг",
       vehicle: "Cyber Scooter X",
       rating: 4.99,
       jobs: 1840,
-      status: "EN_ROUTE",
-      location: "Upper East Side",
+      status: "НА МАРШРУТЕ",
+      location: "Верхний Ист-Сайд",
     },
     {
       id: "CUR-02",
-      name: "Julian De Vries",
+      name: "Джулиан Де Врис",
       vehicle: "Tesla Model S Fleet",
       rating: 4.98,
       jobs: 980,
-      status: "AVAILABLE",
-      location: "SoHo Tech Hub",
+      status: "ДОСТУПЕН",
+      location: "Техно-хаб Сохо",
     },
     {
       id: "CUR-03",
-      name: "Elena Rostova",
+      name: "Елена Ростова",
       vehicle: "Cargo E-Bike Pro",
       rating: 4.96,
       jobs: 742,
-      status: "PICKING_UP",
-      location: "Financial District",
+      status: "ЗАБОР ГРУЗА",
+      location: "Финансовый квартал",
     },
     {
       id: "CUR-04",
-      name: "David Sterling",
+      name: "Давид Стерлинг",
       vehicle: "Quantum Air Drone",
       rating: 5.0,
       jobs: 420,
-      status: "EN_ROUTE",
-      location: "Midtown Sky Corridor",
+      status: "НА МАРШРУТЕ",
+      location: "Воздушный коридор Мидтауна",
     },
   ];
 
@@ -227,25 +227,25 @@ export default function AdminHubPage() {
             <div>
               <div className="flex items-center gap-2">
                 <h1 className="text-xl sm:text-2xl font-bold text-white">
-                  Executive Telemetry Hub
+                  Центр управления и телеметрии
                 </h1>
                 <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
-                  Global Fleet Ops
+                  Управление флотом
                 </span>
               </div>
               <p className="text-xs text-zinc-400 mt-1 font-mono">
-                System Status: 100% Operational • 418 Live Corridors Active
+                Статус системы: 100% Штатно • 418 активных коридоров в режиме реального времени
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-3">
             <button
-              onClick={() => alert("Generating Enterprise Logistics Audit PDF...")}
+              onClick={() => alert("Формирование корпоративного аудита логистики в PDF...")}
               className="gradient-btn px-5 py-2.5 rounded-2xl text-xs font-bold text-white flex items-center gap-2 shadow-lg"
             >
               <FileText className="w-4 h-4" />
-              <span>Export Audit Manifest</span>
+              <span>Экспорт манифеста аудита</span>
             </button>
           </div>
         </div>
@@ -254,55 +254,55 @@ export default function AdminHubPage() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="p-6 rounded-3xl bg-[#111217] border border-white/5 space-y-2">
             <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block">
-              Monthly GMV (Gross Volume)
+              Месячный оборот GMV
             </span>
             <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono">
               $1,842,900
             </div>
             <span className="text-[11px] text-emerald-400 font-mono block">
-              +24.8% MoM Growth
+              +24.8% прирост за месяц
             </span>
           </div>
 
           <div className="p-6 rounded-3xl bg-[#111217] border border-white/5 space-y-2">
             <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block">
-              Active Flights & Corridors
+              Рейсы и коридоры в движении
             </span>
             <div className="text-2xl sm:text-3xl font-extrabold text-indigo-400 font-mono">
-              418 In Flight
+              418 на маршруте
             </div>
-            <span className="text-[11px] text-zinc-400 block">Avg dispatch time: 38s</span>
+            <span className="text-[11px] text-zinc-400 block">Ср. назначение: 38 сек</span>
           </div>
 
           <div className="p-6 rounded-3xl bg-[#111217] border border-white/5 space-y-2">
             <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block">
-              Active Fleet Utilization
+              Загрузка активного флота
             </span>
             <div className="text-2xl sm:text-3xl font-extrabold text-purple-400 font-mono">
               94.2%
             </div>
-            <span className="text-[11px] text-emerald-400 block">1,240 couriers online</span>
+            <span className="text-[11px] text-emerald-400 block">1 240 курьеров на линии</span>
           </div>
 
           <div className="p-6 rounded-3xl bg-[#111217] border border-white/5 space-y-2">
             <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block">
-              Network SLA Reliability
+              Надежность сети по SLA
             </span>
             <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono">
               99.98%
             </div>
-            <span className="text-[11px] text-zinc-500 block">Lloyd&apos;s cargo zero-claim</span>
+            <span className="text-[11px] text-zinc-500 block">0 страховых исков Lloyd&apos;s</span>
           </div>
         </div>
 
         {/* Tabs */}
-        <div className="flex items-center gap-2 border-b border-white/10 pb-2">
+        <div className="flex items-center gap-2 border-b border-white/10 pb-2 overflow-x-auto">
           {[
-            { id: "overview", label: "Executive Analytics", icon: BarChart3 },
-            { id: "orders", label: "Live Order Telemetry", icon: Package },
-            { id: "couriers", label: "Fleet & Couriers", icon: Truck },
-            { id: "analytics", label: "City Corridors & Heatmap", icon: MapPin },
-            { id: "logs", label: "Security & Audit Logs", icon: ShieldAlert },
+            { id: "overview", label: "Сводная аналитика", icon: BarChart3 },
+            { id: "orders", label: "Телеметрия заказов", icon: Package },
+            { id: "couriers", label: "Флот и курьеры", icon: Truck },
+            { id: "analytics", label: "Коридоры и карта", icon: MapPin },
+            { id: "logs", label: "Журнал аудита", icon: ShieldAlert },
           ].map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -310,7 +310,7 @@ export default function AdminHubPage() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as typeof activeTab)}
-                className={`px-4 py-2.5 rounded-2xl text-xs font-semibold flex items-center gap-2 transition-all ${
+                className={`px-4 py-2.5 rounded-2xl text-xs font-semibold flex items-center gap-2 whitespace-nowrap transition-all ${
                   isActive
                     ? "bg-purple-600/30 border border-purple-500/40 text-white shadow-md shadow-purple-600/20"
                     : "text-zinc-400 hover:text-white hover:bg-white/[0.04]"
@@ -328,15 +328,15 @@ export default function AdminHubPage() {
           <div className="space-y-8 animate-in fade-in duration-300">
             {/* SVG Revenue Chart */}
             <div className="p-6 sm:p-8 rounded-3xl bg-[#111217] border border-white/5 space-y-6">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
                   <h3 className="text-base font-bold text-white">
-                    Revenue Trajectory & Corridor Volume (2026)
+                    Динамика выручки и объем коридоров (2026)
                   </h3>
-                  <p className="text-xs text-zinc-400">Total processed GMV across 14 global metros</p>
+                  <p className="text-xs text-zinc-400">Суммарный обработанный GMV по 14 мегаполисам мира</p>
                 </div>
-                <span className="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
-                  +$364k this quarter
+                <span className="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 self-start sm:self-auto">
+                  +$364k в этом квартале
                 </span>
               </div>
 
@@ -373,12 +373,12 @@ export default function AdminHubPage() {
 
                   {/* Datapoints */}
                   {[
-                    { cx: 50, cy: 190, label: "Jan ($820k)" },
-                    { cx: 200, cy: 165, label: "Feb ($980k)" },
-                    { cx: 350, cy: 140, label: "Mar ($1.15M)" },
-                    { cx: 500, cy: 100, label: "Apr ($1.42M)" },
-                    { cx: 650, cy: 60, label: "May ($1.68M)" },
-                    { cx: 750, cy: 30, label: "Jun ($1.84M)" },
+                    { cx: 50, cy: 190, label: "Янв ($820k)" },
+                    { cx: 200, cy: 165, label: "Фев ($980k)" },
+                    { cx: 350, cy: 140, label: "Мар ($1.15M)" },
+                    { cx: 500, cy: 100, label: "Апр ($1.42M)" },
+                    { cx: 650, cy: 60, label: "Май ($1.68M)" },
+                    { cx: 750, cy: 30, label: "Июн ($1.84M)" },
                   ].map((pt, i) => (
                     <g key={i}>
                       <circle cx={pt.cx} cy={pt.cy} r="5" fill="#7C3AED" stroke="#FFFFFF" strokeWidth="2" />
@@ -401,14 +401,14 @@ export default function AdminHubPage() {
             {/* Category Share & City Heatmap breakdown */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="p-6 rounded-3xl bg-[#111217] border border-white/5 space-y-4">
-                <h4 className="text-sm font-bold text-white">Volume by Cargo Class</h4>
+                <h4 className="text-sm font-bold text-white">Объем по категориям грузов</h4>
                 <div className="space-y-3 text-xs font-mono">
                   {[
-                    { name: "Electronics & Tech", pct: "38%", color: "bg-purple-500" },
-                    { name: "Classified Documents", pct: "24%", color: "bg-indigo-500" },
-                    { name: "Gourmet & Thermal Food", pct: "16%", color: "bg-blue-500" },
-                    { name: "Cold-Chain Pharmaceuticals", pct: "12%", color: "bg-emerald-500" },
-                    { name: "Fragile Art & Other", pct: "10%", color: "bg-amber-500" },
+                    { name: "Электроника и гаджеты", pct: "38%", color: "bg-purple-500" },
+                    { name: "Секретные документы", pct: "24%", color: "bg-indigo-500" },
+                    { name: "Ресторанные блюда (термо)", pct: "16%", color: "bg-blue-500" },
+                    { name: "Фармацевтика холодовой цепи", pct: "12%", color: "bg-emerald-500" },
+                    { name: "Хрупкое искусство и прочее", pct: "10%", color: "bg-amber-500" },
                   ].map((c) => (
                     <div key={c.name} className="space-y-1">
                       <div className="flex justify-between text-zinc-300">
@@ -424,14 +424,14 @@ export default function AdminHubPage() {
               </div>
 
               <div className="p-6 rounded-3xl bg-[#111217] border border-white/5 space-y-4">
-                <h4 className="text-sm font-bold text-white">Top Metropolitan Corridors</h4>
+                <h4 className="text-sm font-bold text-white">Топ мегаполисов по объёму</h4>
                 <div className="space-y-3 text-xs">
                   {[
-                    { city: "New York (Manhattan-Brooklyn)", active: "142 Active", volume: "$680k", status: "Optimal" },
-                    { city: "London (Mayfair-City)", active: "88 Active", volume: "$420k", status: "Optimal" },
-                    { city: "Tokyo (Minato-Shibuya)", active: "94 Active", volume: "$390k", status: "Optimal" },
-                    { city: "Paris (1st-8th Arrondissement)", active: "52 Active", volume: "$210k", status: "Optimal" },
-                    { city: "Dubai (DIFC-Marina)", active: "42 Active", volume: "$142k", status: "Optimal" },
+                    { city: "Нью-Йорк (Манхэттен-Бруклин)", active: "142 активно", volume: "$680k", status: "Оптимально" },
+                    { city: "Лондон (Мейфэр-Сити)", active: "88 активно", volume: "$420k", status: "Оптимально" },
+                    { city: "Токио (Минато-Сибуя)", active: "94 активно", volume: "$390k", status: "Оптимально" },
+                    { city: "Париж (1-й—8-й округ)", active: "52 активно", volume: "$210k", status: "Оптимально" },
+                    { city: "Дубай (DIFC-Марина)", active: "42 активно", volume: "$142k", status: "Оптимально" },
                   ].map((metro) => (
                     <div
                       key={metro.city}
@@ -463,38 +463,43 @@ export default function AdminHubPage() {
                   type="text"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  placeholder="Filter order # or client..."
+                  placeholder="Поиск по манифесту или клиенту..."
                   className="w-full glass-input rounded-2xl pl-10 pr-4 py-2.5 text-xs text-white"
                 />
               </div>
 
-              <div className="flex items-center gap-2 self-start sm:self-auto">
-                {["ALL", "IN_TRANSIT", "DELIVERED", "PICKING_UP"].map((st) => (
+              <div className="flex items-center gap-2 self-start sm:self-auto overflow-x-auto">
+                {[
+                  { id: "ALL", label: "Все" },
+                  { id: "В ПУТИ", label: "В пути" },
+                  { id: "ДОСТАВЛЕНО", label: "Доставлено" },
+                  { id: "ЗАБОР ГРУЗА", label: "Забор" },
+                ].map((st) => (
                   <button
-                    key={st}
-                    onClick={() => setOrderFilter(st)}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors ${
-                      orderFilter === st
+                    key={st.id}
+                    onClick={() => setOrderFilter(st.id)}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors ${
+                      orderFilter === st.id
                         ? "bg-purple-600 text-white"
                         : "bg-white/5 text-zinc-400 hover:text-white"
                     }`}
                   >
-                    {st}
+                    {st.label}
                   </button>
                 ))}
               </div>
             </div>
 
-            <div className="rounded-3xl bg-[#111217] border border-white/5 overflow-hidden">
-              <table className="w-full text-left text-xs">
+            <div className="rounded-3xl bg-[#111217] border border-white/5 overflow-x-auto">
+              <table className="w-full text-left text-xs min-w-[600px]">
                 <thead className="bg-white/[0.02] border-b border-white/5 text-zinc-500 font-mono uppercase tracking-wider text-[10px]">
                   <tr>
-                    <th className="p-4">Manifest #</th>
-                    <th className="p-4">Customer</th>
-                    <th className="p-4">Corridor</th>
-                    <th className="p-4">Assigned Fleet</th>
-                    <th className="p-4">Status</th>
-                    <th className="p-4 font-mono">Amount</th>
+                    <th className="p-4">Манифест #</th>
+                    <th className="p-4">Клиент</th>
+                    <th className="p-4">Коридор</th>
+                    <th className="p-4">Назначенный флот</th>
+                    <th className="p-4">Статус</th>
+                    <th className="p-4 font-mono">Сумма</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-white/5 text-zinc-300">
@@ -507,7 +512,7 @@ export default function AdminHubPage() {
                       <td className="p-4">
                         <span
                           className={`text-[10px] font-mono px-2 py-0.5 rounded-full border ${
-                            ord.status === "DELIVERED"
+                            ord.status === "ДОСТАВЛЕНО"
                               ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
                               : "bg-indigo-500/10 text-indigo-400 border-indigo-500/20"
                           }`}
@@ -529,7 +534,7 @@ export default function AdminHubPage() {
         {/* TAB 3: COURIERS */}
         {activeTab === "couriers" && (
           <div className="space-y-6 animate-in fade-in duration-300">
-            <h2 className="text-xl font-bold text-white">Active Fleet Hardware & Operators</h2>
+            <h2 className="text-xl font-bold text-white">Активный транспорт и операторы флота</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {mockCouriers.map((cur) => (
                 <div
@@ -548,15 +553,15 @@ export default function AdminHubPage() {
 
                   <div className="grid grid-cols-3 gap-2 text-xs pt-2 border-t border-white/5 font-mono">
                     <div>
-                      <span className="text-zinc-500 block text-[10px]">RATING</span>
+                      <span className="text-zinc-500 block text-[10px]">РЕЙТИНГ</span>
                       <span className="text-amber-400 font-bold">★ {cur.rating}</span>
                     </div>
                     <div>
-                      <span className="text-zinc-500 block text-[10px]">JOBS</span>
+                      <span className="text-zinc-500 block text-[10px]">РЕЙСЫ</span>
                       <span className="text-white">{cur.jobs}</span>
                     </div>
                     <div>
-                      <span className="text-zinc-500 block text-[10px]">SECTOR</span>
+                      <span className="text-zinc-500 block text-[10px]">СЕКТОР</span>
                       <span className="text-zinc-300">{cur.location}</span>
                     </div>
                   </div>
@@ -569,22 +574,22 @@ export default function AdminHubPage() {
         {/* TAB 4: CITY CORRIDORS */}
         {activeTab === "analytics" && (
           <div className="p-8 rounded-3xl bg-[#111217] border border-white/5 space-y-6 animate-in fade-in duration-300">
-            <h2 className="text-xl font-bold text-white">Autonomous Green Corridors Telemetry</h2>
+            <h2 className="text-xl font-bold text-white">Телеметрия автономных зеленых коридоров</h2>
             <p className="text-xs text-zinc-400 leading-relaxed max-w-2xl">
-              Municipal traffic signal synchronization is continuously calibrated via our municipal API integration. Couriers experience zero red lights on designated high-velocity transit avenues.
+              Синхронизация светофорной инфраструктуры непрерывно калибруется через прямое интеграционное API города. Курьеры двигаются без остановок по выделенным высокоскоростным магистралям «зеленой волны».
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-xs">
               <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5">
-                <span className="text-zinc-500 block text-[10px]">TRAFFIC INTERSECTION OVERRIDE</span>
-                <span className="text-emerald-400 font-bold text-sm">Active (99.4% Pass)</span>
+                <span className="text-zinc-500 block text-[10px]">ПРИОРИТЕТ СВЕТОФОРОВ</span>
+                <span className="text-emerald-400 font-bold text-sm">Активен (99.4% проход)</span>
               </div>
               <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5">
-                <span className="text-zinc-500 block text-[10px]">AVERAGE CLEARANCE SPEED</span>
-                <span className="text-white font-bold text-sm">41.2 km/h</span>
+                <span className="text-zinc-500 block text-[10px]">СРЕДНЯЯ СКОРОСТЬ В КОРИДОРЕ</span>
+                <span className="text-white font-bold text-sm">41.2 км/ч</span>
               </div>
               <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5">
-                <span className="text-zinc-500 block text-[10px]">AIR CORRIDOR DRONE SLOTS</span>
-                <span className="text-indigo-400 font-bold text-sm">38 Active Beta</span>
+                <span className="text-zinc-500 block text-[10px]">ВОЗДУШНЫЕ СЛОТЫ ДРОНОВ</span>
+                <span className="text-indigo-400 font-bold text-sm">38 слотов (бета)</span>
               </div>
             </div>
           </div>
@@ -593,27 +598,27 @@ export default function AdminHubPage() {
         {/* TAB 5: AUDIT LOGS */}
         {activeTab === "logs" && (
           <div className="space-y-4 animate-in fade-in duration-300">
-            <h2 className="text-xl font-bold text-white">Cryptographic Security & System Logs</h2>
+            <h2 className="text-xl font-bold text-white">Криптографический журнал аудита и безопасности</h2>
             <div className="p-6 rounded-3xl bg-[#111217] border border-white/5 font-mono text-xs text-zinc-400 space-y-2.5">
               <div className="flex items-center gap-3">
                 <span className="text-emerald-400">[2026-10-20 00:28:14]</span>
                 <span className="text-white">CORRIDOR_LOCK_SUCCESS:</span>
-                <span>Manifest AETH-982XF green-wave activated on 5th Ave corridor.</span>
+                <span>Зеленая волна активирована для манифеста AETH-982XF на 5-й Авеню.</span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="text-indigo-400">[2026-10-20 00:24:02]</span>
                 <span className="text-white">BIOMETRIC_HANDOVER_VERIFIED:</span>
-                <span>Order AETH-714ML recipient face-token matched. Lockbox released.</span>
+                <span>Лицо получателя заказа AETH-714ML подтверждено. Смарт-бокс открыт.</span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="text-purple-400">[2026-10-20 00:19:40]</span>
                 <span className="text-white">STRIPE_VAULT_SETTLEMENT:</span>
-                <span>Captured $500.00 deposit for account usr_vance_01. Fee: $0.00.</span>
+                <span>Депозит $500.00 зачислен на счет usr_vance_01. Комиссия: $0.00.</span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="text-emerald-400">[2026-10-20 00:11:55]</span>
                 <span className="text-white">FLEET_REBALANCING_EXECUTED:</span>
-                <span>Dispatched 14 Cyber-Riders to Tribeca sector for dinner peak.</span>
+                <span>14 кибер-скутеров направлены в район Трайбека на вечерний пик.</span>
               </div>
             </div>
           </div>

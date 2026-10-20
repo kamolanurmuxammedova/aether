@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Apple, Smartphone, QrCode, Sparkles, Zap, Shield, ArrowRight } from "lucide-react";
+import { Apple, Smartphone, QrCode, Sparkles, Zap } from "lucide-react";
 
 export function DownloadAppSection() {
   return (
@@ -22,16 +22,16 @@ export function DownloadAppSection() {
             >
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-semibold">
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>Next-Gen Mobile Telemetry</span>
+                <span>Мобильная телеметрия</span>
               </div>
 
               <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-                Control Velocity <br />
-                <span className="gradient-accent-text">From Your Pocket</span>
+                Управляйте скоростью <br />
+                <span className="gradient-accent-text">прямо из кармана</span>
               </h2>
 
               <p className="text-sm sm:text-base text-zinc-400 leading-relaxed max-w-xl">
-                Experience the AETHER mobile ecosystem with Dynamic Island live courier tracking, biometric lockbox handover, and one-tap re-dispatch for recurring business routes.
+                Попробуйте мобильное приложение AETHER: отслеживание на Dynamic Island, биометрическое открытие замков и вызов курьера по сохраненным маршрутам в одно касание.
               </p>
 
               {/* App badges & QR code */}
@@ -48,7 +48,7 @@ export function DownloadAppSection() {
                 >
                   <Apple className="w-6 h-6 text-white" />
                   <div className="text-left">
-                    <span className="text-[10px] text-zinc-400 block font-mono">Download on the</span>
+                    <span className="text-[10px] text-zinc-400 block font-mono">Загрузите в</span>
                     <span className="text-xs font-bold font-sans">Apple App Store</span>
                   </div>
                 </a>
@@ -59,7 +59,7 @@ export function DownloadAppSection() {
                 >
                   <Smartphone className="w-6 h-6 text-indigo-400" />
                   <div className="text-left">
-                    <span className="text-[10px] text-zinc-400 block font-mono">Get it on</span>
+                    <span className="text-[10px] text-zinc-400 block font-mono">Доступно в</span>
                     <span className="text-xs font-bold font-sans">Google Play</span>
                   </div>
                 </a>
@@ -70,8 +70,8 @@ export function DownloadAppSection() {
                     <QrCode className="w-8 h-8" />
                   </div>
                   <div className="text-[11px] text-zinc-400 pr-2">
-                    <span className="font-semibold text-white block">Scan to Install</span>
-                    <span>Instant iOS/Android App</span>
+                    <span className="font-semibold text-white block">QR-код на телефон</span>
+                    <span>Мгновенная установка</span>
                   </div>
                 </div>
               </motion.div>
@@ -94,50 +94,50 @@ export function DownloadAppSection() {
                 <div className="w-full rounded-[34px] bg-[#09090B] overflow-hidden p-4 space-y-4 border border-white/5">
                   {/* Dynamic Island */}
                   <div className="w-24 h-5 bg-black rounded-full mx-auto flex items-center justify-between px-2 text-[8px] text-zinc-500">
-                    <span className="text-indigo-400 font-bold">14m</span>
+                    <span className="text-indigo-400 font-bold">14м</span>
                     <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                   </div>
 
                   {/* App Screen Header */}
                   <div className="flex items-center justify-between pt-2">
                     <div>
-                      <div className="text-[10px] text-zinc-500 uppercase tracking-wider font-mono">Dispatched</div>
+                      <div className="text-[10px] text-zinc-500 uppercase tracking-wider font-mono">В пути</div>
                       <div className="text-xs font-bold text-white">AETH-982XF</div>
                     </div>
                     <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
-                      In Transit
+                      Зеленый коридор
                     </span>
                   </div>
 
                   {/* Micro Map */}
                   <div className="h-32 rounded-2xl bg-[#111217] border border-white/10 p-3 relative overflow-hidden flex flex-col justify-between">
                     <div className="flex justify-between items-center text-[10px] text-zinc-400">
-                      <span>740 Park Ave</span>
+                      <span>Парк Авеню, 740</span>
                       <Zap className="w-3.5 h-3.5 text-indigo-400 animate-bounce" />
                     </div>
                     <div className="h-1 bg-white/10 rounded-full overflow-hidden">
                       <div className="h-full bg-gradient-to-r from-purple-500 to-indigo-500 w-3/4 rounded-full" />
                     </div>
                     <div className="flex justify-between items-center text-[10px] font-mono text-zinc-400">
-                      <span>Speed: 38 km/h</span>
-                      <span className="text-white font-bold">ETA 6 min</span>
+                      <span>Скорость: 38 км/ч</span>
+                      <span className="text-white font-bold">Прибытие 6 мин</span>
                     </div>
                   </div>
 
                   {/* Courier Card */}
                   <div className="p-3 rounded-2xl bg-white/[0.04] border border-white/5 flex items-center gap-3">
                     <div className="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center text-white text-xs font-bold">
-                      M
+                      М
                     </div>
                     <div className="text-left flex-1">
-                      <div className="text-[11px] font-bold text-white">Marcus Sterling</div>
+                      <div className="text-[11px] font-bold text-white">Маркус Стерлинг</div>
                       <div className="text-[9px] text-zinc-400">Cyber Scooter • 4.99 ★</div>
                     </div>
                   </div>
 
                   {/* Action Button */}
                   <button className="w-full gradient-btn py-2.5 rounded-xl text-[11px] font-bold text-white shadow-md">
-                    Handover PIN: 8492
+                    Код передачи: 8492
                   </button>
                 </div>
               </motion.div>

@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { Coordinates } from "@/types";
-import { Navigation, MapPin, Compass, Zap, Shield, Layers } from "lucide-react";
-import { motion } from "framer-motion";
+import { Zap, Layers } from "lucide-react";
 
 interface DeliveryMapProps {
   pickup: Coordinates;
@@ -22,12 +21,10 @@ export function DeliveryMap({
   pickup,
   dropoff,
   courierPos,
-  courierName = "Julian De Vries",
+  courierName = "Юлиан Де Врис",
   vehiclePlate = "NY-VIP88",
-  eta = "14 mins",
+  eta = "14 мин",
   distanceKm = 4.2,
-  interactive = true,
-  onMapClick,
   className = "h-[450px] w-full",
 }: DeliveryMapProps) {
   const [zoomLevel, setZoomLevel] = useState(14);
@@ -64,7 +61,7 @@ export function DeliveryMap({
 
   return (
     <div className={`relative overflow-hidden rounded-3xl border border-white/10 bg-[#09090B] shadow-2xl ${className}`}>
-      {/* Dark Ambient Grid Vector Map */}
+      {/* Dark / Light Ambient Grid Vector Map */}
       <svg
         viewBox="0 0 1000 500"
         className="w-full h-full object-cover select-none"
@@ -89,11 +86,11 @@ export function DeliveryMap({
         </defs>
 
         {/* Street Network Texture */}
-        <rect width="100%" height="100%" fill="#0C0D12" />
+        <rect width="100%" height="100%" fill="#0C0D12" className="delivery-map-bg transition-colors" />
         <rect width="100%" height="100%" fill="url(#urbanGrid)" />
 
         {/* Major Arteries / Roads */}
-        <g stroke="rgba(255,255,255,0.06)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round">
+        <g stroke="rgba(255,255,255,0.06)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" className="delivery-map-road">
           <path d="M -50 140 C 200 120, 450 180, 1050 150" />
           <path d="M -50 380 C 300 360, 600 420, 1050 370" />
           <path d="M 280 -50 C 310 200, 270 380, 290 550" />
@@ -101,7 +98,7 @@ export function DeliveryMap({
         </g>
 
         {/* Secondary Avenues */}
-        <g stroke="rgba(255,255,255,0.025)" strokeWidth="3">
+        <g stroke="rgba(255,255,255,0.025)" strokeWidth="3" className="delivery-map-avenue">
           <line x1="0" y1="240" x2="1000" y2="240" />
           <line x1="0" y1="460" x2="1000" y2="460" />
           <line x1="500" y1="0" x2="500" y2="500" />
@@ -150,11 +147,11 @@ export function DeliveryMap({
             y="-18"
             textAnchor="middle"
             fill="#10B981"
-            fontSize="11"
+            fontSize="10"
             fontWeight="700"
             letterSpacing="1"
           >
-            ORIGIN
+            ОТПРАВЛЕНИЕ
           </text>
         </g>
 
@@ -168,11 +165,11 @@ export function DeliveryMap({
             y="-18"
             textAnchor="middle"
             fill="#818CF8"
-            fontSize="11"
+            fontSize="10"
             fontWeight="700"
             letterSpacing="1"
           >
-            DESTINATION
+            НАЗНАЧЕНИЕ
           </text>
         </g>
 
@@ -206,17 +203,17 @@ export function DeliveryMap({
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
             </span>
             <span className="text-xs font-semibold text-zinc-200 uppercase tracking-wider">
-              Aether Live Telemetry
+              Телеметрия Aether
             </span>
           </div>
           <span className="text-zinc-600">|</span>
-          <span className="text-xs font-mono text-emerald-400">Green Corridor Active</span>
+          <span className="text-xs font-mono text-emerald-400">Зеленый коридор активен</span>
         </div>
 
         <div className="flex items-center gap-2 bg-[#111217]/90 backdrop-blur-md px-4 py-2 rounded-2xl border border-white/10 shadow-lg pointer-events-auto">
           <Zap className="w-3.5 h-3.5 text-amber-400" />
           <span className="text-xs font-bold text-white tracking-wide">ETA {eta}</span>
-          <span className="text-xs text-zinc-400">({distanceKm} km)</span>
+          <span className="text-xs text-zinc-400">({distanceKm} км)</span>
         </div>
       </div>
 
@@ -233,7 +230,7 @@ export function DeliveryMap({
             <div className="flex items-center gap-1.5">
               <span className="text-xs font-bold text-white">{courierName}</span>
               <span className="text-[10px] bg-purple-500/20 text-purple-300 px-1.5 py-0.5 rounded-full font-semibold border border-purple-500/30">
-                VIP Fleet
+                VIP Флот
               </span>
             </div>
             <p className="text-[11px] text-zinc-400 font-mono">{vehiclePlate} • Cyber Rider</p>
@@ -248,11 +245,12 @@ export function DeliveryMap({
             className="px-3 py-1.5 rounded-xl text-xs font-medium bg-white/5 hover:bg-white/10 text-zinc-300 transition-colors flex items-center gap-1.5"
           >
             <Layers className="w-3.5 h-3.5 text-indigo-400" />
-            <span>Traffic View</span>
+            <span>Слои пробок</span>
           </button>
           <div className="h-4 w-[1px] bg-white/10 mx-0.5" />
           <button
             type="button"
+            aria-label="Приблизить"
             onClick={() => setZoomLevel((z) => Math.min(18, z + 1))}
             className="w-7 h-7 rounded-xl flex items-center justify-center bg-white/5 hover:bg-white/10 text-white font-bold text-sm transition-colors"
           >
@@ -260,6 +258,7 @@ export function DeliveryMap({
           </button>
           <button
             type="button"
+            aria-label="Отдалить"
             onClick={() => setZoomLevel((z) => Math.max(10, z - 1))}
             className="w-7 h-7 rounded-xl flex items-center justify-center bg-white/5 hover:bg-white/10 text-white font-bold text-sm transition-colors"
           >
