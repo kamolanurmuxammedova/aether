@@ -23,14 +23,12 @@ export default function ErrorBoundary({
         </div>
 
         <div className="space-y-2">
-          <span className="text-xs font-mono uppercase tracking-widest text-red-400">
-            Ошибка 500 • Исключение телеметрии
-          </span>
-          <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Маршрутизация прервана
+          <span className="text-xs text-red-400">Ошибка 500</span>
+          <h1 className="text-2xl sm:text-4xl text-white tracking-tight">
+            Что-то сломалось
           </h1>
-          <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-            В работе диспетчерской сети произошел непредвиденный сбой. Автономные системы отказоустойчивости уже зафиксировали событие.
+          <p className="text-sm text-zinc-400 leading-relaxed">
+            Страница не загрузилась. Попробуйте ещё раз или вернитесь на главную.
           </p>
         </div>
 

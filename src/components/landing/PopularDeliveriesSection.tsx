@@ -69,7 +69,7 @@ export function PopularDeliveriesSection() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="space-y-3 max-w-xl">
-            <span className="text-xs font-mono uppercase tracking-widest text-purple-400">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#E08A5A]">
               Проверенные скоростные коридоры
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
@@ -82,7 +82,7 @@ export function PopularDeliveriesSection() {
 
           <Link
             href="/book"
-            className="inline-flex items-center gap-2 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-bold text-[#E08A5A] hover:text-[#E08A5A] transition-colors"
           >
             <span>Настроить персональный мульти-маршрут</span>
             <ArrowRight className="w-4 h-4" />
@@ -99,10 +99,10 @@ export function PopularDeliveriesSection() {
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.65, delay: idx * 0.13, ease: "easeOut" }}
               whileHover={{ y: -6, scale: 1.01, transition: { duration: 0.2 } }}
-              className="p-7 rounded-3xl bg-[#111217] border border-white/5 hover:border-purple-500/30 transition-colors duration-300 group shadow-lg relative overflow-hidden"
+              className="p-7 rounded-3xl bg-[#111217] border border-white/5 hover:border-[#C45C26]/30 transition-colors duration-300 group shadow-lg relative overflow-hidden"
             >
               <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-semibold text-purple-400 flex items-center gap-1.5">
+                <span className="text-xs font-semibold text-[#E08A5A] flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5" /> {r.category}
                 </span>
                 <span className="text-[10px] font-mono uppercase tracking-widest text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
@@ -110,7 +110,7 @@ export function PopularDeliveriesSection() {
                 </span>
               </div>
 
-              <h3 className="text-lg font-bold text-white mb-4 group-hover:text-indigo-300 transition-colors">
+              <h3 className="text-lg font-bold text-white mb-4 group-hover:text-[#E08A5A] transition-colors">
                 {r.title}
               </h3>
 
@@ -133,7 +133,7 @@ export function PopularDeliveriesSection() {
               <div className="pt-4 border-t border-white/5 flex items-center justify-between">
                 <div className="flex items-center gap-4 text-xs font-mono text-zinc-400">
                   <span className="flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5 text-indigo-400" /> {r.time}
+                    <Clock className="w-3.5 h-3.5 text-[#E08A5A]" /> {r.time}
                   </span>
                   <span>•</span>
                   <span>{r.distance}</span>

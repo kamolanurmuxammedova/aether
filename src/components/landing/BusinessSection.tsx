@@ -18,7 +18,7 @@ export function BusinessSection() {
   return (
     <section className="py-24 bg-[#070709] border-t border-white/[0.06] relative overflow-hidden">
       {/* Background radial accent */}
-      <div className="ambient-glow -top-32 right-1/4 w-[500px] h-[350px] bg-indigo-600/10" />
+      <div className="ambient-glow -top-32 right-1/4 w-[500px] h-[350px] bg-[#C45C26]/10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -30,7 +30,7 @@ export function BusinessSection() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#C45C26]/10 border border-[#C45C26]/20 text-[#E08A5A] text-xs font-semibold">
               <Building2 className="w-3.5 h-3.5" />
               <span>AETHER Для бизнеса и коммерции</span>
             </div>
@@ -104,12 +104,12 @@ export function BusinessSection() {
 
               {/* Code Mock */}
               <div className="font-mono text-xs text-zinc-300 space-y-1 overflow-x-auto p-4 rounded-2xl bg-black/60 border border-white/5 leading-relaxed">
-                <div><span className="text-purple-400">const</span> dispatch = <span className="text-purple-400">await</span> aether.<span className="text-indigo-400">orders</span>.<span className="text-blue-400">create</span>(&#123;</div>
+                <div><span className="text-[#E08A5A]">const</span> dispatch = <span className="text-[#E08A5A]">await</span> aether.<span className="text-[#E08A5A]">orders</span>.<span className="text-blue-400">create</span>(&#123;</div>
                 <div className="pl-4 text-zinc-400">tier: <span className="text-emerald-300">&quot;HYPERSPEED_DIRECT&quot;</span>,</div>
                 <div className="pl-4 text-zinc-400">origin: &#123; lat: <span className="text-amber-300">40.7638</span>, lng: <span className="text-amber-300">-73.9730</span> &#125;,</div>
                 <div className="pl-4 text-zinc-400">destination: &#123; lat: <span className="text-amber-300">40.7711</span>, lng: <span className="text-amber-300">-73.9634</span> &#125;,</div>
                 <div className="pl-4 text-zinc-400">cargoClass: <span className="text-emerald-300">&quot;ELECTRONICS_SEALED&quot;</span>,</div>
-                <div className="pl-4 text-zinc-400">biometricVerification: <span className="text-purple-400">true</span>,</div>
+                <div className="pl-4 text-zinc-400">biometricVerification: <span className="text-[#E08A5A]">true</span>,</div>
                 <div className="pl-4 text-zinc-400">insuranceValuationUsd: <span className="text-amber-300">25000</span></div>
                 <div>&#125;);</div>
                 <div className="pt-2 text-zinc-500">&#47;&#47; Возврат телеметрии в реальном времени</div>

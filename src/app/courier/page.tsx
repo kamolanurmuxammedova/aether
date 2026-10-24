@@ -51,15 +51,15 @@ export default function CourierPanelPage() {
   if (user.role !== "COURIER" && user.role !== "ADMIN") {
     return (
       <div className="min-h-[80vh] flex items-center justify-center px-4 bg-[#09090B] relative overflow-hidden">
-        <div className="ambient-glow top-1/3 right-1/3 w-[500px] h-[350px] bg-purple-600/10" />
+        <div className="ambient-glow top-1/3 right-1/3 w-[500px] h-[350px] bg-[#C45C26]/10" />
 
         <div className="w-full max-w-md glass-card rounded-3xl p-8 border border-white/10 shadow-2xl text-center space-y-6 relative z-10">
-          <div className="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center mx-auto shadow-lg">
+          <div className="w-14 h-14 rounded-2xl bg-[#C45C26]/10 border border-[#C45C26]/20 text-[#E08A5A] flex items-center justify-center mx-auto shadow-lg">
             <Truck className="w-7 h-7" />
           </div>
 
           <div className="space-y-2">
-            <span className="text-[10px] font-mono uppercase tracking-widest text-purple-400">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-[#E08A5A]">
               Терминал оператора флота
             </span>
             <h1 className="text-2xl font-bold text-white tracking-tight">
@@ -80,7 +80,7 @@ export default function CourierPanelPage() {
                   setKeyError(false);
                 }}
                 placeholder="Введите токен флота (напр. courier)"
-                className="w-full glass-input rounded-xl px-4 py-2.5 text-xs text-white text-center font-mono focus:border-purple-500"
+                className="w-full glass-input rounded-xl px-4 py-2.5 text-xs text-white text-center font-mono focus:border-[#C45C26]"
               />
               {keyError && (
                 <p className="text-[11px] text-red-400 mt-1.5 font-mono">
@@ -156,7 +156,7 @@ export default function CourierPanelPage() {
         {/* Top Fleet Header */}
         <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-[#14151D] via-[#101116] to-[#171822] border border-white/10 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="flex items-center gap-4">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center text-white font-extrabold text-2xl shadow-xl shadow-purple-600/30">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-[#C45C26] to-[#A94C1E] flex items-center justify-center text-white font-extrabold text-2xl shadow-xl shadow-purple-600/30">
               M
             </div>
             <div>
@@ -220,7 +220,7 @@ export default function CourierPanelPage() {
             </div>
             <button
               onClick={() => setIsWithdrawOpen(true)}
-              className="text-[11px] text-indigo-400 hover:text-white font-mono underline block"
+              className="text-[11px] text-[#E08A5A] hover:text-white font-mono underline block"
             >
               Мгновенный вывод за 60 сек
             </button>
@@ -230,8 +230,8 @@ export default function CourierPanelPage() {
             <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block">
               Заряд батареи ТС
             </span>
-            <div className="text-2xl sm:text-3xl font-extrabold text-indigo-400 font-mono flex items-center gap-2">
-              88% <BatteryCharging className="w-5 h-5 text-indigo-400" />
+            <div className="text-2xl sm:text-3xl font-extrabold text-[#E08A5A] font-mono flex items-center gap-2">
+              88% <BatteryCharging className="w-5 h-5 text-[#E08A5A]" />
             </div>
             <span className="text-[11px] text-zinc-500 block">Запас хода: ~46 км</span>
           </div>
@@ -263,7 +263,7 @@ export default function CourierPanelPage() {
                 onClick={() => setActiveTab(tab.id as typeof activeTab)}
                 className={`px-4 py-2.5 rounded-2xl text-xs font-semibold flex items-center gap-2 whitespace-nowrap transition-all ${
                   isActive
-                    ? "bg-purple-600/30 border border-purple-500/40 text-white shadow-md shadow-purple-600/20"
+                    ? "bg-[#C45C26]/30 border border-[#C45C26]/40 text-white shadow-md shadow-purple-600/20"
                     : "text-zinc-400 hover:text-white hover:bg-white/[0.04]"
                 }`}
               >
@@ -308,7 +308,7 @@ export default function CourierPanelPage() {
                   {availableJobs.map((job) => (
                     <div
                       key={job.id}
-                      className="p-6 rounded-3xl bg-[#111217] border border-white/10 hover:border-purple-500/40 transition-all space-y-4"
+                      className="p-6 rounded-3xl bg-[#111217] border border-white/10 hover:border-[#C45C26]/40 transition-all space-y-4"
                     >
                       <div className="flex items-center justify-between">
                         <span className="text-xs font-mono font-bold text-white">{job.orderNum}</span>

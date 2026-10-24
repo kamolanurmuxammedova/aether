@@ -46,7 +46,7 @@ export function PricingCalculatorSection() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="text-xs font-mono uppercase tracking-widest text-indigo-400">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#E08A5A]">
             Прозрачные алгоритмические тарифы
           </span>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
@@ -80,13 +80,13 @@ export function PricingCalculatorSection() {
                     onClick={() => setSelectedSpeed(tier.id)}
                     className={`p-3 rounded-2xl text-left border text-xs transition-all ${
                       selectedSpeed === tier.id
-                        ? "bg-purple-600/30 border-purple-500 text-white shadow-md shadow-purple-600/20"
+                        ? "bg-[#C45C26]/30 border-[#C45C26] text-white shadow-md shadow-purple-600/20"
                         : "bg-white/[0.02] border-white/5 text-zinc-400 hover:text-white hover:bg-white/[0.05]"
                     }`}
                   >
                     <span className="font-bold block truncate">{tier.title.split(" ")[0]}</span>
                     <span className="text-[10px] text-zinc-500 block">{tier.eta}</span>
-                    <span className="text-[10px] text-indigo-400 font-mono mt-1 block">
+                    <span className="text-[10px] text-[#E08A5A] font-mono mt-1 block">
                       Коэффициент {tier.priceMultiplier}x
                     </span>
                   </button>
@@ -146,7 +146,7 @@ export function PricingCalculatorSection() {
                 onClick={() => setIncludeInsurance(!includeInsurance)}
                 className={`p-3.5 rounded-2xl border text-left flex items-center justify-between transition-colors ${
                   includeInsurance
-                    ? "bg-indigo-500/10 border-indigo-500/40 text-white"
+                    ? "bg-[#C45C26]/10 border-[#C45C26]/40 text-white"
                     : "bg-white/[0.02] border-white/5 text-zinc-400"
                 }`}
               >
@@ -156,7 +156,7 @@ export function PricingCalculatorSection() {
                 </div>
                 <div
                   className={`w-5 h-5 rounded-lg flex items-center justify-center ${
-                    includeInsurance ? "bg-indigo-600 text-white" : "border border-white/20"
+                    includeInsurance ? "bg-[#C45C26] text-white" : "border border-white/20"
                   }`}
                 >
                   {includeInsurance && <Check className="w-3.5 h-3.5" />}
@@ -168,7 +168,7 @@ export function PricingCalculatorSection() {
                 onClick={() => setWhiteGlove(!whiteGlove)}
                 className={`p-3.5 rounded-2xl border text-left flex items-center justify-between transition-colors ${
                   whiteGlove
-                    ? "bg-purple-500/10 border-purple-500/40 text-white"
+                    ? "bg-[#C45C26]/10 border-[#C45C26]/40 text-white"
                     : "bg-white/[0.02] border-white/5 text-zinc-400"
                 }`}
               >
@@ -178,7 +178,7 @@ export function PricingCalculatorSection() {
                 </div>
                 <div
                   className={`w-5 h-5 rounded-lg flex items-center justify-center ${
-                    whiteGlove ? "bg-purple-600 text-white" : "border border-white/20"
+                    whiteGlove ? "bg-[#C45C26] text-white" : "border border-white/20"
                   }`}
                 >
                   {whiteGlove && <Check className="w-3.5 h-3.5" />}
@@ -228,13 +228,13 @@ export function PricingCalculatorSection() {
               {includeInsurance && (
                 <div className="flex justify-between text-zinc-400">
                   <span>Полная страховка</span>
-                  <span className="text-indigo-400 font-mono">+$12.00</span>
+                  <span className="text-[#E08A5A] font-mono">+$12.00</span>
                 </div>
               )}
               {whiteGlove && (
                 <div className="flex justify-between text-zinc-400">
                   <span>Белые перчатки</span>
-                  <span className="text-purple-400 font-mono">+$18.00</span>
+                  <span className="text-[#E08A5A] font-mono">+$18.00</span>
                 </div>
               )}
             </div>

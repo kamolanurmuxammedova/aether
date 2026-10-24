@@ -49,7 +49,7 @@ export function CategoriesSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="space-y-3 max-w-xl">
-            <span className="text-xs font-mono uppercase tracking-widest text-indigo-400">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#E08A5A]">
               Специализированная перевозка
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
@@ -69,7 +69,7 @@ export function CategoriesSection() {
                 onClick={() => setFilter(mode)}
                 className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
                   filter === mode
-                    ? "bg-purple-600 text-white shadow-md shadow-purple-600/30"
+                    ? "bg-[#C45C26] text-white shadow-md shadow-purple-600/30"
                     : "text-zinc-400 hover:text-white"
                 }`}
               >
@@ -93,21 +93,21 @@ export function CategoriesSection() {
               >
                 <Link
                   href={`/book?category=${cat.id}`}
-                  className="group relative p-6 rounded-3xl bg-[#111217] border border-white/5 hover:border-indigo-500/40 hover:bg-[#15161E] transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-indigo-500/10 flex flex-col justify-between h-full"
+                  className="group relative p-6 rounded-3xl bg-[#111217] border border-white/5 hover:border-[#C45C26]/40 hover:bg-[#15161E] transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-indigo-500/10 flex flex-col justify-between h-full"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-5">
-                      <div className="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-indigo-400 group-hover:scale-110 group-hover:bg-indigo-600/20 group-hover:text-white transition-all">
+                      <div className="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#E08A5A] group-hover:scale-110 group-hover:bg-[#C45C26]/20 group-hover:text-white transition-all">
                         <Icon className="w-6 h-6" />
                       </div>
                       {cat.tag && (
-                        <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20">
+                        <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#C45C26]/10 text-[#E08A5A] border border-[#C45C26]/20">
                           {cat.tag}
                         </span>
                       )}
                     </div>
 
-                    <h3 className="text-base font-bold text-white group-hover:text-indigo-300 transition-colors mb-2">
+                    <h3 className="text-base font-bold text-white group-hover:text-[#E08A5A] transition-colors mb-2">
                       {cat.name}
                     </h3>
                     <p className="text-xs text-zinc-400 leading-relaxed line-clamp-2">

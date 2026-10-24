@@ -229,7 +229,7 @@ export function DeliveryMap({
           <div>
             <div className="flex items-center gap-1.5">
               <span className="text-xs font-bold text-white">{courierName}</span>
-              <span className="text-[10px] bg-purple-500/20 text-purple-300 px-1.5 py-0.5 rounded-full font-semibold border border-purple-500/30">
+              <span className="text-[10px] bg-[#C45C26]/20 text-[#E08A5A] px-1.5 py-0.5 rounded-full font-semibold border border-[#C45C26]/30">
                 VIP Флот
               </span>
             </div>
@@ -244,7 +244,7 @@ export function DeliveryMap({
             onClick={() => setTrafficMode(trafficMode === "telemetry" ? "standard" : "telemetry")}
             className="px-3 py-1.5 rounded-xl text-xs font-medium bg-white/5 hover:bg-white/10 text-zinc-300 transition-colors flex items-center gap-1.5"
           >
-            <Layers className="w-3.5 h-3.5 text-indigo-400" />
+            <Layers className="w-3.5 h-3.5 text-[#E08A5A]" />
             <span>Слои пробок</span>
           </button>
           <div className="h-4 w-[1px] bg-white/10 mx-0.5" />

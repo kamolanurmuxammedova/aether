@@ -7,7 +7,7 @@ import { Apple, Smartphone, QrCode, Sparkles, Zap } from "lucide-react";
 export function DownloadAppSection() {
   return (
     <section className="py-24 bg-[#070709] border-t border-white/[0.06] relative overflow-hidden">
-      <div className="ambient-glow -bottom-32 left-1/3 w-[600px] h-[350px] bg-purple-600/10" />
+      <div className="ambient-glow -bottom-32 left-1/3 w-[600px] h-[350px] bg-[#C45C26]/10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="p-8 sm:p-16 rounded-3xl bg-gradient-to-tr from-[#13141C] via-[#0E0F14] to-[#12131A] border border-white/10 shadow-2xl">
@@ -20,7 +20,7 @@ export function DownloadAppSection() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-semibold">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#C45C26]/10 border border-[#C45C26]/20 text-[#E08A5A] text-xs font-semibold">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Мобильная телеметрия</span>
               </div>
@@ -57,7 +57,7 @@ export function DownloadAppSection() {
                   href="#download"
                   className="px-6 py-3.5 rounded-2xl bg-white/[0.06] hover:bg-white/[0.1] border border-white/10 text-white flex items-center gap-3 transition-all hover:scale-105"
                 >
-                  <Smartphone className="w-6 h-6 text-indigo-400" />
+                  <Smartphone className="w-6 h-6 text-[#E08A5A]" />
                   <div className="text-left">
                     <span className="text-[10px] text-zinc-400 block font-mono">Доступно в</span>
                     <span className="text-xs font-bold font-sans">Google Play</span>
@@ -94,7 +94,7 @@ export function DownloadAppSection() {
                 <div className="w-full rounded-[34px] bg-[#09090B] overflow-hidden p-4 space-y-4 border border-white/5">
                   {/* Dynamic Island */}
                   <div className="w-24 h-5 bg-black rounded-full mx-auto flex items-center justify-between px-2 text-[8px] text-zinc-500">
-                    <span className="text-indigo-400 font-bold">14м</span>
+                    <span className="text-[#E08A5A] font-bold">14м</span>
                     <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                   </div>
 
@@ -113,7 +113,7 @@ export function DownloadAppSection() {
                   <div className="h-32 rounded-2xl bg-[#111217] border border-white/10 p-3 relative overflow-hidden flex flex-col justify-between">
                     <div className="flex justify-between items-center text-[10px] text-zinc-400">
                       <span>Парк Авеню, 740</span>
-                      <Zap className="w-3.5 h-3.5 text-indigo-400 animate-bounce" />
+                      <Zap className="w-3.5 h-3.5 text-[#E08A5A] animate-bounce" />
                     </div>
                     <div className="h-1 bg-white/10 rounded-full overflow-hidden">
                       <div className="h-full bg-gradient-to-r from-purple-500 to-indigo-500 w-3/4 rounded-full" />
@@ -126,7 +126,7 @@ export function DownloadAppSection() {
 
                   {/* Courier Card */}
                   <div className="p-3 rounded-2xl bg-white/[0.04] border border-white/5 flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center text-white text-xs font-bold">
+                    <div className="w-8 h-8 rounded-full bg-[#C45C26] flex items-center justify-center text-white text-xs font-bold">
                       М
                     </div>
                     <div className="text-left flex-1">

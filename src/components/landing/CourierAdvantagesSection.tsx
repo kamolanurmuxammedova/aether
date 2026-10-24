@@ -38,7 +38,7 @@ export function CourierAdvantagesSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="p-8 sm:p-14 rounded-3xl bg-gradient-to-b from-[#14151D] to-[#0E0F14] border border-white/10 shadow-2xl relative overflow-hidden">
           {/* Ambient Glow */}
-          <div className="ambient-glow -top-20 -right-20 w-[450px] h-[350px] bg-purple-600/15" />
+          <div className="ambient-glow -top-20 -right-20 w-[450px] h-[350px] bg-[#C45C26]/15" />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
             {/* Left Content */}
@@ -49,7 +49,7 @@ export function CourierAdvantagesSection() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-semibold">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#C45C26]/10 border border-[#C45C26]/20 text-[#E08A5A] text-xs font-semibold">
                 <Award className="w-3.5 h-3.5" />
                 <span>Присоединяйтесь к квантовому флоту</span>
               </div>
@@ -92,10 +92,10 @@ export function CourierAdvantagesSection() {
                     viewport={{ once: true, margin: "-40px" }}
                     transition={{ duration: 0.6, delay: 0.1 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
                     whileHover={{ y: -5, scale: 1.02 }}
-                    className="p-6 rounded-2xl bg-[#111217] border border-white/5 hover:border-purple-500/30 transition-colors group"
+                    className="p-6 rounded-2xl bg-[#111217] border border-white/5 hover:border-[#C45C26]/30 transition-colors group"
                   >
                     <div className="flex items-center justify-between mb-4">
-                      <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-purple-400 group-hover:scale-110 group-hover:bg-purple-600/20 transition-all">
+                      <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#E08A5A] group-hover:scale-110 group-hover:bg-[#C45C26]/20 transition-all">
                         <Icon className="w-5 h-5" />
                       </div>
                       <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">

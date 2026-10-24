@@ -115,7 +115,7 @@ function TrackOrderContent() {
         {/* Top Control Bar */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-3xl bg-[#111217] border border-white/10">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-sm">
+            <div className="w-12 h-12 rounded-2xl bg-indigo-500/20 text-[#E08A5A] flex items-center justify-center font-bold text-sm">
               <Zap className="w-6 h-6 animate-pulse" />
             </div>
             <div>
@@ -137,7 +137,7 @@ function TrackOrderContent() {
               onClick={() => setActiveTab("MAP")}
               className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-colors ${
                 activeTab === "MAP"
-                  ? "bg-purple-600 text-white"
+                  ? "bg-[#C45C26] text-white"
                   : "bg-white/[0.04] text-zinc-400 hover:text-white"
               }`}
             >
@@ -147,7 +147,7 @@ function TrackOrderContent() {
               onClick={() => setActiveTab("CHAT")}
               className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-colors flex items-center gap-1.5 ${
                 activeTab === "CHAT"
-                  ? "bg-purple-600 text-white"
+                  ? "bg-[#C45C26] text-white"
                   : "bg-white/[0.04] text-zinc-400 hover:text-white"
               }`}
             >
@@ -157,7 +157,7 @@ function TrackOrderContent() {
               onClick={() => setActiveTab("INVOICE")}
               className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-colors flex items-center gap-1.5 ${
                 activeTab === "INVOICE"
-                  ? "bg-purple-600 text-white"
+                  ? "bg-[#C45C26] text-white"
                   : "bg-white/[0.04] text-zinc-400 hover:text-white"
               }`}
             >
@@ -216,7 +216,7 @@ function TrackOrderContent() {
                   </div>
                   <div className="p-4 rounded-2xl bg-[#111217] border border-white/5 text-center">
                     <span className="text-[10px] font-mono text-zinc-500 uppercase block">Пломба бокса</span>
-                    <span className="text-base font-bold text-indigo-400 font-mono">Опломбирован 100%</span>
+                    <span className="text-base font-bold text-[#E08A5A] font-mono">Опломбирован 100%</span>
                   </div>
                 </div>
               </div>
@@ -226,7 +226,7 @@ function TrackOrderContent() {
               <div className="p-6 rounded-3xl bg-[#111217] border border-white/10 h-[520px] flex flex-col justify-between">
                 <div className="flex items-center justify-between pb-4 border-b border-white/10">
                   <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold text-xs">
+                    <div className="w-9 h-9 rounded-full bg-[#C45C26] flex items-center justify-center text-white font-bold text-xs">
                       {currentOrder.courier?.name.charAt(0) || "М"}
                     </div>
                     <div>
@@ -250,7 +250,7 @@ function TrackOrderContent() {
                       <div
                         className={`max-w-[75%] p-3.5 rounded-2xl text-xs leading-relaxed ${
                           msg.sender === "user"
-                            ? "bg-purple-600 text-white rounded-tr-none"
+                            ? "bg-[#C45C26] text-white rounded-tr-none"
                             : "bg-white/[0.05] text-zinc-200 rounded-tl-none border border-white/10"
                         }`}
                       >
@@ -319,7 +319,7 @@ function TrackOrderContent() {
                   </div>
                   <div className="flex justify-between text-zinc-400">
                     <span>Страховое покрытие ({currentOrder.insuranceTier})</span>
-                    <span className="text-indigo-400">${currentOrder.priceInsurance.toFixed(2)}</span>
+                    <span className="text-[#E08A5A]">${currentOrder.priceInsurance.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between text-white font-bold pt-2 border-t border-white/10">
                     <span>Итого списано</span>
@@ -333,9 +333,9 @@ function TrackOrderContent() {
           {/* Right Sidebar: Handover PIN & Courier Controls */}
           <div className="lg:col-span-4 space-y-6">
             {/* Handover Dynamic PIN Card */}
-            <div className="p-6 rounded-3xl bg-gradient-to-tr from-purple-900/30 via-[#111217] to-indigo-900/20 border border-purple-500/30 shadow-2xl space-y-3">
+            <div className="p-6 rounded-3xl bg-gradient-to-tr from-purple-900/30 via-[#111217] to-indigo-900/20 border border-[#C45C26]/30 shadow-2xl space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold uppercase tracking-wider text-purple-300">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#E08A5A]">
                   Биометрический PIN передачи
                 </span>
                 <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
@@ -353,7 +353,7 @@ function TrackOrderContent() {
             {/* Courier Profile Info */}
             <div className="p-6 rounded-3xl bg-[#111217] border border-white/10 space-y-5">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center text-white font-bold text-sm">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#C45C26] to-[#A94C1E] flex items-center justify-center text-white font-bold text-sm">
                   {currentOrder.courier?.name.charAt(0) || "М"}
                 </div>
                 <div>
@@ -379,7 +379,7 @@ function TrackOrderContent() {
                 </div>
                 <div className="flex justify-between text-zinc-400">
                   <span>Номерной знак</span>
-                  <span className="text-indigo-400 font-mono">
+                  <span className="text-[#E08A5A] font-mono">
                     {currentOrder.courier?.vehiclePlate || "NY-AE901"}
                   </span>
                 </div>
@@ -492,7 +492,7 @@ function TrackOrderContent() {
                     onClick={() => setTipVal(amt)}
                     className={`py-2 rounded-xl text-xs font-mono font-bold border transition-colors ${
                       tipVal === amt
-                        ? "bg-purple-600 border-purple-500 text-white"
+                        ? "bg-[#C45C26] border-[#C45C26] text-white"
                         : "bg-white/5 border-white/10 text-zinc-300"
                     }`}
                   >

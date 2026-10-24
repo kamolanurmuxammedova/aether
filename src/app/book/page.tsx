@@ -213,7 +213,7 @@ function BookDeliveryContent() {
             {currentStep === 1 && (
               <div className="space-y-8 animate-in fade-in duration-300">
                 <div>
-                  <span className="text-xs font-mono uppercase tracking-widest text-indigo-400">
+                  <span className="text-xs font-mono uppercase tracking-widest text-[#E08A5A]">
                     Шаг 1 из 5
                   </span>
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-1">
@@ -237,7 +237,7 @@ function BookDeliveryContent() {
                         onClick={() => setCategory(cat.id)}
                         className={`p-3.5 rounded-2xl text-left border text-xs transition-all flex flex-col justify-between h-24 ${
                           category === cat.id
-                            ? "bg-purple-600/30 border-purple-500 text-white shadow-md shadow-purple-600/30"
+                            ? "bg-[#C45C26]/30 border-[#C45C26] text-white shadow-md shadow-purple-600/30"
                             : "bg-white/[0.02] border-white/5 text-zinc-400 hover:text-white hover:bg-white/[0.05]"
                         }`}
                       >
@@ -292,7 +292,7 @@ function BookDeliveryContent() {
 
                 {/* Photo & Document Upload */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-white/5">
-                  <div className="border border-dashed border-white/10 rounded-2xl p-4 text-center hover:border-purple-500/40 transition-colors">
+                  <div className="border border-dashed border-white/10 rounded-2xl p-4 text-center hover:border-[#C45C26]/40 transition-colors">
                     <input
                       type="file"
                       accept="image/*"
@@ -313,7 +313,7 @@ function BookDeliveryContent() {
                         </div>
                       ) : (
                         <>
-                          <Camera className="w-6 h-6 text-indigo-400 mx-auto" />
+                          <Camera className="w-6 h-6 text-[#E08A5A] mx-auto" />
                           <div className="text-xs font-semibold text-white">Загрузить фото груза</div>
                           <div className="text-[10px] text-zinc-500">Проверка пломб и целостности</div>
                         </>
@@ -321,7 +321,7 @@ function BookDeliveryContent() {
                     </label>
                   </div>
 
-                  <div className="border border-dashed border-white/10 rounded-2xl p-4 text-center hover:border-purple-500/40 transition-colors">
+                  <div className="border border-dashed border-white/10 rounded-2xl p-4 text-center hover:border-[#C45C26]/40 transition-colors">
                     <input
                       type="file"
                       id="package-doc"
@@ -339,7 +339,7 @@ function BookDeliveryContent() {
                         </div>
                       ) : (
                         <>
-                          <FileText className="w-6 h-6 text-purple-400 mx-auto" />
+                          <FileText className="w-6 h-6 text-[#E08A5A] mx-auto" />
                           <div className="text-xs font-semibold text-white">Загрузить документ / накладную</div>
                           <div className="text-[10px] text-zinc-500">PDF, скан договора, чек</div>
                         </>
@@ -354,7 +354,7 @@ function BookDeliveryContent() {
             {currentStep === 2 && (
               <div className="space-y-8 animate-in fade-in duration-300">
                 <div>
-                  <span className="text-xs font-mono uppercase tracking-widest text-indigo-400">
+                  <span className="text-xs font-mono uppercase tracking-widest text-[#E08A5A]">
                     Шаг 2 из 5
                   </span>
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-1">
@@ -424,7 +424,7 @@ function BookDeliveryContent() {
                 {/* Destination Details */}
                 <div className="space-y-3 p-5 rounded-2xl bg-white/[0.02] border border-white/5">
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-indigo-400 text-xs font-bold uppercase tracking-wider">
+                    <div className="flex items-center gap-2 text-[#E08A5A] text-xs font-bold uppercase tracking-wider">
                       <MapPin className="w-4 h-4" /> 2. Пункт назначения (Куда доставить)
                     </div>
                     <div className="flex gap-1.5">
@@ -473,7 +473,7 @@ function BookDeliveryContent() {
             {currentStep === 3 && (
               <div className="space-y-8 animate-in fade-in duration-300">
                 <div>
-                  <span className="text-xs font-mono uppercase tracking-widest text-indigo-400">
+                  <span className="text-xs font-mono uppercase tracking-widest text-[#E08A5A]">
                     Шаг 3 из 5
                   </span>
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-1">
@@ -496,7 +496,7 @@ function BookDeliveryContent() {
                         onClick={() => setSpeedTier(tier.id)}
                         className={`p-4 rounded-2xl border cursor-pointer transition-all ${
                           speedTier === tier.id
-                            ? "bg-purple-600/20 border-purple-500 shadow-md shadow-purple-600/20"
+                            ? "bg-[#C45C26]/20 border-[#C45C26] shadow-md shadow-purple-600/20"
                             : "bg-white/[0.02] border-white/5 hover:border-white/10"
                         }`}
                       >
@@ -510,7 +510,7 @@ function BookDeliveryContent() {
                         <div className="flex items-center justify-between text-[11px] text-zinc-500 pt-2 border-t border-white/5 font-mono">
                           <span>Коэффициент {tier.priceMultiplier}x</span>
                           {tier.badge && (
-                            <span className="text-purple-400 font-semibold">{tier.badge}</span>
+                            <span className="text-[#E08A5A] font-semibold">{tier.badge}</span>
                           )}
                         </div>
                       </div>
@@ -520,9 +520,9 @@ function BookDeliveryContent() {
 
                 {/* Scheduled Slot Input if SCHEDULED is selected */}
                 {speedTier === "SCHEDULED" && (
-                  <div className="p-4 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 space-y-2">
+                  <div className="p-4 rounded-2xl bg-[#C45C26]/10 border border-[#C45C26]/20 space-y-2">
                     <label className="text-xs font-semibold text-white flex items-center gap-2">
-                      <Calendar className="w-4 h-4 text-indigo-400" /> Укажите точное 15-минутное окно
+                      <Calendar className="w-4 h-4 text-[#E08A5A]" /> Укажите точное 15-минутное окно
                     </label>
                     <input
                       type="text"
@@ -547,12 +547,12 @@ function BookDeliveryContent() {
                         onClick={() => setVehicle(v.id)}
                         className={`p-3.5 rounded-2xl text-left border text-xs transition-all ${
                           vehicle === v.id
-                            ? "bg-indigo-600/30 border-indigo-500 text-white shadow-md shadow-indigo-600/30"
+                            ? "bg-[#C45C26]/30 border-[#C45C26] text-white shadow-md shadow-indigo-600/30"
                             : "bg-white/[0.02] border-white/5 text-zinc-400 hover:text-white hover:bg-white/[0.05]"
                         }`}
                       >
                         <div className="font-bold text-white text-xs mb-1">{v.name}</div>
-                        <div className="text-[10px] text-indigo-400 font-mono">{v.speed}</div>
+                        <div className="text-[10px] text-[#E08A5A] font-mono">{v.speed}</div>
                         <div className="text-[10px] text-zinc-500 mt-1">{v.capacity}</div>
                       </button>
                     ))}
@@ -565,7 +565,7 @@ function BookDeliveryContent() {
             {currentStep === 4 && (
               <div className="space-y-8 animate-in fade-in duration-300">
                 <div>
-                  <span className="text-xs font-mono uppercase tracking-widest text-indigo-400">
+                  <span className="text-xs font-mono uppercase tracking-widest text-[#E08A5A]">
                     Шаг 4 из 5
                   </span>
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-1">
@@ -609,7 +609,7 @@ function BookDeliveryContent() {
                         }
                         className={`p-4 rounded-2xl border cursor-pointer transition-all flex items-center justify-between ${
                           insuranceTier === ins.id
-                            ? "bg-purple-600/20 border-purple-500 shadow-md"
+                            ? "bg-[#C45C26]/20 border-[#C45C26] shadow-md"
                             : "bg-white/[0.02] border-white/5 hover:border-white/10"
                         }`}
                       >
@@ -617,7 +617,7 @@ function BookDeliveryContent() {
                           <div className="text-xs font-bold text-white">{ins.title}</div>
                           <div className="text-[11px] text-zinc-400 mt-0.5">{ins.desc}</div>
                         </div>
-                        <span className="font-mono text-xs font-bold text-indigo-400 whitespace-nowrap ml-4">
+                        <span className="font-mono text-xs font-bold text-[#E08A5A] whitespace-nowrap ml-4">
                           {ins.price}
                         </span>
                       </div>
@@ -645,7 +645,7 @@ function BookDeliveryContent() {
             {currentStep === 5 && (
               <div className="space-y-8 animate-in fade-in duration-300">
                 <div>
-                  <span className="text-xs font-mono uppercase tracking-widest text-indigo-400">
+                  <span className="text-xs font-mono uppercase tracking-widest text-[#E08A5A]">
                     Шаг 5 из 5
                   </span>
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-1">
@@ -663,11 +663,11 @@ function BookDeliveryContent() {
                     onClick={() => setPaymentMethod("STRIPE")}
                     className={`p-4 rounded-2xl border text-center transition-all ${
                       paymentMethod === "STRIPE"
-                        ? "bg-purple-600/30 border-purple-500 text-white"
+                        ? "bg-[#C45C26]/30 border-[#C45C26] text-white"
                         : "bg-white/[0.02] border-white/5 text-zinc-400 hover:text-white"
                     }`}
                   >
-                    <CreditCard className="w-5 h-5 mx-auto mb-1 text-indigo-400" />
+                    <CreditCard className="w-5 h-5 mx-auto mb-1 text-[#E08A5A]" />
                     <span className="text-xs font-bold block">Банковская карта</span>
                     <span className="text-[10px] text-zinc-500">Stripe Vault</span>
                   </button>
@@ -677,7 +677,7 @@ function BookDeliveryContent() {
                     onClick={() => setPaymentMethod("VAULT")}
                     className={`p-4 rounded-2xl border text-center transition-all ${
                       paymentMethod === "VAULT"
-                        ? "bg-purple-600/30 border-purple-500 text-white"
+                        ? "bg-[#C45C26]/30 border-[#C45C26] text-white"
                         : "bg-white/[0.02] border-white/5 text-zinc-400 hover:text-white"
                     }`}
                   >
@@ -693,7 +693,7 @@ function BookDeliveryContent() {
                     onClick={() => setPaymentMethod("APPLE_PAY")}
                     className={`p-4 rounded-2xl border text-center transition-all ${
                       paymentMethod === "APPLE_PAY"
-                        ? "bg-purple-600/30 border-purple-500 text-white"
+                        ? "bg-[#C45C26]/30 border-[#C45C26] text-white"
                         : "bg-white/[0.02] border-white/5 text-zinc-400 hover:text-white"
                     }`}
                   >
@@ -802,7 +802,7 @@ function BookDeliveryContent() {
               <span className="text-xs font-bold text-white uppercase tracking-wider">
                 Манифест заказа
               </span>
-              <span className="text-[10px] font-mono text-indigo-400 bg-indigo-500/10 px-2.5 py-0.5 rounded-full border border-indigo-500/20">
+              <span className="text-[10px] font-mono text-[#E08A5A] bg-[#C45C26]/10 px-2.5 py-0.5 rounded-full border border-[#C45C26]/20">
                 Живой расчет
               </span>
             </div>
@@ -845,7 +845,7 @@ function BookDeliveryContent() {
               </div>
               <div className="flex justify-between text-zinc-400">
                 <span>Страховая защита</span>
-                <span className="font-mono text-indigo-400">+${pricing.insurance.toFixed(2)}</span>
+                <span className="font-mono text-[#E08A5A]">+${pricing.insurance.toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-zinc-400">
                 <span>Коэффициент спроса</span>
@@ -868,7 +868,7 @@ function BookDeliveryContent() {
             </div>
 
             <div className="flex items-center gap-2 text-[11px] text-zinc-500 justify-center">
-              <Lock className="w-3.5 h-3.5 text-indigo-400" /> Сквозное 256-битное шифрование телеметрии
+              <Lock className="w-3.5 h-3.5 text-[#E08A5A]" /> Сквозное 256-битное шифрование телеметрии
             </div>
           </div>
         </div>

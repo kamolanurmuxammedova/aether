@@ -2,6 +2,22 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { AddressItem } from "@/types";
 import { PRESET_ADDRESSES } from "@/lib/constants";
+import { isLocale, type Locale } from "@/lib/i18n";
+
+export type UserRole = "USER" | "COURIER" | "ADMIN";
+
+export interface AppUser {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  avatar: string;
+  tier: string;
+  role: UserRole;
+  status: "active" | "blocked";
+  password: string;
+  createdAt: string;
+}
 
 export interface WalletTransaction {
   id: string;
@@ -21,39 +37,84 @@ export interface AppNotification {
   type: "ORDER" | "WALLET" | "PROMO" | "SECURITY";
 }
 
+const GUEST_USER: AppUser = {
+  id: "guest",
+  name: "Гость",
+  email: "",
+  phone: "",
+  avatar: "",
+  tier: "Стандарт",
+  role: "USER",
+  status: "active",
+  password: "",
+  createdAt: new Date().toISOString(),
+};
+
+const SEED_USERS: AppUser[] = [
+  {
+    id: "usr_admin",
+    name: "Нигора Каримова",
+    email: "admin@aether.uz",
+    phone: "+998 90 100 00 01",
+    avatar: "",
+    tier: "Админ",
+    role: "ADMIN",
+    status: "active",
+    password: "admin",
+    createdAt: "2025-03-12T10:00:00.000Z",
+  },
+  {
+    id: "usr_courier",
+    name: "Жасур Рахимов",
+    email: "courier@aether.uz",
+    phone: "+998 90 200 00 02",
+    avatar: "",
+    tier: "Курьер",
+    role: "COURIER",
+    status: "active",
+    password: "courier",
+    createdAt: "2025-06-02T10:00:00.000Z",
+  },
+  {
+    id: "usr_client",
+    name: "Анна Соколова",
+    email: "user@aether.uz",
+    phone: "+998 90 300 00 03",
+    avatar: "",
+    tier: "Стандарт",
+    role: "USER",
+    status: "active",
+    password: "user",
+    createdAt: "2026-01-18T10:00:00.000Z",
+  },
+];
+
 interface UserState {
-  // Auth state
   isAuthenticated: boolean;
-  user: {
-    id: string;
-    name: string;
-    email: string;
-    phone: string;
-    avatar: string;
-    tier: "Обсидиановый резидент" | "Платиновый директор" | "Алмазный основатель";
-    role: "USER" | "COURIER" | "ADMIN";
-  };
-  
-  // Wallet & Payment
+  user: AppUser;
+  accounts: AppUser[];
   walletBalance: number;
   transactions: WalletTransaction[];
-  
-  // Addresses
   addresses: AddressItem[];
-  
-  // Notifications
   notifications: AppNotification[];
-  
-  // Settings & Locale
   currency: string;
-  language: string;
+  language: Locale;
   isSearchOpen: boolean;
   activeTab: string;
 
-  // Actions
-  login: (email: string, role?: "USER" | "COURIER" | "ADMIN") => void;
+  login: (email: string, password: string) => { ok: boolean; error?: string };
+  register: (data: {
+    name: string;
+    email: string;
+    phone: string;
+    password: string;
+    role: "USER" | "COURIER";
+  }) => { ok: boolean; error?: string };
+  loginAs: (role: UserRole) => void;
   logout: () => void;
-  switchRole: (role: "USER" | "COURIER" | "ADMIN") => void;
+  switchRole: (role: UserRole) => void;
+  updateAccountRole: (id: string, role: UserRole) => void;
+  toggleAccountStatus: (id: string) => void;
   topUpWallet: (amount: number) => void;
   deductWallet: (amount: number, description: string) => boolean;
   addAddress: (address: Omit<AddressItem, "id">) => void;
@@ -71,7 +132,7 @@ const INITIAL_TRANSACTIONS: WalletTransaction[] = [
     id: "tx_1",
     type: "TOPUP",
     amount: 500.0,
-    description: "Мгновенное пополнение Apple Pay",
+    description: "Пополнение карты",
     timestamp: "2 часа назад",
     status: "COMPLETED",
   },
@@ -79,7 +140,7 @@ const INITIAL_TRANSACTIONS: WalletTransaction[] = [
     id: "tx_2",
     type: "ORDER_PAYMENT",
     amount: -43.5,
-    description: "Гиперскоростная доставка AETH-982XF",
+    description: "Оплата заказа AETH-982XF",
     timestamp: "12 мин назад",
     status: "COMPLETED",
   },
@@ -87,7 +148,7 @@ const INITIAL_TRANSACTIONS: WalletTransaction[] = [
     id: "tx_3",
     type: "CASHBACK",
     amount: 8.7,
-    description: "Кэшбэк 20% по программе Obsidian Elite",
+    description: "Кэшбэк по заказу",
     timestamp: "Вчера",
     status: "COMPLETED",
   },
@@ -96,24 +157,24 @@ const INITIAL_TRANSACTIONS: WalletTransaction[] = [
 const INITIAL_NOTIFICATIONS: AppNotification[] = [
   {
     id: "notif_1",
-    title: "Скоростной курьер выехал",
-    message: "Маркус Стерлинг прибудет через 4 мин с вашей опечатанной техникой.",
+    title: "Курьер выехал",
+    message: "Жасур будет у адреса примерно через 12 минут.",
     timestamp: "4м назад",
     read: false,
     type: "ORDER",
   },
   {
     id: "notif_2",
-    title: "Приоритетный зеленый коридор",
-    message: "Для вашего аккаунта активирована беспосадочная скоростная магистраль.",
+    title: "Заказ принят",
+    message: "Документы с Мирабада забрали. Едем в Юнусабад.",
     timestamp: "1ч назад",
     read: false,
     type: "SECURITY",
   },
   {
     id: "notif_3",
-    title: "Пополнение баланса получено",
-    message: "$500.00 USD зачислены в ваш цифровой сейф AETHER Obsidian Vault.",
+    title: "Баланс пополнен",
+    message: "500 000 сум зачислены на счёт.",
     timestamp: "2ч назад",
     read: true,
     type: "WALLET",
@@ -123,41 +184,91 @@ const INITIAL_NOTIFICATIONS: AppNotification[] = [
 export const useUserStore = create<UserState>()(
   persist(
     (set, get) => ({
-      isAuthenticated: true,
-      user: {
-        id: "usr_vance_01",
-        name: "Александр Вэнс",
-        email: "alexander.vance@vance-holdings.com",
-        phone: "+1 (917) 555-0142",
-        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80",
-        tier: "Алмазный основатель",
-        role: "USER",
-      },
+      isAuthenticated: false,
+      user: GUEST_USER,
+      accounts: SEED_USERS,
       walletBalance: 1465.2,
       transactions: INITIAL_TRANSACTIONS,
       addresses: PRESET_ADDRESSES,
       notifications: INITIAL_NOTIFICATIONS,
       currency: "USD",
-      language: "RU",
+      language: "ru",
       isSearchOpen: false,
       activeTab: "overview",
 
-      login: (email, role = "USER") =>
-        set((s) => ({
-          isAuthenticated: true,
-          user: {
-            ...s.user,
-            email,
-            name: email.split("@")[0].toUpperCase(),
-            role,
-          },
-        })),
+      login: (email, password) => {
+        const match = get().accounts.find(
+          (a) => a.email.toLowerCase() === email.trim().toLowerCase()
+        );
+        if (!match || match.password !== password) {
+          return { ok: false, error: "auth.error" };
+        }
+        if (match.status === "blocked") {
+          return { ok: false, error: "auth.error" };
+        }
+        set({ isAuthenticated: true, user: match });
+        return { ok: true };
+      },
 
-      logout: () => set({ isAuthenticated: false }),
+      register: ({ name, email, phone, password, role }) => {
+        const exists = get().accounts.some(
+          (a) => a.email.toLowerCase() === email.trim().toLowerCase()
+        );
+        if (exists) return { ok: false, error: "auth.exists" };
+        if (password.length < 6) return { ok: false, error: "auth.minPwd" };
+
+        const created: AppUser = {
+          id: `usr_${Date.now()}`,
+          name: name.trim(),
+          email: email.trim().toLowerCase(),
+          phone: phone.trim(),
+          avatar: "",
+          tier: "Стандарт",
+          role,
+          status: "active",
+          password,
+          createdAt: new Date().toISOString(),
+        };
+
+        set((s) => ({
+          accounts: [created, ...s.accounts],
+          isAuthenticated: true,
+          user: created,
+        }));
+        return { ok: true };
+      },
+
+      loginAs: (role) => {
+        const match =
+          get().accounts.find((a) => a.role === role && a.status === "active") ||
+          SEED_USERS.find((a) => a.role === role);
+        if (!match) return;
+        set({ isAuthenticated: true, user: match });
+      },
+
+      logout: () => set({ isAuthenticated: false, user: GUEST_USER }),
 
       switchRole: (role) =>
         set((s) => ({
           user: { ...s.user, role },
+          accounts: s.accounts.map((a) =>
+            a.id === s.user.id ? { ...a, role } : a
+          ),
+        })),
+
+      updateAccountRole: (id, role) =>
+        set((s) => ({
+          accounts: s.accounts.map((a) => (a.id === id ? { ...a, role } : a)),
+          user: s.user.id === id ? { ...s.user, role } : s.user,
+        })),
+
+      toggleAccountStatus: (id) =>
+        set((s) => ({
+          accounts: s.accounts.map((a) =>
+            a.id === id
+              ? { ...a, status: a.status === "active" ? "blocked" : "active" }
+              : a
+          ),
         })),
 
       topUpWallet: (amount) =>
@@ -168,7 +279,7 @@ export const useUserStore = create<UserState>()(
               id: `tx_${Date.now()}`,
               type: "TOPUP",
               amount,
-              description: "Пополнение баланса через Stripe Platinum",
+              description: "Пополнение баланса",
               timestamp: "Только что",
               status: "COMPLETED",
             },
@@ -198,10 +309,7 @@ export const useUserStore = create<UserState>()(
 
       addAddress: (addr) =>
         set((s) => ({
-          addresses: [
-            ...s.addresses,
-            { ...addr, id: `addr_${Date.now()}` },
-          ],
+          addresses: [...s.addresses, { ...addr, id: `addr_${Date.now()}` }],
         })),
 
       removeAddress: (id) =>
@@ -230,13 +338,36 @@ export const useUserStore = create<UserState>()(
         })),
 
       setCurrency: (currency) => set({ currency }),
-      setLanguage: (language) => set({ language }),
+      setLanguage: (language) =>
+        set({ language: isLocale(language) ? language : "ru" }),
       setIsSearchOpen: (isSearchOpen) => set({ isSearchOpen }),
     }),
     {
       name: "aether-user-storage",
+      merge: (persisted, current) => {
+        const p = (persisted ?? {}) as Partial<UserState>;
+        const langRaw = String(p.language || current.language || "ru").toLowerCase();
+        const persistedUser = p.user;
+        return {
+          ...current,
+          ...p,
+          language: isLocale(langRaw) ? langRaw : "ru",
+          accounts: p.accounts?.length ? p.accounts : current.accounts,
+          isAuthenticated: Boolean(p.isAuthenticated),
+          user: persistedUser
+            ? {
+                ...GUEST_USER,
+                ...persistedUser,
+                password: persistedUser.password || "",
+                status: persistedUser.status || "active",
+              }
+            : current.user,
+        };
+      },
       partialize: (state) => ({
+        isAuthenticated: state.isAuthenticated,
         user: state.user,
+        accounts: state.accounts,
         walletBalance: state.walletBalance,
         addresses: state.addresses,
         currency: state.currency,

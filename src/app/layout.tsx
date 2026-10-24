@@ -1,38 +1,29 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { DM_Sans, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SearchModal } from "@/components/layout/SearchModal";
 import { AppProviders } from "@/components/providers/AppProviders";
 
-const geistSans = Geist({
+const sans = DM_Sans({
   variable: "--font-geist-sans",
-  subsets: ["latin", "cyrillic"],
+  subsets: ["latin", "latin-ext"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin", "cyrillic"],
+const display = Source_Serif_4({
+  variable: "--font-display",
+  subsets: ["latin", "latin-ext", "cyrillic"],
 });
 
 export const metadata: Metadata = {
-  title: "AETHER | Автономная гипер-логистика и экспресс-доставка",
+  title: "AETHER | Доставка по Ташкенту",
   description:
-    "Городская логистическая инфраструктура нового поколения. Выделенные скоростные коридоры, премиальная безопасность, микро-точная телеметрия и мгновенная подача курьера.",
-  keywords: [
-    "экспресс доставка",
-    "премиум курьер",
-    "автономная логистика",
-    "доставка за час",
-    "срочная доставка",
-    "AETHER",
-  ],
-  authors: [{ name: "AETHER Technologies" }],
+    "Городская доставка документов, еды, техники и посылок. Прозрачные цены, живые курьеры, отслеживание заказа.",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#09090B",
+  themeColor: "#161411",
   colorScheme: "dark light",
 };
 
@@ -62,7 +53,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#09090B] text-zinc-100 min-h-screen flex flex-col`}
+        className={`${sans.variable} ${display.variable} antialiased bg-[#161411] text-zinc-100 min-h-screen flex flex-col`}
       >
         <AppProviders>
           <Navbar />

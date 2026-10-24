@@ -4,15 +4,15 @@ import { Zap, Compass, ArrowRight, Home } from "lucide-react";
 export default function NotFound() {
   return (
     <div className="min-h-[75vh] flex items-center justify-center px-4 bg-[#09090B] relative overflow-hidden text-center">
-      <div className="ambient-glow top-1/3 left-1/3 w-[500px] h-[350px] bg-purple-600/15" />
+      <div className="ambient-glow top-1/3 left-1/3 w-[500px] h-[350px] bg-[#C45C26]/15" />
 
       <div className="max-w-lg space-y-6 relative z-10">
-        <div className="w-16 h-16 rounded-3xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-indigo-400 mx-auto shadow-xl">
+        <div className="w-16 h-16 rounded-3xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#E08A5A] mx-auto shadow-xl">
           <Compass className="w-8 h-8 animate-spin" style={{ animationDuration: "12s" }} />
         </div>
 
         <div className="space-y-2">
-          <span className="text-xs font-mono uppercase tracking-widest text-indigo-400">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#E08A5A]">
             Ошибка 404 • Отклонение координат
           </span>
           <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">

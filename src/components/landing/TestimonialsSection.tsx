@@ -55,7 +55,7 @@ export function TestimonialsSection() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-semibold">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C45C26]/10 border border-[#C45C26]/20 text-[#E08A5A] text-xs font-semibold">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Репутация и доверие</span>
           </div>
@@ -78,7 +78,7 @@ export function TestimonialsSection() {
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.65, delay: i * 0.13, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ y: -5, scale: 1.01 }}
-              className="p-8 rounded-3xl bg-[#111217] border border-white/5 hover:border-purple-500/30 transition-colors duration-300 flex flex-col justify-between group shadow-lg"
+              className="p-8 rounded-3xl bg-[#111217] border border-white/5 hover:border-[#C45C26]/30 transition-colors duration-300 flex flex-col justify-between group shadow-lg"
             >
               <div>
                 <div className="flex items-center justify-between mb-6">
@@ -87,7 +87,7 @@ export function TestimonialsSection() {
                       <Star key={idx} className="w-4 h-4 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-indigo-400 bg-indigo-500/10 px-2.5 py-0.5 rounded-full border border-indigo-500/20">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#E08A5A] bg-[#C45C26]/10 px-2.5 py-0.5 rounded-full border border-[#C45C26]/20">
                     {r.cargoClass}
                   </span>
                 </div>
@@ -103,7 +103,7 @@ export function TestimonialsSection() {
                   <img src={r.avatar} alt={r.name} className="w-full h-full object-cover" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-white group-hover:text-purple-300 transition-colors">
+                  <h4 className="text-sm font-bold text-white group-hover:text-[#E08A5A] transition-colors">
                     {r.name}
                   </h4>
                   <p className="text-xs text-zinc-400">{r.role}</p>
